@@ -2,12 +2,11 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { Sparkles, Eye, MapPin, ArrowRight, MessageCircle, Building2 } from "lucide-react";
+import { Sparkles, MapPin, Eye, MessageCircle, Building2 } from "lucide-react";
 import { galleryItems, inaugurationInfo } from "@/data/gallery";
-import { createWhatsAppUrl } from "@/data/site";
 import { LightboxModal } from "./LightboxModal";
 import { useLanguage } from "@/context/LanguageContext";
+import { createWhatsAppUrl } from "@/data/site";
 import { trackEvent } from "@/lib/analytics";
 
 export const GallerySection: React.FC = () => {
@@ -15,7 +14,7 @@ export const GallerySection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const categories = ["All", "Full Home", "Kitchen", "Bathroom", "Floor", "Sofa", "Relocation"];
+  const categories = ["All", "Kitchen", "Bathroom", "Living", "Sofa", "Floor", "Commercial", "Relocation"];
 
   const filteredItems =
     selectedCategory === "All"
@@ -24,14 +23,14 @@ export const GallerySection: React.FC = () => {
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
-    trackEvent("gallery_image_view", { image_id: galleryItems[index].id });
+    trackEvent("gallery_view_image", { item_id: filteredItems[index]?.id });
   };
 
   return (
     <>
-      <section id="gallery" className="section section-bg-subtle">
+      <section className="section" style={{ backgroundColor: "#ffffff" }}>
         <div className="container">
-          {/* Malabar Plaza Mattanur Banner */}
+          {/* Active Hub Banner */}
           <div
             style={{
               marginBottom: "48px",
@@ -41,14 +40,13 @@ export const GallerySection: React.FC = () => {
               padding: "clamp(24px, 4vw, 36px)",
               display: "flex",
               flexDirection: "column",
-              mdFlexDirection: "row",
               justifyContent: "space-between",
-              alignItems: "center",
-              gap: "24px",
+              alignItems: "flex-start",
+              gap: "20px",
               boxShadow: "0 16px 36px -8px rgba(7, 30, 61, 0.3)",
             }}
           >
-            <div style={{ maxWidth: "650px" }}>
+            <div style={{ maxWidth: "650px", textAlign: "left", width: "100%" }}>
               <div
                 style={{
                   display: "inline-flex",
@@ -96,7 +94,7 @@ export const GallerySection: React.FC = () => {
                 className="btn btn-whatsapp btn-lg"
                 style={{
                   borderRadius: "12px",
-                  padding: "14px 28px",
+                  padding: "12px 24px",
                   fontWeight: 700,
                   boxShadow: "0 8px 24px -4px rgba(37, 211, 102, 0.4)",
                 }}
@@ -239,12 +237,12 @@ export const GallerySection: React.FC = () => {
       </section>
 
       {/* Lightbox Modal */}
-      {lightboxIndex !== null && (
+      {lightboxIndex !== null && filteredItems[lightboxIndex] && (
         <LightboxModal
-          items={galleryItems}
-          currentIndex={lightboxIndex}
+          item={filteredItems[lightboxIndex]}
           onClose={() => setLightboxIndex(null)}
-          onNavigate={(newIdx) => setLightboxIndex(newIdx)}
+          onNext={() => setLightboxIndex((lightboxIndex + 1) % filteredItems.length)}
+          onPrev={() => setLightboxIndex((lightboxIndex - 1 + filteredItems.length) % filteredItems.length)}
         />
       )}
     </>
