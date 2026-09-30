@@ -1,95 +1,93 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { MessageCircle, ArrowRight, CheckCircle2, ShieldCheck, MapPin, Sparkles, Award } from "lucide-react";
+import {
+  MessageCircle,
+  ArrowRight,
+  ShieldCheck,
+  Truck,
+  CheckCircle2,
+  Sparkles,
+  MapPin,
+  Award,
+} from "lucide-react";
 import { siteConfig, createWhatsAppUrl } from "@/data/site";
 import { useLanguage } from "@/context/LanguageContext";
-import { trackEvent } from "@/lib/analytics";
+import { trackWhatsAppConversion } from "@/lib/analytics";
 
 export const Hero: React.FC = () => {
   const { language, t } = useLanguage();
 
   const handleWhatsAppClick = () => {
-    trackEvent("whatsapp_click", { location: "hero_primary" });
+    trackWhatsAppConversion("hero_cta");
+  };
+
+  const getWhatsAppLink = () => {
+    const message =
+      language === "ml"
+        ? "നമസ്കാരം ക്ലീനോറ, എനിക്ക് നിങ്ങളുടെ ക്ലീനിംഗ് & ഷിഫ്റ്റിംഗ് സർവീസുകളെക്കുറിച്ച് അറിയണം."
+        : "Hello Cleanora, I would like to inquire about your deep cleaning & shifting services in Kannur.";
+    return createWhatsAppUrl(message);
   };
 
   return (
     <section
       style={{
         position: "relative",
-        backgroundColor: "#071426",
-        color: "#ffffff",
+        paddingTop: "clamp(40px, 6vw, 68px)",
+        paddingBottom: "clamp(44px, 6vw, 64px)",
+        backgroundColor: "var(--bg-page)",
         overflow: "hidden",
-        paddingTop: "56px",
-        paddingBottom: "80px",
+        width: "100%",
       }}
     >
-      {/* Subtle Background Glows */}
-      <div
-        style={{
-          position: "absolute",
-          top: "-10%",
-          left: "15%",
-          width: "550px",
-          height: "550px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(16, 185, 129, 0.14) 0%, rgba(15, 59, 116, 0) 70%)",
-          filter: "blur(70px)",
-          pointerEvents: "none",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          bottom: "0",
-          right: "10%",
-          width: "600px",
-          height: "450px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(15, 91, 176, 0.2) 0%, rgba(7, 20, 38, 0) 70%)",
-          filter: "blur(80px)",
-          pointerEvents: "none",
-        }}
-      />
-
-      <div className="container" style={{ position: "relative", zIndex: 10 }}>
+      <div className="container">
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1.1fr 0.9fr",
-            gap: "48px",
+            gridTemplateColumns: "1.05fr 0.95fr",
+            gap: "36px",
             alignItems: "center",
           }}
           className="hero-grid"
         >
-          {/* Left Column: Headlines & CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
-            style={{ display: "flex", flexDirection: "column", gap: "22px" }}
-          >
-            {/* Location & Brand Pill */}
-            <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
+          {/* Left Column: Clean Typography & Quick Actions */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px", minWidth: 0 }}>
+            {/* Top Micro Badges */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                flexWrap: "wrap",
+              }}
+            >
               <div
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: "6px",
-                  padding: "6px 14px",
+                  gap: "5px",
+                  padding: "4px 10px",
                   borderRadius: "9999px",
-                  backgroundColor: "rgba(16, 185, 129, 0.15)",
-                  border: "1px solid rgba(16, 185, 129, 0.35)",
-                  color: "#34d399",
-                  fontSize: "0.8125rem",
+                  backgroundColor: "var(--color-accent-subtle)",
+                  border: "1px solid var(--color-accent-border)",
+                  color: "var(--color-accent)",
+                  fontSize: "0.72rem",
                   fontWeight: 700,
-                  letterSpacing: "0.04em",
                 }}
               >
-                <MapPin size={14} />
+                <span
+                  style={{
+                    width: "6px",
+                    height: "6px",
+                    borderRadius: "50%",
+                    backgroundColor: "#10b981",
+                    boxShadow: "0 0 6px #10b981",
+                  }}
+                />
+                <MapPin size={11} />
                 <span>{t("hero_badge_location")}</span>
               </div>
 
@@ -97,17 +95,17 @@ export const Hero: React.FC = () => {
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: "6px",
-                  padding: "6px 14px",
+                  gap: "5px",
+                  padding: "4px 10px",
                   borderRadius: "9999px",
-                  backgroundColor: "rgba(255, 255, 255, 0.08)",
-                  border: "1px solid rgba(255, 255, 255, 0.15)",
-                  color: "#cbd5e1",
-                  fontSize: "0.8125rem",
+                  backgroundColor: "var(--bg-subtle)",
+                  border: "1px solid var(--border-light)",
+                  color: "var(--text-secondary)",
+                  fontSize: "0.72rem",
                   fontWeight: 600,
                 }}
               >
-                <Sparkles size={14} color="#60a5fa" />
+                <Sparkles size={11} color="#059669" />
                 <span>{t("hero_badge_slogan")}</span>
               </div>
             </div>
@@ -116,32 +114,30 @@ export const Hero: React.FC = () => {
             <h1
               style={{
                 fontFamily: "var(--font-heading)",
-                fontSize: "clamp(2.4rem, 4.4vw, 3.8rem)",
-                fontWeight: 800,
-                lineHeight: 1.15,
-                letterSpacing: "-0.02em",
-                color: "#ffffff",
+                fontSize: language === "ml" ? "clamp(1.35rem, 2.2vw, 1.95rem)" : "clamp(1.8rem, 3.2vw, 2.75rem)",
+                fontWeight: language === "ml" ? 700 : 800,
+                lineHeight: language === "ml" ? 1.35 : 1.18,
+                letterSpacing: language === "ml" ? "normal" : "-0.025em",
+                color: "var(--text-primary)",
+                wordBreak: "normal",
+                overflowWrap: "break-word",
               }}
             >
-              {t("hero_title_line1")} <br />
-              <span
-                style={{
-                  background: "linear-gradient(135deg, #34d399 0%, #60a5fa 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
+              {t("hero_title_line1")}{" "}
+              <span style={{ color: "var(--color-accent)", display: "inline" }}>
                 {t("hero_title_line2")}
               </span>
             </h1>
 
-            {/* Supporting Copy */}
+            {/* Supporting Subheadline */}
             <p
               style={{
-                fontSize: "1.0625rem",
-                lineHeight: 1.7,
-                color: "#cbd5e1",
-                maxWidth: "560px",
+                fontSize: language === "ml" ? "0.85rem" : "0.9375rem",
+                lineHeight: 1.6,
+                color: "var(--text-secondary)",
+                maxWidth: "520px",
+                wordBreak: "normal",
+                overflowWrap: "break-word",
               }}
             >
               {t("hero_subtitle")}
@@ -152,173 +148,142 @@ export const Hero: React.FC = () => {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "16px",
+                gap: "10px",
                 flexWrap: "wrap",
-                paddingTop: "6px",
+                paddingTop: "2px",
               }}
             >
               <a
-                href={createWhatsAppUrl()}
+                href={getWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleWhatsAppClick}
                 className="btn btn-whatsapp btn-lg"
                 style={{
-                  backgroundColor: "#25D366",
-                  color: "#ffffff",
-                  textDecoration: "none",
-                  padding: "14px 28px",
-                  borderRadius: "12px",
+                  padding: "10px 18px",
+                  borderRadius: "10px",
                   fontWeight: 700,
-                  fontSize: "1.0625rem",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  boxShadow: "0 6px 20px rgba(37, 211, 102, 0.4)",
+                  fontSize: "0.875rem",
                 }}
               >
-                <MessageCircle size={20} />
+                <MessageCircle size={16} />
                 <span>{t("hero_cta_whatsapp")}</span>
               </a>
 
               <Link
                 href="/services"
                 prefetch={true}
-                className="btn btn-outline-white btn-lg"
+                className="btn btn-outline btn-lg"
                 style={{
-                  backgroundColor: "rgba(255, 255, 255, 0.08)",
-                  color: "#ffffff",
-                  border: "1px solid rgba(255, 255, 255, 0.25)",
-                  textDecoration: "none",
-                  padding: "14px 26px",
-                  borderRadius: "12px",
+                  padding: "10px 18px",
+                  borderRadius: "10px",
                   fontWeight: 600,
-                  fontSize: "1.0625rem",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "10px",
+                  fontSize: "0.875rem",
                 }}
               >
                 <span>{t("hero_cta_services")}</span>
-                <ArrowRight size={18} />
+                <ArrowRight size={14} />
               </Link>
             </div>
 
-            {/* Trust Line */}
+            {/* Trust Points */}
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "10px",
-                paddingTop: "14px",
-                borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-                marginTop: "10px",
+                gap: "12px",
+                flexWrap: "wrap",
+                paddingTop: "12px",
+                borderTop: "1px solid var(--border-light)",
+                marginTop: "2px",
+                fontSize: "0.76rem",
+                color: "var(--text-secondary)",
               }}
             >
-              <div
-                style={{
-                  width: "28px",
-                  height: "28px",
-                  borderRadius: "50%",
-                  backgroundColor: "rgba(16, 185, 129, 0.2)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "#34d399",
-                }}
-              >
-                <ShieldCheck size={18} />
+              <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                <CheckCircle2 size={14} color="#059669" />
+                <span style={{ fontWeight: 600 }}>{language === "ml" ? "100% സംതൃപ്തി ഉറപ്പ്" : "100% Guaranteed"}</span>
               </div>
-              <div>
-                <span style={{ fontWeight: 700, color: "#ffffff", fontSize: "0.9375rem" }}>
-                  {t("hero_guarantee_text")}
-                </span>
-                <span style={{ color: "#94a3b8", fontSize: "0.875rem", marginLeft: "6px" }} className="hide-mobile">
-                  {t("hero_guarantee_sub")}
-                </span>
+              <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                <Truck size={14} color="var(--color-primary)" />
+                <span style={{ fontWeight: 600 }}>{language === "ml" ? "പാക്കേഴ്‌സ് & മൂവേഴ്‌സ്" : "Packers & Movers"}</span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                <ShieldCheck size={14} color="#059669" />
+                <span style={{ fontWeight: 600 }}>{language === "ml" ? "വ്യക്തമായ ചാർജുകൾ" : "Upfront Pricing"}</span>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Right Column: User's Custom Hero Image Showcase */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.97 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
-            style={{ position: "relative" }}
-          >
+          {/* Right Column: Clean Modern Photography Card */}
+          <div style={{ position: "relative", minWidth: 0 }}>
             <div
               style={{
                 position: "relative",
-                borderRadius: "24px",
+                borderRadius: "16px",
                 overflow: "hidden",
-                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.12)",
+                boxShadow: "0 10px 25px -8px rgba(15, 23, 42, 0.08)",
                 aspectRatio: "4/3",
-                backgroundColor: "#0d203a",
+                backgroundColor: "#f1f5f9",
+                border: "1px solid var(--border-light)",
               }}
             >
               <Image
                 src="/images/hero.png"
-                alt="Cleanora Deep Cleaning Mattanur Kannur"
+                alt="Cleanora Deep Cleaning & Relocations Mattanur Kannur"
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 600px"
                 style={{ objectFit: "cover" }}
               />
 
+              {/* Floating Glass Badge */}
               <div
                 style={{
                   position: "absolute",
-                  inset: 0,
-                  background: "linear-gradient(to top, rgba(7, 20, 38, 0.75) 0%, rgba(7, 20, 38, 0.05) 50%)",
-                }}
-              />
-
-              {/* Floating Bottom Card */}
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: "16px",
-                  left: "16px",
-                  right: "16px",
-                  backgroundColor: "rgba(11, 27, 43, 0.92)",
-                  backdropFilter: "blur(14px)",
-                  padding: "14px 18px",
-                  borderRadius: "14px",
-                  border: "1px solid rgba(255, 255, 255, 0.18)",
+                  bottom: "10px",
+                  left: "10px",
+                  right: "10px",
+                  backgroundColor: "rgba(255, 255, 255, 0.95)",
+                  backdropFilter: "blur(12px)",
+                  padding: "10px 14px",
+                  borderRadius: "12px",
+                  border: "1px solid var(--border-light)",
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
+                  boxShadow: "0 4px 14px rgba(0,0,0,0.06)",
                 }}
               >
-                <div>
-                  <div style={{ fontSize: "0.75rem", color: "#34d399", textTransform: "uppercase", fontWeight: 700, letterSpacing: "0.05em" }}>
-                    മട്ടന്നൂർ • MATTANUR, KANNUR
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ fontSize: "0.625rem", color: "var(--color-accent)", textTransform: "uppercase", fontWeight: 700, letterSpacing: "0.04em" }}>
+                    {language === "ml" ? "മട്ടന്നൂർ • കണ്ണൂർ" : "Mattanur • Kannur, Kerala"}
                   </div>
-                  <div style={{ fontSize: "0.95rem", fontWeight: 700, color: "#ffffff" }}>
-                    Cleanora Deep Cleaning
+                  <div style={{ fontSize: "0.8125rem", fontWeight: 800, color: "var(--text-primary)" }}>
+                    Cleanora Cleaning & Shifting
                   </div>
                 </div>
 
                 <div
                   style={{
-                    backgroundColor: "rgba(16, 185, 129, 0.2)",
-                    color: "#34d399",
-                    padding: "6px 12px",
-                    borderRadius: "8px",
-                    fontSize: "0.8125rem",
+                    backgroundColor: "var(--color-accent-subtle)",
+                    color: "var(--color-accent)",
+                    padding: "3px 8px",
+                    borderRadius: "6px",
+                    fontSize: "0.7rem",
                     fontWeight: 700,
                     display: "flex",
                     alignItems: "center",
-                    gap: "6px",
+                    gap: "4px",
+                    flexShrink: 0,
                   }}
                 >
-                  <Award size={15} />
-                  <span>{language === "ml" ? "100% ക്ലീൻ" : "Spotless"}</span>
+                  <Award size={13} />
+                  <span>{language === "ml" ? "100% ക്ലീൻ" : "100% Verified"}</span>
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

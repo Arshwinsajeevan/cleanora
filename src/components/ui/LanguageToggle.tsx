@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import { Globe } from "lucide-react";
@@ -19,15 +19,15 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({ variant = "heade
           alignItems: "center",
           justifyContent: "space-between",
           padding: "10px 14px",
-          backgroundColor: "#f1f5f9",
+          backgroundColor: "#f8fafc",
           borderRadius: "12px",
-          marginTop: "10px",
-          marginBottom: "14px",
+          border: "1px solid var(--border-light)",
+          marginBottom: "12px",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "8px", color: "var(--text-secondary)" }}>
           <Globe size={18} color="var(--color-primary)" />
-          <span style={{ fontSize: "0.875rem", fontWeight: 600 }}>Language / ഭാഷ</span>
+          <span style={{ fontSize: "0.875rem", fontWeight: 700 }}>Language / ഭാഷ</span>
         </div>
 
         <div style={{ display: "flex", gap: "4px", backgroundColor: "#ffffff", padding: "3px", borderRadius: "8px", border: "1px solid #e2e8f0" }}>
@@ -69,10 +69,11 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({ variant = "heade
       style={{
         display: "inline-flex",
         alignItems: "center",
-        backgroundColor: "#f1f5f9",
+        backgroundColor: "var(--bg-subtle)",
         borderRadius: "9999px",
-        padding: "3px",
-        border: "1px solid #e2e8f0",
+        padding: "2px",
+        border: "1px solid var(--border-light)",
+        flexShrink: 0,
       }}
       className="lang-toggle-container"
     >
@@ -80,15 +81,15 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({ variant = "heade
         onClick={() => setLanguage("en")}
         aria-label="Switch to English"
         style={{
-          padding: "4px 10px",
+          padding: "4px 8px",
           borderRadius: "9999px",
-          fontSize: "0.75rem",
+          fontSize: "0.72rem",
           fontWeight: 700,
-          letterSpacing: "0.04em",
           backgroundColor: language === "en" ? "var(--color-primary)" : "transparent",
           color: language === "en" ? "#ffffff" : "var(--text-secondary)",
           transition: "all 0.2s ease",
           cursor: "pointer",
+          border: "none",
         }}
       >
         EN
@@ -97,14 +98,15 @@ export const LanguageToggle: React.FC<LanguageToggleProps> = ({ variant = "heade
         onClick={() => setLanguage("ml")}
         aria-label="Switch to Malayalam"
         style={{
-          padding: "4px 10px",
+          padding: "4px 8px",
           borderRadius: "9999px",
-          fontSize: "0.75rem",
+          fontSize: "0.72rem",
           fontWeight: 700,
           backgroundColor: language === "ml" ? "var(--color-primary)" : "transparent",
           color: language === "ml" ? "#ffffff" : "var(--text-secondary)",
           transition: "all 0.2s ease",
           cursor: "pointer",
+          border: "none",
         }}
       >
         മലയാളം

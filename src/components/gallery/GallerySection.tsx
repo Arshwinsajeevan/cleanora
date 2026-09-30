@@ -1,115 +1,79 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Sparkles, Eye, MapPin, ArrowRight, Calendar, MessageCircle, Rocket } from "lucide-react";
+import { Sparkles, Eye, MapPin, ArrowRight, MessageCircle, Building2 } from "lucide-react";
 import { galleryItems, inaugurationInfo } from "@/data/gallery";
 import { createWhatsAppUrl } from "@/data/site";
 import { LightboxModal } from "./LightboxModal";
+import { useLanguage } from "@/context/LanguageContext";
 import { trackEvent } from "@/lib/analytics";
 
-interface GallerySectionProps {
-  limit?: number;
-  showAllLink?: boolean;
-}
+export const GallerySection: React.FC = () => {
+  const { language, t } = useLanguage();
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-export const GallerySection: React.FC<GallerySectionProps> = ({
-  limit = 6,
-  showAllLink = true,
-}) => {
-  const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(null);
-  const [activeCategory, setActiveCategory] = useState<string>("all");
+  const categories = ["All", "Full Home", "Kitchen", "Bathroom", "Floor", "Sofa", "Relocation"];
 
-  const categories = ["all", "Kitchen", "Living", "Bathroom", "Sofa", "Floor", "Commercial"];
+  const filteredItems =
+    selectedCategory === "All"
+      ? galleryItems
+      : galleryItems.filter((item) => item.category === selectedCategory);
 
-  const filteredItems = galleryItems.filter((item) =>
-    activeCategory === "all" ? true : item.category === activeCategory
-  );
-
-  const displayItems = limit ? filteredItems.slice(0, limit) : filteredItems;
-
-  const handleNext = () => {
-    if (selectedItemIndex === null) return;
-    setSelectedItemIndex((selectedItemIndex + 1) % displayItems.length);
-  };
-
-  const handlePrev = () => {
-    if (selectedItemIndex === null) return;
-    setSelectedItemIndex(
-      (selectedItemIndex - 1 + displayItems.length) % displayItems.length
-    );
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    trackEvent("gallery_image_view", { image_id: galleryItems[index].id });
   };
 
   return (
-    <section id="gallery" className="section section-bg-subtle">
-      <div className="container">
-        {/* Inauguration Grand Banner */}
-        <div
-          style={{
-            backgroundColor: "#0d223f",
-            color: "#ffffff",
-            borderRadius: "20px",
-            padding: "36px 32px",
-            marginBottom: "48px",
-            border: "1px solid rgba(16, 185, 129, 0.3)",
-            boxShadow: "0 10px 30px rgba(15, 23, 42, 0.15)",
-            position: "relative",
-            overflow: "hidden",
-          }}
-        >
+    <>
+      <section id="gallery" className="section section-bg-subtle">
+        <div className="container">
+          {/* Malabar Plaza Mattanur Banner */}
           <div
             style={{
-              position: "absolute",
-              top: "-40px",
-              right: "-40px",
-              width: "200px",
-              height: "200px",
-              borderRadius: "50%",
-              backgroundColor: "rgba(16, 185, 129, 0.15)",
-              filter: "blur(40px)",
-              pointerEvents: "none",
-            }}
-          />
-
-          <div
-            style={{
+              marginBottom: "48px",
+              backgroundColor: "var(--color-primary)",
+              color: "#ffffff",
+              borderRadius: "20px",
+              padding: "clamp(24px, 4vw, 36px)",
               display: "flex",
+              flexDirection: "column",
+              mdFlexDirection: "row",
               justifyContent: "space-between",
               alignItems: "center",
-              flexWrap: "wrap",
               gap: "24px",
-              position: "relative",
-              zIndex: 10,
+              boxShadow: "0 16px 36px -8px rgba(7, 30, 61, 0.3)",
             }}
           >
-            <div style={{ maxWidth: "680px" }}>
+            <div style={{ maxWidth: "650px" }}>
               <div
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
                   gap: "6px",
-                  padding: "5px 12px",
+                  padding: "4px 12px",
                   borderRadius: "9999px",
-                  backgroundColor: "rgba(16, 185, 129, 0.2)",
+                  backgroundColor: "rgba(52, 211, 153, 0.2)",
                   color: "#34d399",
                   fontSize: "0.75rem",
                   fontWeight: 700,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.06em",
                   marginBottom: "12px",
+                  border: "1px solid rgba(52, 211, 153, 0.3)",
                 }}
               >
-                <Rocket size={14} />
+                <Building2 size={14} />
                 <span>{inaugurationInfo.badge}</span>
               </div>
 
               <h3
                 style={{
                   fontFamily: "var(--font-heading)",
-                  fontSize: "clamp(1.5rem, 3vw, 2rem)",
+                  fontSize: "clamp(1.4rem, 2.5vw, 1.85rem)",
                   fontWeight: 800,
-                  marginBottom: "10px",
+                  marginBottom: "8px",
                   lineHeight: 1.25,
                 }}
               >
@@ -121,227 +85,168 @@ export const GallerySection: React.FC<GallerySectionProps> = ({
               </p>
             </div>
 
-            <div>
+            <div style={{ flexShrink: 0 }}>
               <a
                 href={createWhatsAppUrl(
-                  "Hi Cleanora, I would like to pre-book a priority cleaning slot for your inaugural launch week in Kannur!"
+                  "Hi Cleanora, I would like to book a cleaning or shifting service from Malabar Plaza, Mattanur!"
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => trackEvent("inauguration_prebook_click", { location: "gallery_banner" })}
+                onClick={() => trackEvent("gallery_booking_click", { location: "gallery_banner" })}
                 className="btn btn-whatsapp btn-lg"
                 style={{
-                  backgroundColor: "#25D366",
-                  color: "#ffffff",
-                  textDecoration: "none",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  fontWeight: 700,
-                  padding: "14px 26px",
                   borderRadius: "12px",
-                  boxShadow: "0 4px 16px rgba(37, 211, 102, 0.35)",
+                  padding: "14px 28px",
+                  fontWeight: 700,
+                  boxShadow: "0 8px 24px -4px rgba(37, 211, 102, 0.4)",
                 }}
               >
-                <Calendar size={18} />
-                <span>Pre-Book Inaugural Slot</span>
+                <MessageCircle size={18} />
+                <span>{t("book_via_whatsapp")}</span>
               </a>
             </div>
           </div>
-        </div>
 
-        {/* Section Header */}
-        <div className="section-header">
-          <div className="section-badge">
-            <Sparkles size={14} />
-            <span>Our Service Standards & Benchmarks</span>
+          {/* Section Header */}
+          <div className="section-header">
+            <div className="section-badge">
+              <Sparkles size={14} />
+              <span>{t("nav_work")}</span>
+            </div>
+            <h2 className="section-title">
+              {language === "ml"
+                ? "കണ്ണൂരിലെ ഞങ്ങളുടെ വർക്കുകളുടെ ഗാലറി"
+                : "Real Project Gallery Across Kannur"}
+            </h2>
+            <p className="section-subtitle">
+              {language === "ml"
+                ? "മട്ടന്നൂരിലും കണ്ണൂരിലും ഞങ്ങൾ ചെയ്ത വർക്കുകളുടെ ചിത്രങ്ങൾ."
+                : "Explore our recent deep cleaning and shifting operations across Mattanur and Kannur."}
+            </p>
           </div>
-          <h2 className="section-title">
-            Preview the quality you can expect from Cleanora
-          </h2>
-          <p className="section-subtitle">
-            Take a look at the techniques, equipment benchmarks, and meticulous deep-cleaning standards our team is bringing to homes and businesses across Kannur.
-          </p>
-        </div>
 
-        {/* Category Filters */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "8px",
-            flexWrap: "wrap",
-            marginBottom: "36px",
-          }}
-        >
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              style={{
-                padding: "7px 16px",
-                borderRadius: "9999px",
-                fontSize: "0.8125rem",
-                fontWeight: 600,
-                backgroundColor: activeCategory === cat ? "var(--color-primary)" : "#ffffff",
-                color: activeCategory === cat ? "#ffffff" : "var(--text-secondary)",
-                border: activeCategory === cat ? "1px solid var(--color-primary)" : "1px solid #e2e8f0",
-                transition: "all 0.15s ease",
-                cursor: "pointer",
-              }}
-            >
-              {cat === "all" ? "All Standards" : cat}
-            </button>
-          ))}
-        </div>
+          {/* Category Filter Chips */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "8px",
+              marginBottom: "36px",
+              flexWrap: "wrap",
+            }}
+          >
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                style={{
+                  padding: "7px 16px",
+                  borderRadius: "9999px",
+                  fontSize: "0.85rem",
+                  fontWeight: selectedCategory === cat ? 700 : 500,
+                  backgroundColor: selectedCategory === cat ? "var(--color-primary)" : "#ffffff",
+                  color: selectedCategory === cat ? "#ffffff" : "var(--text-secondary)",
+                  border: selectedCategory === cat ? "1px solid var(--color-primary)" : "1px solid var(--border-light)",
+                  transition: "all 0.2s ease",
+                  cursor: "pointer",
+                }}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
 
-        {/* Editorial Grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
-            gap: "24px",
-          }}
-          className="gallery-grid"
-        >
-          {displayItems.map((item, index) => (
-            <div
-              key={item.id}
-              onClick={() => setSelectedItemIndex(index)}
-              style={{
-                backgroundColor: "#ffffff",
-                borderRadius: "14px",
-                overflow: "hidden",
-                border: "1px solid #e2e8f0",
-                boxShadow: "0 2px 8px rgba(15, 23, 42, 0.04)",
-                cursor: "pointer",
-                transition: "transform 0.15s ease, box-shadow 0.15s ease",
-                position: "relative",
-                willChange: "transform",
-              }}
-              className="gallery-card"
-            >
-              {/* Image Container */}
-              <div style={{ position: "relative", width: "100%", height: "230px", backgroundColor: "#0f172a" }}>
-                <Image
-                  src={item.afterImageUrl || item.imageUrl}
-                  alt={item.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
-                  style={{ objectFit: "cover" }}
-                  loading="lazy"
-                />
+          {/* Gallery Grid */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+              gap: "24px",
+            }}
+          >
+            {filteredItems.map((item, index) => (
+              <div
+                key={item.id}
+                onClick={() => openLightbox(index)}
+                style={{
+                  backgroundColor: "#ffffff",
+                  borderRadius: "16px",
+                  overflow: "hidden",
+                  border: "1px solid var(--border-light)",
+                  boxShadow: "var(--shadow-subtle)",
+                  cursor: "pointer",
+                  transition: "all 0.25s ease",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+                className="bento-card"
+              >
+                <div style={{ position: "relative", width: "100%", aspectRatio: "4/3", backgroundColor: "#0b1b2b" }}>
+                  <Image
+                    src={item.imageUrl}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 350px"
+                    style={{ objectFit: "cover" }}
+                  />
 
-                {/* Overlay on hover */}
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    backgroundColor: "rgba(15, 35, 65, 0.65)",
-                    opacity: 0,
-                    transition: "opacity 0.15s ease",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "8px",
-                    color: "#ffffff",
-                    fontWeight: 600,
-                    fontSize: "0.875rem",
-                  }}
-                  className="gallery-overlay"
-                >
-                  <Eye size={18} />
-                  <span>Inspect Benchmark Details</span>
-                </div>
-
-                {/* Category Pill */}
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "12px",
-                    left: "12px",
-                    backgroundColor: "rgba(15, 23, 42, 0.85)",
-                    backdropFilter: "blur(4px)",
-                    color: "#ffffff",
-                    fontSize: "0.75rem",
-                    fontWeight: 700,
-                    padding: "4px 10px",
-                    borderRadius: "6px",
-                  }}
-                >
-                  {item.category}
-                </div>
-
-                {/* Inaugural Pill */}
-                {item.inauguralHighlight && (
                   <div
                     style={{
                       position: "absolute",
-                      bottom: "12px",
-                      right: "12px",
-                      backgroundColor: "rgba(16, 185, 129, 0.9)",
-                      color: "#ffffff",
-                      fontSize: "0.7rem",
-                      fontWeight: 800,
-                      padding: "3px 8px",
-                      borderRadius: "4px",
-                      textTransform: "uppercase",
+                      inset: 0,
+                      backgroundColor: "rgba(0,0,0,0.3)",
+                      opacity: 0,
+                      transition: "opacity 0.2s ease",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
                     }}
+                    onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
+                    onMouseLeave={(e) => (e.currentTarget.style.opacity = "0")}
                   >
-                    {item.inauguralHighlight}
+                    <div
+                      style={{
+                        backgroundColor: "rgba(255,255,255,0.9)",
+                        padding: "8px 16px",
+                        borderRadius: "9999px",
+                        fontSize: "0.8rem",
+                        fontWeight: 700,
+                        color: "var(--color-primary)",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "6px",
+                      }}
+                    >
+                      <Eye size={14} />
+                      <span>View</span>
+                    </div>
                   </div>
-                )}
-              </div>
-
-              {/* Card Meta */}
-              <div style={{ padding: "18px 20px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "5px", color: "var(--color-primary)", fontSize: "0.75rem", fontWeight: 700, marginBottom: "4px" }}>
-                  <MapPin size={12} color="#059669" />
-                  <span>{item.location}</span>
                 </div>
-                <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.35 }}>
-                  {item.title}
-                </h3>
-              </div>
-            </div>
-          ))}
-        </div>
 
-        {/* View all button */}
-        {showAllLink && (
-          <div style={{ textAlign: "center", marginTop: "40px" }}>
-            <Link
-              href="/gallery"
-              className="btn btn-outline"
-              style={{
-                border: "1px solid #cbd5e1",
-                backgroundColor: "#ffffff",
-                color: "var(--color-primary)",
-                padding: "12px 24px",
-                borderRadius: "10px",
-                fontWeight: 600,
-                textDecoration: "none",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-              }}
-            >
-              <span>Explore All Service Benchmarks</span>
-              <ArrowRight size={16} />
-            </Link>
+                <div style={{ padding: "16px" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "5px", color: "var(--color-accent)", fontSize: "0.75rem", fontWeight: 700, marginBottom: "4px" }}>
+                    <MapPin size={12} />
+                    <span>{item.location}</span>
+                  </div>
+                  <h4 style={{ fontSize: "0.9375rem", fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.35 }}>
+                    {item.title}
+                  </h4>
+                </div>
+              </div>
+            ))}
           </div>
-        )}
-      </div>
+        </div>
+      </section>
 
       {/* Lightbox Modal */}
-      {selectedItemIndex !== null && displayItems[selectedItemIndex] && (
+      {lightboxIndex !== null && (
         <LightboxModal
-          item={displayItems[selectedItemIndex]}
-          onClose={() => setSelectedItemIndex(null)}
-          onNext={handleNext}
-          onPrev={handlePrev}
+          items={galleryItems}
+          currentIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onNavigate={(newIdx) => setLightboxIndex(newIdx)}
         />
       )}
-    </section>
+    </>
   );
 };

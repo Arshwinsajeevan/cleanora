@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
 import React from "react";
-import { CheckCircle2, ShieldCheck, Sparkles, MapPin } from "lucide-react";
+import { CheckCircle2, ShieldCheck, Sparkles, Truck } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export const TrustStrip: React.FC = () => {
@@ -9,32 +9,32 @@ export const TrustStrip: React.FC = () => {
 
   const pillars = [
     {
-      titleEn: "100% Satisfaction Guaranteed",
+      titleEn: "100% Satisfaction",
       titleMl: "100% സംതൃപ്തി ഉറപ്പ്",
-      descEn: "Inspection walkthrough before final handover",
-      descMl: "നേരിട്ടുള്ള ഗുണനിലവാര പരിശോധന",
-      icon: <ShieldCheck size={22} color="#10b981" />,
+      descEn: "Inspection before final handover",
+      descMl: "നേരിട്ടുള്ള പരിശോധന",
+      icon: <ShieldCheck size={20} color="#059669" />,
     },
     {
-      titleEn: "Advanced Machinery",
-      titleMl: "അത്യാധുനിക മെഷീനുകൾ",
-      descEn: "Single-disc scrubbers, extractors & jet washers",
-      descMl: "റോട്ടറി സ്ക്രബ്ബറുകൾ, പ്രഷർ ജെറ്റ് വാഷറുകൾ",
-      icon: <Sparkles size={22} color="#0f3b74" />,
+      titleEn: "Modern Machinery",
+      titleMl: "ആധുനിക മെഷീനുകൾ",
+      descEn: "Floor scrubbers & jet washers",
+      descMl: "റോട്ടറി സ്ക്രബ്ബറുകൾ",
+      icon: <Sparkles size={20} color="#071e3d" />,
     },
     {
-      titleEn: "Clean Spaces... Healthy Lives...",
-      titleMl: "വൃത്തിയുള്ള ഇടങ്ങൾ... ആരോഗ്യകരമായ ജീവിതം...",
-      descEn: "Safe non-toxic cleaning formulations",
-      descMl: "വിഷാംശമില്ലാത്ത സുരക്ഷിത ലോഷനുകൾ",
-      icon: <CheckCircle2 size={22} color="#10b981" />,
+      titleEn: "Safe Relocations",
+      titleMl: "സുരക്ഷിത ഷിഫ്റ്റിംഗ്",
+      descEn: "Packers & Movers across Kannur",
+      descMl: "പാക്കേഴ്‌സ് & മൂവേഴ്‌സ്",
+      icon: <Truck size={20} color="#059669" />,
     },
     {
-      titleEn: "Mattanur & Kannur Service",
-      titleMl: "മട്ടന്നൂർ & കണ്ണൂർ സർവീസ്",
-      descEn: "Prompt scheduling across Kannur district",
-      descMl: "കണ്ണൂർ ജില്ലയിൽ എവിടെയും കൃത്യസമയത്ത്",
-      icon: <MapPin size={22} color="#0f3b74" />,
+      titleEn: "Safe & Non-Toxic",
+      titleMl: "സുരക്ഷിത ലോഷനുകൾ",
+      descEn: "Certified eco-friendly agents",
+      descMl: "വിഷാംശമില്ലാത്ത ക്ലീനിംഗ്",
+      icon: <CheckCircle2 size={20} color="#071e3d" />,
     },
   ];
 
@@ -43,18 +43,18 @@ export const TrustStrip: React.FC = () => {
       style={{
         backgroundColor: "#ffffff",
         borderBottom: "1px solid #e2e8f0",
-        padding: "20px 0",
+        padding: "16px 0",
         position: "relative",
         zIndex: 20,
-        boxShadow: "0 4px 20px -4px rgba(15, 23, 42, 0.05)",
+        boxShadow: "0 4px 20px -4px rgba(15, 23, 42, 0.04)",
       }}
     >
       <div className="container">
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: "24px",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: "18px",
             alignItems: "center",
           }}
           className="trust-strip-grid"
@@ -65,16 +65,16 @@ export const TrustStrip: React.FC = () => {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "14px",
-                padding: "6px 0",
+                gap: "12px",
+                padding: "4px 8px",
               }}
             >
               <div
                 style={{
-                  width: "44px",
-                  height: "44px",
-                  borderRadius: "12px",
-                  backgroundColor: idx % 2 === 0 ? "#ecfdf5" : "#eef4fc",
+                  width: "40px",
+                  height: "40px",
+                  borderRadius: "10px",
+                  backgroundColor: idx % 2 === 0 ? "#ecfdf5" : "#f1f5f9",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -87,7 +87,7 @@ export const TrustStrip: React.FC = () => {
               <div>
                 <h4
                   style={{
-                    fontSize: "0.9375rem",
+                    fontSize: "0.9125rem",
                     fontWeight: 700,
                     color: "var(--text-primary)",
                     lineHeight: 1.25,
@@ -97,10 +97,10 @@ export const TrustStrip: React.FC = () => {
                 </h4>
                 <p
                   style={{
-                    fontSize: "0.8125rem",
+                    fontSize: "0.7875rem",
                     color: "var(--text-muted)",
                     marginTop: "2px",
-                    lineHeight: 1.35,
+                    lineHeight: 1.3,
                   }}
                 >
                   {language === "ml" ? pillar.descMl : pillar.descEn}

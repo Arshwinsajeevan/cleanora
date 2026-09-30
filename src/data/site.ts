@@ -1,4 +1,4 @@
-export interface SiteConfig {
+﻿export interface SiteConfig {
   name: string;
   fullName: string;
   tagline: string;
@@ -11,6 +11,7 @@ export interface SiteConfig {
     state: string;
     country: string;
     display: string;
+    address: string;
     badgeText: string;
     coordinates: {
       latitude: number;
@@ -47,14 +48,15 @@ export const siteConfig: SiteConfig = {
   heroSubheadline:
     "Professional deep cleaning and Packers & Movers shifting services for homes, offices, water tanks, sofas, interlocks, and solar panels in Mattanur and across Kannur, Kerala.",
   description:
-    "Cleanora provides premier residential and commercial deep cleaning plus Packers & Movers shifting services based in Mattanur, Kannur, Kerala. Specialized in Packers & Movers, House Cleaning, Office Cleaning, Sofa & Carpet Cleaning, Water Tank Cleaning, Interlock Cleaning, and Solar Panel Cleaning.",
+    "Cleanora provides premier residential and commercial deep cleaning plus Packers & Movers shifting services based at Malabar Plaza, Mattanur, Kannur, Kerala. Specialized in Packers & Movers, House Cleaning, Office Cleaning, Sofa & Carpet Cleaning, Water Tank Cleaning, Interlock Cleaning, and Solar Panel Cleaning.",
   location: {
     city: "Mattanur, Kannur",
-    localName: "മട്ടന്നൂർ",
+    localName: "മലബാർ പ്ലാസ, മട്ടന്നൂർ",
     state: "Kerala",
     country: "India",
-    display: "Mattanur, Kannur, Kerala",
-    badgeText: "മട്ടന്നൂർ • MATTANUR, KANNUR",
+    display: "Malabar Plaza, Mattanur, Kannur, Kerala",
+    address: "Malabar Plaza, Mattanur, Kannur, Kerala 670702",
+    badgeText: "MALABAR PLAZA • MATTANUR, KANNUR",
     coordinates: {
       latitude: 11.9333,
       longitude: 75.5667,
@@ -81,16 +83,16 @@ export const siteConfig: SiteConfig = {
       description: "Our team ensures every corner is cleaned or shifted to flawless perfection.",
     },
     {
-      title: "Professional Machinery & Vehicles",
-      description: "Equipped with single-disc scrubbers, high-pressure washers, extractors & dedicated moving transport.",
+      title: "Professional Modern Equipment",
+      description: "Equipped with modern machinery and dedicated moving transport.",
     },
     {
       title: "Clean Spaces... Healthy Lives...",
       description: "Safe, non-toxic sanitizing formulations and zero-damage shifting care.",
     },
     {
-      title: "Local Service in Mattanur & Kannur",
-      description: "Prompt, trustworthy scheduling across Kannur district and Kerala.",
+      title: "Malabar Plaza, Mattanur HQ",
+      description: "Headquartered at Malabar Plaza, Mattanur, serving all across Kannur district.",
     },
   ],
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://cleanora.com",

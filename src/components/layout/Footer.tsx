@@ -1,66 +1,103 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import Link from "next/link";
-import { Phone, Mail, MessageCircle, MapPin, CheckCircle2, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { Phone, Mail, MapPin, MessageCircle, ArrowRight } from "lucide-react";
 import { siteConfig, createWhatsAppUrl } from "@/data/site";
 import { servicesData } from "@/data/services";
-import { Logo } from "@/components/ui/Logo";
-import { InstagramIcon } from "@/components/ui/Icons";
 import { useLanguage } from "@/context/LanguageContext";
+import { InstagramIcon } from "@/components/ui/Icons";
 import { trackEvent } from "@/lib/analytics";
 
 export const Footer: React.FC = () => {
   const { language, t } = useLanguage();
 
+  const mainNav = [
+    { href: "/", label: t("nav_home") },
+    { href: "/services", label: t("nav_services") },
+    { href: "/results", label: language === "ml" ? "റിസൾട്ടുകൾ" : "Results" },
+    { href: "/machinery", label: language === "ml" ? "മെഷീനുകൾ" : "Machinery" },
+    { href: "/about", label: t("nav_about") },
+    { href: "/gallery", label: t("nav_work") },
+    { href: "/contact", label: t("nav_contact") },
+  ];
+
   return (
     <footer
       style={{
-        backgroundColor: "#071426",
-        color: "#cbd5e1",
-        paddingTop: "64px",
+        backgroundColor: "var(--color-primary)",
+        color: "#ffffff",
+        paddingTop: "68px",
         paddingBottom: "36px",
         borderTop: "1px solid rgba(255, 255, 255, 0.08)",
       }}
     >
       <div className="container">
-        {/* Main Footer Grid */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: "40px",
-            marginBottom: "48px",
+            gridTemplateColumns: "1.3fr 0.9fr 1fr 1.1fr",
+            gap: "48px",
+            marginBottom: "56px",
           }}
+          className="footer-grid"
         >
-          {/* Column 1: Brand & Bio */}
+          {/* Column 1: Brand & Ethos */}
           <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
-            <Logo variant="footer" />
-            <p style={{ fontSize: "0.9375rem", lineHeight: "1.65", color: "#94a3b8" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              <div
+                style={{
+                  width: "44px",
+                  height: "44px",
+                  borderRadius: "12px",
+                  overflow: "hidden",
+                  position: "relative",
+                  backgroundColor: "#ffffff",
+                  border: "1.5px solid rgba(255, 255, 255, 0.2)",
+                  flexShrink: 0,
+                }}
+              >
+                <Image
+                  src="/images/cleanora-logo.jpg"
+                  alt="Cleanora Official Logo"
+                  fill
+                  sizes="44px"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+
+              <div>
+                <span style={{ fontFamily: "var(--font-heading)", fontSize: "1.35rem", fontWeight: 800, letterSpacing: "-0.02em" }}>
+                  CLEANORA
+                </span>
+                <div style={{ fontSize: "0.75rem", color: "#34d399", fontWeight: 700, textTransform: "uppercase" }}>
+                  {language === "ml" ? "മട്ടന്നൂർ • കണ്ണൂർ, കേരളം" : "Mattanur • Kannur, Kerala"}
+                </div>
+              </div>
+            </div>
+
+            <p style={{ color: "#94a3b8", fontSize: "0.9375rem", lineHeight: 1.65 }}>
               {t("footer_bio")}
             </p>
 
-            <div
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                padding: "8px 14px",
-                borderRadius: "8px",
-                backgroundColor: "rgba(16, 185, 129, 0.12)",
-                border: "1px solid rgba(16, 185, 129, 0.3)",
-                color: "#34d399",
-                fontSize: "0.8125rem",
-                fontWeight: 600,
-                width: "fit-content",
-              }}
-            >
-              <CheckCircle2 size={16} />
-              <span>{t("hero_guarantee_text")}</span>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px", marginTop: "4px" }}>
+              <div
+                style={{
+                  width: "8px",
+                  height: "8px",
+                  borderRadius: "50%",
+                  backgroundColor: "#10b981",
+                  boxShadow: "0 0 10px #10b981",
+                }}
+              />
+              <span style={{ fontSize: "0.8125rem", color: "#cbd5e1", fontWeight: 600 }}>
+                {language === "ml" ? "കണ്ണൂർ ജില്ല മുഴുവൻ സർവീസ് ലഭ്യമാണ്" : "Serving all localities across Kannur district"}
+              </span>
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
+          {/* Column 2: Quick Links (All Dedicated Pages) */}
           <div>
             <h4
               style={{
@@ -69,46 +106,32 @@ export const Footer: React.FC = () => {
                 fontSize: "1.0625rem",
                 fontWeight: 700,
                 marginBottom: "20px",
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
               }}
             >
               {t("footer_nav_title")}
             </h4>
             <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "12px" }}>
-              {[
-                { label: t("nav_home"), href: "/" },
-                { label: t("nav_services"), href: "/services" },
-                { label: t("nav_transformations"), href: "/#transformations" },
-                { label: t("nav_equipments"), href: "/#machinery" },
-                { label: t("nav_about"), href: "/about" },
-                { label: t("nav_work"), href: "/gallery" },
-                { label: t("nav_contact"), href: "/contact" },
-              ].map((item) => (
-                <li key={item.href}>
+              {mainNav.map((link) => (
+                <li key={link.href}>
                   <Link
-                    href={item.href}
+                    href={link.href}
                     style={{
                       color: "#94a3b8",
                       fontSize: "0.9375rem",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "6px",
                       transition: "color 0.2s ease",
+                      textDecoration: "none",
                     }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = "#ffffff")}
                     onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}
                   >
-                    <ArrowRight size={14} color="#10b981" />
-                    <span>{item.label}</span>
+                    {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 3: Services Showcase */}
+          {/* Column 3: Services */}
           <div>
             <h4
               style={{
@@ -130,6 +153,7 @@ export const Footer: React.FC = () => {
                       color: "#94a3b8",
                       fontSize: "0.9375rem",
                       transition: "color 0.2s ease",
+                      textDecoration: "none",
                     }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = "#ffffff")}
                     onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}
@@ -144,10 +168,12 @@ export const Footer: React.FC = () => {
                   style={{
                     color: "#34d399",
                     fontSize: "0.875rem",
-                    fontWeight: 600,
+                    fontWeight: 700,
                     display: "inline-flex",
                     alignItems: "center",
-                    gap: "4px",
+                    gap: "6px",
+                    textDecoration: "none",
+                    marginTop: "4px",
                   }}
                 >
                   <span>{t("view_all_services")}</span>
@@ -157,7 +183,7 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Column 4: Contact & Social */}
+          {/* Column 4: Contact Info */}
           <div>
             <h4
               style={{
@@ -173,7 +199,6 @@ export const Footer: React.FC = () => {
             <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
               <a
                 href={`tel:${siteConfig.contact.primaryPhoneRaw}`}
-                onClick={() => trackEvent("phone_call_click", { location: "footer_primary" })}
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -183,13 +208,12 @@ export const Footer: React.FC = () => {
                   textDecoration: "none",
                 }}
               >
-                <Phone size={16} color="#60a5fa" />
+                <Phone size={16} color="#34d399" />
                 <span>{siteConfig.contact.primaryPhone}</span>
               </a>
 
               <a
                 href={`tel:${siteConfig.contact.secondaryPhoneRaw}`}
-                onClick={() => trackEvent("phone_call_click", { location: "footer_secondary" })}
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -199,13 +223,12 @@ export const Footer: React.FC = () => {
                   textDecoration: "none",
                 }}
               >
-                <Phone size={16} color="#60a5fa" />
+                <Phone size={16} color="#34d399" />
                 <span>{siteConfig.contact.secondaryPhone}</span>
               </a>
 
               <a
                 href={`mailto:${siteConfig.contact.email}`}
-                onClick={() => trackEvent("email_click", { location: "footer" })}
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -216,54 +239,31 @@ export const Footer: React.FC = () => {
                   wordBreak: "break-all",
                 }}
               >
-                <Mail size={16} color="#60a5fa" />
+                <Mail size={16} color="#34d399" />
                 <span>{siteConfig.contact.email}</span>
               </a>
 
-              <a
-                href={siteConfig.location.mapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackEvent("maps_click", { location: "footer" })}
-                style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: "10px",
-                  color: "#94a3b8",
-                  fontSize: "0.9375rem",
-                  textDecoration: "none",
-                }}
-              >
-                <MapPin size={16} color="#10b981" style={{ flexShrink: 0, marginTop: "3px" }} />
+              <div style={{ display: "flex", alignItems: "flex-start", gap: "10px", color: "#94a3b8", fontSize: "0.9375rem" }}>
+                <MapPin size={16} color="#34d399" style={{ flexShrink: 0, marginTop: "3px" }} />
                 <span>{siteConfig.location.display}</span>
-              </a>
+              </div>
 
               <div style={{ display: "flex", gap: "10px", marginTop: "6px" }}>
                 <a
                   href={createWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => trackEvent("whatsapp_click", { location: "footer_icon" })}
                   aria-label="Cleanora on WhatsApp"
                   style={{
                     width: "38px",
                     height: "38px",
-                    borderRadius: "8px",
+                    borderRadius: "10px",
                     backgroundColor: "rgba(37, 211, 102, 0.15)",
                     border: "1px solid rgba(37, 211, 102, 0.3)",
                     color: "#25D366",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    transition: "all 0.2s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = "#25D366";
-                    e.currentTarget.style.color = "#ffffff";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = "rgba(37, 211, 102, 0.15)";
-                    e.currentTarget.style.color = "#25D366";
                   }}
                 >
                   <MessageCircle size={18} />
@@ -273,27 +273,17 @@ export const Footer: React.FC = () => {
                   href={siteConfig.social.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => trackEvent("instagram_click", { location: "footer_icon" })}
                   aria-label="Cleanora on Instagram"
                   style={{
                     width: "38px",
                     height: "38px",
-                    borderRadius: "8px",
+                    borderRadius: "10px",
                     backgroundColor: "rgba(225, 48, 108, 0.15)",
                     border: "1px solid rgba(225, 48, 108, 0.3)",
                     color: "#f43f5e",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    transition: "all 0.2s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = "#e1306c";
-                    e.currentTarget.style.color = "#ffffff";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = "rgba(225, 48, 108, 0.15)";
-                    e.currentTarget.style.color = "#f43f5e";
                   }}
                 >
                   <InstagramIcon size={18} color="currentColor" />
@@ -303,7 +293,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom copyright line */}
+        {/* Copyright */}
         <div
           style={{
             paddingTop: "24px",
@@ -314,7 +304,7 @@ export const Footer: React.FC = () => {
             flexWrap: "wrap",
             gap: "16px",
             fontSize: "0.8125rem",
-            color: "#64748b",
+            color: "#94a3b8",
           }}
         >
           <div>

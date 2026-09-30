@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
 import Link from "next/link";
@@ -70,14 +70,13 @@ export const ServicesSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Filter Tabs */}
+        {/* Mobile Swipeable / Desktop Centered Filter Chips */}
         <div
+          className="scroll-chips"
           style={{
-            display: "flex",
             justifyContent: "center",
-            gap: "10px",
-            flexWrap: "wrap",
             marginBottom: "40px",
+            padding: "4px 0 12px 0",
           }}
         >
           {categories.map((cat) => (
@@ -88,12 +87,13 @@ export const ServicesSection: React.FC = () => {
                 padding: "8px 20px",
                 borderRadius: "9999px",
                 fontSize: "0.875rem",
-                fontWeight: 600,
-                transition: "all 0.2s ease",
+                fontWeight: 700,
+                whiteSpace: "nowrap",
+                transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
                 backgroundColor: activeFilter === cat.id ? "var(--color-primary)" : "#ffffff",
                 color: activeFilter === cat.id ? "#ffffff" : "var(--text-secondary)",
-                border: activeFilter === cat.id ? "1px solid var(--color-primary)" : "1px solid #e2e8f0",
-                boxShadow: activeFilter === cat.id ? "0 4px 12px rgba(15, 59, 116, 0.2)" : "none",
+                border: activeFilter === cat.id ? "1px solid var(--color-primary)" : "1px solid var(--border-light)",
+                boxShadow: activeFilter === cat.id ? "0 4px 14px rgba(7, 30, 61, 0.2)" : "var(--shadow-subtle)",
               }}
             >
               {cat.label}
@@ -101,7 +101,7 @@ export const ServicesSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Services Grid */}
+        {/* Services Bento Grid */}
         <div
           style={{
             display: "grid",
@@ -119,23 +119,23 @@ export const ServicesSection: React.FC = () => {
         <div
           style={{
             marginTop: "48px",
-            textAlign: "center",
             backgroundColor: "#ffffff",
             padding: "24px 32px",
-            borderRadius: "16px",
-            border: "1px solid #e2e8f0",
+            borderRadius: "18px",
+            border: "1px solid var(--border-light)",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
             flexWrap: "wrap",
             gap: "16px",
+            boxShadow: "var(--shadow-subtle)",
           }}
         >
-          <div style={{ textAlign: "left" }}>
-            <h4 style={{ fontFamily: "var(--font-heading)", fontSize: "1.125rem", fontWeight: 700 }}>
+          <div style={{ textAlign: "left", maxWidth: "600px" }}>
+            <h4 style={{ fontFamily: "var(--font-heading)", fontSize: "1.125rem", fontWeight: 700, color: "var(--text-primary)" }}>
               {t("custom_requirement_title")}
             </h4>
-            <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", marginTop: "2px" }}>
+            <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", marginTop: "2px" }}>
               {t("custom_requirement_sub")}
             </p>
           </div>

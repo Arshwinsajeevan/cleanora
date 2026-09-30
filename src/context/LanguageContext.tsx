@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { translations, TranslationKey } from "@/data/translations";
@@ -25,6 +25,12 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
       const savedLang = localStorage.getItem(LANGUAGE_STORAGE_KEY) as Language;
       if (savedLang === "en" || savedLang === "ml") {
         setLanguageState(savedLang);
+        document.documentElement.lang = savedLang;
+        if (savedLang === "ml") {
+          document.documentElement.classList.add("lang-ml");
+        } else {
+          document.documentElement.classList.remove("lang-ml");
+        }
       }
     } catch {
       // LocalStorage access fallback
@@ -37,6 +43,11 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     try {
       localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
       document.documentElement.lang = lang;
+      if (lang === "ml") {
+        document.documentElement.classList.add("lang-ml");
+      } else {
+        document.documentElement.classList.remove("lang-ml");
+      }
     } catch {
       // LocalStorage fallback
     }

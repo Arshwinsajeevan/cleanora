@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
 import Image from "next/image";
@@ -72,7 +72,7 @@ export const WhatsAppLauncher: React.FC = () => {
           flexDirection: "column",
           alignItems: "flex-end",
         }}
-        className="whatsapp-launcher-wrapper"
+        className="whatsapp-launcher-wrapper hide-mobile"
       >
         {/* Expanded Quick Action Dialog */}
         {isOpen && (
@@ -99,7 +99,6 @@ export const WhatsAppLauncher: React.FC = () => {
             >
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                  {/* Round Business Logo Avatar */}
                   <div
                     style={{
                       width: "44px",
@@ -186,16 +185,6 @@ export const WhatsAppLauncher: React.FC = () => {
                       textAlign: "left",
                       transition: "all 0.2s ease",
                     }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = "#10b981";
-                      e.currentTarget.style.backgroundColor = "#ecfdf5";
-                      e.currentTarget.style.transform = "translateX(3px)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = "#e2e8f0";
-                      e.currentTarget.style.backgroundColor = "#ffffff";
-                      e.currentTarget.style.transform = "translateX(0)";
-                    }}
                   >
                     <div
                       style={{
@@ -257,14 +246,6 @@ export const WhatsAppLauncher: React.FC = () => {
             fontSize: "0.9375rem",
             boxShadow: "0 8px 24px rgba(37, 211, 102, 0.4)",
             transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = "translateY(-3px) scale(1.02)";
-            e.currentTarget.style.boxShadow = "0 12px 28px rgba(37, 211, 102, 0.5)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = "translateY(0) scale(1)";
-            e.currentTarget.style.boxShadow = "0 8px 24px rgba(37, 211, 102, 0.4)";
           }}
         >
           <div style={{ position: "relative" }}>

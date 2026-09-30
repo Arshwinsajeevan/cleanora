@@ -1,4 +1,4 @@
-import { MetadataRoute } from "next";
+﻿import { MetadataRoute } from "next";
 import { siteConfig } from "@/data/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -16,6 +16,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/results`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/machinery`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/gallery`,

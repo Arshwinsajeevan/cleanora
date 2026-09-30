@@ -1,145 +1,127 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Phone, MessageCircle, Menu, X, MapPin } from "lucide-react";
+import {
+  Menu,
+  X,
+  Phone,
+  MessageCircle,
+  Sparkles,
+  ChevronRight,
+  Home,
+  CheckCircle2,
+  Wrench,
+  Info,
+  Images,
+} from "lucide-react";
 import { siteConfig, createWhatsAppUrl } from "@/data/site";
-import { Logo } from "@/components/ui/Logo";
-import { LanguageToggle } from "@/components/ui/LanguageToggle";
 import { useLanguage } from "@/context/LanguageContext";
-import { trackEvent } from "@/lib/analytics";
+import { LanguageToggle } from "@/components/ui/LanguageToggle";
+import { trackWhatsAppConversion } from "@/lib/analytics";
 
 export const Header: React.FC = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const { language, t } = useLanguage();
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    let ticking = false;
+    let prevScrollPos = window.scrollY;
+
     const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setIsScrolled(window.scrollY > 20);
-          ticking = false;
-        });
-        ticking = true;
+      const currentScrollPos = window.scrollY;
+
+      // Blur & Shadow background when scrolled
+      setIsScrolled(currentScrollPos > 10);
+
+      // Never hide when mobile drawer is open
+      if (mobileMenuOpen) {
+        setIsVisible(true);
+        return;
       }
+
+      if (currentScrollPos <= 25) {
+        // At top of page -> always show
+        setIsVisible(true);
+      } else if (currentScrollPos < prevScrollPos - 2) {
+        // Scrolling UP -> show navbar smoothly
+        setIsVisible(true);
+      } else if (currentScrollPos > prevScrollPos + 4 && currentScrollPos > 70) {
+        // Scrolling DOWN -> hide navbar
+        setIsVisible(false);
+      }
+
+      prevScrollPos = currentScrollPos;
     };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [mobileMenuOpen]);
 
-  // Close mobile menu on page route change
+  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [pathname]);
 
+  // Lock scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
   const navLinks = [
-    { label: t("nav_home"), href: "/" },
-    { label: t("nav_services"), href: "/services" },
-    { label: t("nav_transformations"), href: "/#transformations" },
-    { label: t("nav_equipments"), href: "/#machinery" },
-    { label: t("nav_about"), href: "/about" },
-    { label: t("nav_work"), href: "/gallery" },
-    { label: t("nav_contact"), href: "/contact" },
+    { href: "/", label: t("nav_home"), icon: <Home size={18} /> },
+    { href: "/services", label: t("nav_services"), icon: <Sparkles size={18} /> },
+    { href: "/results", label: t("nav_results"), icon: <CheckCircle2 size={18} /> },
+    { href: "/machinery", label: t("nav_machinery"), icon: <Wrench size={18} /> },
+    { href: "/about", label: t("nav_about"), icon: <Info size={18} /> },
+    { href: "/gallery", label: t("nav_work"), icon: <Images size={18} /> },
+    { href: "/contact", label: t("nav_contact"), icon: <Phone size={18} /> },
   ];
 
   const handleWhatsAppClick = (source: string) => {
-    trackEvent("whatsapp_click", { location: `header_${source}` });
+    trackWhatsAppConversion(`header_${source}`);
   };
 
-  const handlePhoneClick = () => {
-    trackEvent("phone_call_click", { location: "header" });
+  const getWhatsAppLink = () => {
+    const message =
+      language === "ml"
+        ? "നമസ്കാരം ക്ലീനോറ, എനിക്ക് നിങ്ങളുടെ ക്ലീനിംഗ് & ഷിഫ്റ്റിംഗ് സർവീസുകളെക്കുറിച്ച് അറിയണം."
+        : "Hello Cleanora, I would like to inquire about your deep cleaning & shifting services in Kannur.";
+    return createWhatsAppUrl(message);
   };
 
   return (
     <>
-      {/* Top Micro Bar */}
-      <div
-        style={{
-          backgroundColor: "#071426",
-          color: "#94a3b8",
-          fontSize: "0.8125rem",
-          padding: "6px 0",
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
-        }}
-      >
-        <div
-          className="container"
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexWrap: "wrap",
-            gap: "8px",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-            <span style={{ display: "flex", alignItems: "center", gap: "5px", color: "#e2e8f0" }}>
-              <MapPin size={13} color="#10b981" />
-              <span>{t("top_bar_location")}</span>
-            </span>
-            <span style={{ color: "rgba(255,255,255,0.2)" }} className="hide-mobile">|</span>
-            <span style={{ color: "#34d399", fontWeight: 600 }} className="hide-mobile">
-              {t("top_bar_guarantee")}
-            </span>
-          </div>
-
-          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-            <a
-              href={`tel:${siteConfig.contact.primaryPhoneRaw}`}
-              onClick={handlePhoneClick}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "5px",
-                color: "#e2e8f0",
-                textDecoration: "none",
-                fontWeight: 600,
-              }}
-            >
-              <Phone size={13} color="#60a5fa" />
-              <span>{siteConfig.contact.primaryPhone}</span>
-            </a>
-            <span style={{ color: "rgba(255,255,255,0.2)" }} className="hide-mobile">|</span>
-            <a
-              href={createWhatsAppUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => handleWhatsAppClick("top_bar")}
-              className="hide-mobile"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "5px",
-                color: "#34d399",
-                fontWeight: 600,
-                textDecoration: "none",
-              }}
-            >
-              <MessageCircle size={13} />
-              <span>{t("quick_whatsapp")}</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navigation Header */}
       <header
         style={{
-          position: "sticky",
+          position: "fixed",
           top: 0,
-          zIndex: 100,
-          backgroundColor: isScrolled ? "rgba(255, 255, 255, 0.98)" : "#ffffff",
-          backdropFilter: isScrolled ? "blur(12px)" : "none",
-          borderBottom: isScrolled ? "1px solid #e2e8f0" : "1px solid #f1f5f9",
-          boxShadow: isScrolled ? "0 4px 20px rgba(0, 0, 0, 0.06)" : "none",
-          transition: "all 0.25s ease",
-          height: "var(--header-height)",
-          display: "flex",
-          alignItems: "center",
+          left: 0,
+          right: 0,
+          zIndex: 1000,
+          backgroundColor: isScrolled
+            ? "rgba(255, 255, 255, 0.96)"
+            : "#ffffff",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+          borderBottom: isScrolled
+            ? "1px solid var(--border-light)"
+            : "1px solid var(--border-subtle)",
+          transform: isVisible || mobileMenuOpen ? "translateY(0)" : "translateY(-100%)",
+          transition: "transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, box-shadow 0.2s ease",
+          boxShadow: isScrolled && isVisible ? "0 4px 20px rgba(15, 23, 42, 0.07)" : "none",
+          width: "100%",
         }}
       >
         <div
@@ -148,18 +130,86 @@ export const Header: React.FC = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            width: "100%",
+            height: "74px",
+            maxWidth: "1320px",
+            paddingLeft: "16px",
+            paddingRight: "16px",
+            gap: "10px",
           }}
         >
-          {/* Brand Logo */}
-          <Logo />
+          {/* Logo Section: Protected flex-shrink 0 */}
+          <Link
+            href="/"
+            prefetch={true}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              textDecoration: "none",
+              flexShrink: 0,
+              minWidth: "max-content",
+            }}
+          >
+            <div
+              style={{
+                position: "relative",
+                width: "42px",
+                height: "42px",
+                borderRadius: "10px",
+                overflow: "hidden",
+                flexShrink: 0,
+                border: "1px solid var(--border-light)",
+                boxShadow: "0 2px 6px rgba(0,0,0,0.04)",
+              }}
+            >
+              <Image
+                src="/images/logo.png"
+                alt="Cleanora Logo"
+                fill
+                sizes="42px"
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+            <div>
+              <div
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  fontSize: "1.2rem",
+                  fontWeight: 800,
+                  letterSpacing: "-0.02em",
+                  color: "var(--color-primary)",
+                  lineHeight: 1.1,
+                  whiteSpace: "nowrap",
+                }}
+              >
+                CLEANORA
+              </div>
+              <div
+                style={{
+                  fontSize: "0.625rem",
+                  fontWeight: 700,
+                  color: "var(--color-accent)",
+                  letterSpacing: "0.04em",
+                  textTransform: "uppercase",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {language === "ml" ? "മട്ടന്നൂർ • കണ്ണൂർ" : "Cleaning • Kannur"}
+              </div>
+            </div>
+          </Link>
 
           {/* Desktop Navigation Links */}
           <nav
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "24px",
+              gap: "2px",
+              backgroundColor: "var(--bg-subtle)",
+              padding: "3px 6px",
+              borderRadius: "9999px",
+              border: "1px solid var(--border-light)",
+              flexShrink: 1,
             }}
             className="desktop-nav"
           >
@@ -167,115 +217,92 @@ export const Header: React.FC = () => {
               const isActive =
                 link.href === "/"
                   ? pathname === "/"
-                  : pathname.startsWith(link.href) && link.href !== "/";
+                  : pathname === link.href || pathname.startsWith(link.href + "/");
+
               return (
                 <Link
                   key={link.href}
                   href={link.href}
                   prefetch={true}
                   style={{
-                    fontSize: "0.9375rem",
-                    fontWeight: isActive ? 700 : 500,
-                    color: isActive ? "var(--color-primary)" : "var(--text-secondary)",
-                    position: "relative",
-                    padding: "6px 0",
+                    padding: "6px 10px",
+                    borderRadius: "9999px",
+                    fontSize: language === "ml" ? "0.78rem" : "0.82rem",
+                    fontWeight: isActive ? 700 : 600,
+                    color: isActive ? "#ffffff" : "var(--text-secondary)",
+                    backgroundColor: isActive ? "var(--color-primary)" : "transparent",
+                    transition: "all 0.15s ease",
                     textDecoration: "none",
+                    whiteSpace: "nowrap",
                   }}
                 >
                   {link.label}
-                  {isActive && (
-                    <span
-                      style={{
-                        position: "absolute",
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        height: "2px",
-                        backgroundColor: "var(--color-primary)",
-                        borderRadius: "2px",
-                      }}
-                    />
-                  )}
                 </Link>
               );
             })}
           </nav>
 
-          {/* Header Action Buttons & Language Switcher */}
+          {/* Desktop Right Actions: Language Switcher + WhatsApp CTA */}
           <div
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "12px",
+              gap: "8px",
+              flexShrink: 0,
             }}
             className="desktop-actions"
           >
-            {/* Desktop Language Switcher */}
             <LanguageToggle variant="header" />
 
             <a
-              href={`tel:${siteConfig.contact.primaryPhoneRaw}`}
-              onClick={handlePhoneClick}
-              className="btn btn-outline btn-sm"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "6px",
-                padding: "8px 14px",
-                borderRadius: "8px",
-                border: "1px solid #cbd5e1",
-                backgroundColor: "#ffffff",
-                color: "var(--color-primary)",
-                fontWeight: 600,
-                fontSize: "0.875rem",
-                textDecoration: "none",
-              }}
-            >
-              <Phone size={14} />
-              <span>{t("call_us")}</span>
-            </a>
-
-            <a
-              href={createWhatsAppUrl()}
+              href={getWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => handleWhatsAppClick("navbar_btn")}
               className="btn btn-whatsapp btn-sm"
               style={{
+                borderRadius: "9999px",
+                padding: "7px 14px",
+                fontSize: "0.8125rem",
+                fontWeight: 700,
                 display: "inline-flex",
                 alignItems: "center",
-                gap: "6px",
-                padding: "8px 16px",
-                borderRadius: "8px",
-                backgroundColor: "#25D366",
-                color: "#ffffff",
-                fontWeight: 700,
-                fontSize: "0.875rem",
-                textDecoration: "none",
-                boxShadow: "0 3px 10px rgba(37, 211, 102, 0.3)",
+                gap: "5px",
+                whiteSpace: "nowrap",
               }}
             >
-              <MessageCircle size={15} />
-              <span>{t("book_via_whatsapp")}</span>
+              <MessageCircle size={14} />
+              <span>{language === "ml" ? "വാട്സാപ്പ്" : "WhatsApp"}</span>
             </a>
           </div>
 
-          {/* Mobile Actions Container (Language Switcher + Hamburger Menu) */}
-          <div style={{ display: "none", alignItems: "center", gap: "8px" }} className="mobile-toggle">
+          {/* Mobile Right Controls: Language Switcher + Hamburger Menu Icon */}
+          <div
+            style={{
+              display: "none",
+              alignItems: "center",
+              gap: "8px",
+              flexShrink: 0,
+            }}
+            className="mobile-toggle"
+          >
             <LanguageToggle variant="header" />
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle navigation menu"
               style={{
-                padding: "8px",
-                borderRadius: "8px",
-                border: "1px solid #e2e8f0",
-                color: "var(--text-primary)",
-                backgroundColor: "#f8fafc",
+                width: "42px",
+                height: "42px",
+                borderRadius: "10px",
+                border: "1.5px solid var(--border-light)",
+                color: "var(--color-primary)",
+                backgroundColor: "var(--bg-subtle)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                cursor: "pointer",
+                flexShrink: 0,
               }}
             >
               {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -284,46 +311,48 @@ export const Header: React.FC = () => {
         </div>
       </header>
 
-      {/* Mobile Navigation Drawer */}
+      {/* Spacer to prevent fixed header from covering top content */}
+      <div style={{ height: "74px" }} />
+
+      {/* Mobile Slideout Drawer with All Navigation Links */}
       {mobileMenuOpen && (
         <div
           style={{
             position: "fixed",
-            top: "calc(var(--header-height) + 33px)",
+            top: "74px",
             left: 0,
             right: 0,
             bottom: 0,
             backgroundColor: "#ffffff",
-            zIndex: 99,
-            padding: "20px 18px calc(24px + env(safe-area-inset-bottom, 0px))",
+            zIndex: 9999,
+            padding: "20px 18px 85px 18px",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1)",
             overflowY: "auto",
+            animation: "slideUpFade 0.2s ease-out",
           }}
         >
-          <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-            {/* Mobile Language Switcher Highlight */}
-            <LanguageToggle variant="mobile" />
-
-            <p
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            <div
               style={{
                 fontSize: "0.75rem",
                 fontWeight: 700,
                 textTransform: "uppercase",
-                letterSpacing: "0.08em",
                 color: "var(--text-muted)",
-                marginBottom: "4px",
+                letterSpacing: "0.06em",
+                marginBottom: "6px",
               }}
             >
-              {t("menu")}
-            </p>
+              {language === "ml" ? "മെനു / നാവിഗേഷൻ" : "Menu Navigation"}
+            </div>
+
             {navLinks.map((link) => {
               const isActive =
                 link.href === "/"
                   ? pathname === "/"
-                  : pathname.startsWith(link.href) && link.href !== "/";
+                  : pathname === link.href || pathname.startsWith(link.href + "/");
+
               return (
                 <Link
                   key={link.href}
@@ -331,29 +360,26 @@ export const Header: React.FC = () => {
                   prefetch={true}
                   onClick={() => setMobileMenuOpen(false)}
                   style={{
-                    padding: "12px 14px",
-                    borderRadius: "8px",
-                    backgroundColor: isActive ? "var(--color-primary-subtle)" : "transparent",
-                    color: isActive ? "var(--color-primary)" : "var(--text-primary)",
-                    fontWeight: isActive ? 700 : 500,
-                    fontSize: "1.05rem",
+                    padding: "13px 16px",
+                    borderRadius: "12px",
+                    backgroundColor: isActive ? "var(--color-primary)" : "#f8fafc",
+                    color: isActive ? "#ffffff" : "var(--text-primary)",
+                    border: isActive ? "1px solid var(--color-primary)" : "1px solid var(--border-light)",
+                    fontWeight: isActive ? 700 : 600,
+                    fontSize: "1rem",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
                     textDecoration: "none",
                   }}
                 >
-                  <span>{link.label}</span>
-                  {isActive && (
-                    <span
-                      style={{
-                        width: "6px",
-                        height: "6px",
-                        borderRadius: "50%",
-                        backgroundColor: "var(--color-primary)",
-                      }}
-                    />
-                  )}
+                  <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                    <span style={{ color: isActive ? "#34d399" : "var(--color-accent)", display: "flex" }}>
+                      {link.icon}
+                    </span>
+                    <span>{link.label}</span>
+                  </div>
+                  <ChevronRight size={18} color={isActive ? "#ffffff" : "#94a3b8"} />
                 </Link>
               );
             })}
@@ -361,72 +387,33 @@ export const Header: React.FC = () => {
 
           <div
             style={{
-              paddingTop: "20px",
-              borderTop: "1px solid #f1f5f9",
+              paddingTop: "18px",
+              borderTop: "1px solid var(--border-light)",
               display: "flex",
               flexDirection: "column",
               gap: "10px",
             }}
           >
             <a
-              href={createWhatsAppUrl()}
+              href={getWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => handleWhatsAppClick("mobile_drawer")}
-              className="btn btn-whatsapp"
-              style={{
-                width: "100%",
-                backgroundColor: "#25D366",
-                color: "#ffffff",
-                padding: "13px 0",
-                borderRadius: "10px",
-                fontWeight: 700,
-                fontSize: "1rem",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "8px",
-                textDecoration: "none",
-                boxShadow: "0 4px 14px rgba(37, 211, 102, 0.3)",
-              }}
+              className="btn btn-whatsapp btn-lg"
+              style={{ width: "100%", justifyContent: "center", borderRadius: "12px", padding: "14px" }}
             >
-              <MessageCircle size={18} />
+              <MessageCircle size={19} />
               <span>{t("book_via_whatsapp")}</span>
             </a>
 
             <a
               href={`tel:${siteConfig.contact.primaryPhoneRaw}`}
-              onClick={handlePhoneClick}
-              className="btn btn-outline"
-              style={{
-                width: "100%",
-                border: "1px solid #cbd5e1",
-                backgroundColor: "#ffffff",
-                color: "var(--color-primary)",
-                padding: "12px 0",
-                borderRadius: "10px",
-                fontWeight: 600,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "8px",
-                textDecoration: "none",
-              }}
+              className="btn btn-outline btn-lg"
+              style={{ width: "100%", justifyContent: "center", borderRadius: "12px", padding: "14px" }}
             >
-              <Phone size={18} />
+              <Phone size={19} />
               <span>{siteConfig.contact.primaryPhone}</span>
             </a>
-
-            <div
-              style={{
-                textAlign: "center",
-                fontSize: "0.8125rem",
-                color: "var(--text-muted)",
-                marginTop: "4px",
-              }}
-            >
-              മട്ടന്നൂർ • Mattanur, Kannur • 100% Satisfaction
-            </div>
           </div>
         </div>
       )}

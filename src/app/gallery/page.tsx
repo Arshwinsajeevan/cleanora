@@ -1,8 +1,8 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import Image from "next/image";
-import { Sparkles, Calendar, Rocket } from "lucide-react";
+import { Sparkles, MapPin, CheckCircle2, MessageCircle } from "lucide-react";
 import { createWhatsAppUrl } from "@/data/site";
 import { FinalCTA } from "@/components/cta/FinalCTA";
 import { useLanguage } from "@/context/LanguageContext";
@@ -10,10 +10,10 @@ import { useLanguage } from "@/context/LanguageContext";
 export default function GalleryPage() {
   const { language, t } = useLanguage();
 
-  const prebookWhatsAppUrl =
+  const bookingWhatsAppUrl =
     language === "ml"
-      ? "https://wa.me/919496840540?text=നമസ്കാരം%20ക്ലീനോറ%2C%20ഉദ്ഘാടനത്തോടനുബന്ധിച്ചുള്ള%20സ്പെഷ്യൽ%20ക്ലീനിംഗ്%20സ്ലോട്ട്%20മുൻകൂട്ടി%20ബുക്ക്%20ചെയ്യാൻ%20ആഗ്രഹിക്കുന്നു!"
-      : "https://wa.me/919496840540?text=Hi%20Cleanora%2C%20I%20would%20like%20to%20pre-book%20a%20priority%20cleaning%20slot%20for%20your%20inaugural%20launch%20week%20in%20Kannur!";
+      ? "https://wa.me/919496840540?text=നമസ്കാരം%20ക്ലീനോറ%2C%20മലബാർ%20പ്ലാസ%20മട്ടന്നൂർ%20ഓഫീസിൽ%20നിന്നുള്ള%20ക്ലീനിംഗ്%20/%20ഷിഫ്റ്റിംഗ്%20സർവീസിനായി%20ബന്ധപ്പെടുന്നു."
+      : "https://wa.me/919496840540?text=Hi%20Cleanora%2C%20I%20would%20like%20to%20book%20a%20cleaning%20or%20shifting%20service%20from%20your%20Malabar%20Plaza%20Mattanur%20branch.";
 
   return (
     <>
@@ -22,7 +22,7 @@ export default function GalleryPage() {
         style={{
           backgroundColor: "#071426",
           color: "#ffffff",
-          padding: "64px 0 48px",
+          padding: "56px 0 44px",
           textAlign: "center",
           position: "relative",
           overflow: "hidden",
@@ -34,16 +34,16 @@ export default function GalleryPage() {
               display: "inline-flex",
               alignItems: "center",
               gap: "6px",
-              padding: "6px 14px",
+              padding: "5px 14px",
               borderRadius: "9999px",
               backgroundColor: "rgba(16, 185, 129, 0.15)",
               border: "1px solid rgba(16, 185, 129, 0.3)",
               color: "#34d399",
-              fontSize: "0.8125rem",
+              fontSize: "0.78rem",
               fontWeight: 700,
               textTransform: "uppercase",
               letterSpacing: "0.05em",
-              marginBottom: "16px",
+              marginBottom: "14px",
             }}
           >
             <Sparkles size={14} />
@@ -53,34 +53,36 @@ export default function GalleryPage() {
           <h1
             style={{
               fontFamily: "var(--font-heading)",
-              fontSize: "clamp(2.2rem, 4vw, 3rem)",
+              fontSize: "clamp(1.85rem, 3.5vw, 2.65rem)",
               fontWeight: 800,
-              marginBottom: "14px",
+              marginBottom: "12px",
               lineHeight: 1.2,
             }}
           >
-            {language === "ml" ? "ഞങ്ങളുടെ യാത്ര & ഉദ്ഘാടനം" : "Our Journey & Inauguration"}
+            {language === "ml"
+              ? "ഞങ്ങളുടെ വർക്കുകൾ & സർവീസുകൾ"
+              : "Our Work & Completed Projects"}
           </h1>
 
-          <p style={{ fontSize: "1.0625rem", color: "#cbd5e1", lineHeight: 1.65 }}>
+          <p style={{ fontSize: "1rem", color: "#cbd5e1", lineHeight: 1.65 }}>
             {language === "ml"
-              ? "കണ്ണൂരിലെ വീടുകൾക്കും സ്ഥാപനങ്ങൾക്കും പുതിയൊരു ക്ലീനിംഗ് അനുഭവം നൽകാൻ ക്ലീനോറ അടുത്ത ആഴ്ച തുടക്കം കുറിക്കുന്നു."
-              : "Setting a new standard for home, water tank, solar panel, and commercial deep cleaning across Kannur, Kerala."}
+              ? "മലബാർ പ്ലാസ, മട്ടന്നൂർ കേന്ദ്രീകരിച്ച് കണ്ണൂർ ജില്ലയിലുടനീളം വീടുകൾക്കും സ്ഥാപനങ്ങൾക്കും നൽകിയ പ്രൊഫഷണൽ ക്ലീനിംഗ് സേവനങ്ങൾ."
+              : "Delivering premier residential and commercial deep cleaning and relocation services across Kannur from our headquarters at Malabar Plaza, Mattanur."}
           </p>
         </div>
       </section>
 
-      {/* Grand Opening & Journey Card */}
-      <section className="section" style={{ backgroundColor: "#f8fafc", padding: "60px 0 80px" }}>
+      {/* Active Service & Location Card */}
+      <section className="section" style={{ backgroundColor: "#f8fafc", padding: "50px 0 70px" }}>
         <div className="container" style={{ maxWidth: "860px" }}>
           <div
             style={{
               backgroundColor: "#0b1b2b",
               color: "#ffffff",
               borderRadius: "24px",
-              padding: "48px 40px",
+              padding: "44px 36px",
               border: "1px solid rgba(16, 185, 129, 0.3)",
-              boxShadow: "0 20px 45px rgba(11, 27, 43, 0.2)",
+              boxShadow: "0 20px 45px rgba(11, 27, 43, 0.15)",
               position: "relative",
               overflow: "hidden",
               textAlign: "center",
@@ -102,60 +104,66 @@ export default function GalleryPage() {
             />
 
             <div style={{ position: "relative", zIndex: 10, maxWidth: "720px", margin: "0 auto" }}>
-              {/* Grand Opening Badge */}
+              {/* Location & Active Badge */}
               <div
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: "8px",
-                  padding: "6px 16px",
+                  gap: "7px",
+                  padding: "6px 14px",
                   borderRadius: "9999px",
                   backgroundColor: "rgba(16, 185, 129, 0.2)",
                   border: "1px solid rgba(16, 185, 129, 0.4)",
                   color: "#34d399",
-                  fontSize: "0.8125rem",
+                  fontSize: "0.78rem",
                   fontWeight: 700,
                   textTransform: "uppercase",
-                  letterSpacing: "0.06em",
-                  marginBottom: "20px",
+                  letterSpacing: "0.05em",
+                  marginBottom: "18px",
                 }}
               >
-                <Rocket size={15} />
-                <span>{language === "ml" ? "ഉദ്ഘാടനം ഉടൻ • മട്ടന്നൂർ, കണ്ണൂർ" : "Grand Opening Soon • Mattanur, Kannur"}</span>
+                <MapPin size={14} />
+                <span>
+                  {language === "ml"
+                    ? "മലബാർ പ്ലാസ, മട്ടന്നൂർ • കണ്ണൂർ"
+                    : "Malabar Plaza, Mattanur • Kannur"}
+                </span>
               </div>
 
               {/* Title */}
               <h2
                 style={{
                   fontFamily: "var(--font-heading)",
-                  fontSize: "clamp(1.75rem, 3.5vw, 2.35rem)",
+                  fontSize: "clamp(1.6rem, 3.2vw, 2.2rem)",
                   fontWeight: 800,
-                  marginBottom: "16px",
+                  marginBottom: "14px",
                   lineHeight: 1.25,
                   color: "#ffffff",
                 }}
               >
-                {language === "ml" ? "കണ്ണൂരിൽ ഞങ്ങളുടെ യാത്ര ആരംഭിക്കുന്നു" : "Starting Our Journey in Kannur"}
+                {language === "ml"
+                  ? "മലബാർ പ്ലാസ, മട്ടന്നൂർ ആസ്ഥാനമായി വിശ്വസ്ത സേവനം"
+                  : "Now Actively Serving Across Kannur District"}
               </h2>
 
               {/* Subtitle / Description */}
               <p
                 style={{
                   color: "#cbd5e1",
-                  fontSize: "1.0625rem",
-                  lineHeight: 1.75,
-                  marginBottom: "32px",
+                  fontSize: "0.95rem",
+                  lineHeight: 1.7,
+                  marginBottom: "28px",
                 }}
               >
                 {language === "ml"
-                  ? "ക്ലീനോറ ഡീപ് ക്ലീനിംഗ് സർവീസുകൾ അടുത്ത ആഴ്ച മുതൽ മട്ടന്നൂരിലും കണ്ണൂർ ജില്ലയിലും ഔദ്യോഗികമായി ആരംഭിക്കുന്നു! നിങ്ങളുടെ വീടും സ്ഥാപനങ്ങളും പുത്തൻപോലെ വൃത്തിയാക്കാൻ ഇപ്പോൾ തന്നെ മുൻകൂട്ടി ബുക്ക് ചെയ്യാം."
-                  : "Cleanora Deep Cleaning is officially launching its specialized services across Mattanur and Kannur district next week! We are dedicated to providing pure, hygienic living spaces with professional equipment and transparent service."}
+                  ? "ക്ലീനോറ മലബാർ പ്ലാസ, മട്ടന്നൂർ ആസ്ഥാനമായി കണ്ണൂർ ജില്ലയിലുടനീളം വീടുകൾ, ഓഫീസുകൾ, വാട്ടർ ടാങ്ക്, സോഫ, ഇന്റർലോക്ക് ഡീപ് ക്ലീനിംഗും പാക്കേഴ്സ് & മൂവേഴ്സ് ഷിഫ്റ്റിംഗ് സർവീസുകളും സജീവമായി നൽകിവരുന്നു. വേഗത്തിലുള്ള സർവീസിനായി ഇപ്പോൾ തന്നെ ബന്ധപ്പെടാം."
+                  : "Operating from Malabar Plaza, Mattanur, Cleanora is actively delivering professional deep cleaning and damage-free household relocation services across all areas of Kannur. Contact our team for instant scheduling and upfront quotes."}
               </p>
 
               {/* Pre-Book CTA Button */}
               <div>
                 <a
-                  href={prebookWhatsAppUrl}
+                  href={bookingWhatsAppUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-whatsapp btn-lg"
@@ -165,16 +173,20 @@ export default function GalleryPage() {
                     textDecoration: "none",
                     display: "inline-flex",
                     alignItems: "center",
-                    gap: "10px",
+                    gap: "8px",
                     fontWeight: 700,
-                    fontSize: "1.0625rem",
-                    padding: "16px 32px",
+                    fontSize: "0.95rem",
+                    padding: "13px 26px",
                     borderRadius: "12px",
                     boxShadow: "0 6px 20px rgba(37, 211, 102, 0.4)",
                   }}
                 >
-                  <Calendar size={20} />
-                  <span>{language === "ml" ? "ഉദ്ഘാടന സ്ലോട്ട് വാട്സാപ്പിൽ ബുക്ക് ചെയ്യാം" : "Pre-Book Inaugural Slot via WhatsApp"}</span>
+                  <MessageCircle size={18} />
+                  <span>
+                    {language === "ml"
+                      ? "വാട്സാപ്പിൽ സർവീസ് ബുക്ക് ചെയ്യാം"
+                      : "Book Service via WhatsApp"}
+                  </span>
                 </a>
               </div>
             </div>

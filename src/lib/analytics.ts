@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Lightweight event dispatcher for user actions and conversions
  * Compatible with Google Analytics (gtag) and custom logging
  */
@@ -27,4 +27,11 @@ export const trackEvent = (
       console.log(`[Cleanora Analytics] ${eventName}:`, eventParams);
     }
   }
+};
+
+export const trackWhatsAppConversion = (source: string) => {
+  trackEvent("whatsapp_click", {
+    source,
+    timestamp: new Date().toISOString(),
+  });
 };

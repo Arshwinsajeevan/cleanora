@@ -1,10 +1,8 @@
-export interface TranslationDictionary {
-  [key: string]: string;
-}
-
-export type TranslationKey =
+﻿export type TranslationKey =
   | "nav_home"
   | "nav_services"
+  | "nav_results"
+  | "nav_machinery"
   | "nav_transformations"
   | "nav_equipments"
   | "nav_about"
@@ -12,8 +10,6 @@ export type TranslationKey =
   | "nav_contact"
   | "top_bar_location"
   | "top_bar_guarantee"
-  | "quick_whatsapp"
-  | "call_us"
   | "book_via_whatsapp"
   | "menu"
   | "hero_badge_location"
@@ -33,26 +29,23 @@ export type TranslationKey =
   | "tab_residential"
   | "tab_deep"
   | "tab_commercial"
+  | "badge_featured"
+  | "btn_view_details"
+  | "btn_whatsapp_quote"
   | "custom_requirement_title"
   | "custom_requirement_sub"
   | "discuss_custom_scope"
   | "transformations_badge"
   | "transformations_title"
   | "transformations_subtitle"
-  | "before"
-  | "after"
-  | "drag_slider_instruction"
-  | "equipments_badge"
-  | "equipments_title"
-  | "equipments_subtitle"
-  | "equipment_1_title"
-  | "equipment_1_desc"
-  | "equipment_2_title"
-  | "equipment_2_desc"
-  | "equipment_3_title"
-  | "equipment_3_desc"
-  | "equipment_4_title"
-  | "equipment_4_desc"
+  | "slider_instruction"
+  | "badge_real_case_study"
+  | "label_location"
+  | "label_challenge"
+  | "label_solution"
+  | "label_equipment"
+  | "label_turnaround"
+  | "btn_similar_quote"
   | "why_cleanora_badge"
   | "why_cleanora_title"
   | "why_cleanora_subtitle"
@@ -64,6 +57,21 @@ export type TranslationKey =
   | "why_3_desc"
   | "why_4_title"
   | "why_4_desc"
+  | "why_badge"
+  | "why_title"
+  | "why_subtitle"
+  | "why_card1_title"
+  | "why_card1_desc"
+  | "why_card2_title"
+  | "why_card2_desc"
+  | "why_card3_title"
+  | "why_card3_desc"
+  | "why_card4_title"
+  | "why_card4_desc"
+  | "why_card5_title"
+  | "why_card5_desc"
+  | "why_card6_title"
+  | "why_card6_desc"
   | "how_it_works_badge"
   | "how_it_works_title"
   | "how_it_works_subtitle"
@@ -76,8 +84,23 @@ export type TranslationKey =
   | "step_3_num"
   | "step_3_title"
   | "step_3_desc"
+  | "equipments_badge"
+  | "equipments_title"
+  | "equipments_subtitle"
+  | "equipments_feat_badge"
+  | "equipments_feat_title"
+  | "equipments_feat_desc"
+  | "equipment_1_title"
+  | "equipment_1_desc"
+  | "equipment_2_title"
+  | "equipment_2_desc"
+  | "equipment_3_title"
+  | "equipment_3_desc"
+  | "equipment_4_title"
+  | "equipment_4_desc"
   | "about_badge"
   | "about_title"
+  | "about_subtitle"
   | "about_p1"
   | "about_p2"
   | "about_btn"
@@ -107,10 +130,14 @@ export type TranslationKey =
   | "enquire_whatsapp"
   | "get_quote";
 
+export type TranslationDictionary = Record<TranslationKey, string>;
+
 export const translations: Record<"en" | "ml", TranslationDictionary> = {
   en: {
     nav_home: "Home",
     nav_services: "Services",
+    nav_results: "Results",
+    nav_machinery: "Machinery",
     nav_transformations: "Results",
     nav_equipments: "Machinery",
     nav_about: "About Us",
@@ -118,9 +145,7 @@ export const translations: Record<"en" | "ml", TranslationDictionary> = {
     nav_contact: "Contact",
 
     top_bar_location: "Mattanur • Kannur, Kerala",
-    top_bar_guarantee: "100% Satisfaction Guaranteed",
-    quick_whatsapp: "WhatsApp Booking",
-    call_us: "Call +91 94968 40540",
+    top_bar_guarantee: "100% Satisfaction Guarantee • Verified Quality Handover",
     book_via_whatsapp: "Book via WhatsApp",
     menu: "Menu",
 
@@ -133,91 +158,124 @@ export const translations: Record<"en" | "ml", TranslationDictionary> = {
     hero_cta_whatsapp: "Book Instant via WhatsApp",
     hero_cta_services: "Explore All Services",
     hero_guarantee_text: "100% Satisfaction Guaranteed",
-    hero_guarantee_sub: "Pay only when you are fully satisfied with our work",
+    hero_guarantee_sub: "Complete on-the-spot quality inspection for verified standards",
 
     services_badge: "Our Specialized Services",
-    services_title: "Professional Services Tailored for Kannur",
+    services_title: "Professional Cleaning & Shifting Services in Kannur",
     services_subtitle:
-      "From residential deep cleaning and safe packers & movers shifting to solar panel care and water tank sanitization across Kannur district.",
-    tab_all: "All Services",
+      "Expert solutions for homes, villas, corporate offices, and commercial establishments in Mattanur & Kannur.",
+    tab_all: "All Services (9)",
     tab_packers: "Packers & Movers",
     tab_residential: "Residential",
-    tab_deep: "Deep Sanitization",
-    tab_commercial: "Commercial & Solar",
+    tab_deep: "Deep Cleaning",
+    tab_commercial: "Commercial",
+    badge_featured: "Popular Choice",
+    btn_view_details: "View Details",
+    btn_whatsapp_quote: "Get WhatsApp Quote",
 
-    custom_requirement_title: "Have a Custom Shifting or Cleaning Requirement?",
-    custom_requirement_sub:
-      "We provide tailored packages for large villas, commercial properties, and customized relocation scopes.",
-    discuss_custom_scope: "Discuss Your Custom Scope",
+    custom_requirement_title: "Have a Custom Requirement or Shifting Need?",
+    custom_requirement_sub: "We offer tailored packages for large villas, commercial spaces, and whole-house relocations across Kannur.",
+    discuss_custom_scope: "Discuss Your Requirement",
 
-    transformations_badge: "Real Results",
-    transformations_title: "Before & After Transformations",
+    transformations_badge: "Verified Work Results",
+    transformations_title: "Real Before & After Proof Across Kannur",
     transformations_subtitle:
-      "Drag the slider horizontally to see the visible difference our professional deep cleaning delivers.",
-    before: "BEFORE",
-    after: "AFTER CLEANORA",
-    drag_slider_instruction: "Drag slider left/right to compare before and after results",
+      "Slide through genuine transformations delivered by our specialized team using modern machinery in Mattanur & Kannur.",
+    slider_instruction: "Drag the slider left and right to inspect the deep cleaning difference",
+    badge_real_case_study: "Verified Transformation",
+    label_location: "Location",
+    label_challenge: "The Challenge",
+    label_solution: "Cleanora Solution",
+    label_equipment: "Machinery Used",
+    label_turnaround: "Turnaround",
+    btn_similar_quote: "Book Similar Transformation",
 
-    equipments_badge: "Modern Technology",
-    equipments_title: "Equipped with Professional Machinery",
-    equipments_subtitle:
-      "We utilize industrial-grade cleaning technology and safe eco-friendly solutions to deliver spotless, hygienic spaces.",
-    equipment_1_title: "Single-Disc Rotary Floor Scrubbers",
-    equipment_1_desc: "Heavy-duty mechanical scrubbing that removes ground-in dirt, yellow stains, and restores floor shine.",
-    equipment_2_title: "Industrial Vacuum & Foam Extractors",
-    equipment_2_desc: "High-suction wet & dry extraction extracting embedded allergens, dust mites, and stains from sofas.",
-    equipment_3_title: "High-Pressure Jet Rotary Washers",
-    equipment_3_desc: "Powerful 140+ bar pressure washing clearing slippery moss, algae, and grime from interlock pavers.",
-    equipment_4_title: "Telescopic Water-Fed Solar Brushes",
-    equipment_4_desc: "Non-abrasive soft-bristle poles designed for safe rooftop solar panel cleaning without scratching glass.",
-
-    why_cleanora_badge: "Why Choose Us",
-    why_cleanora_title: "Why Families & Businesses Trust Cleanora",
-    why_cleanora_subtitle:
-      "Reliable local professionals delivering pristine cleanliness, careful shifting, and complete peace of mind.",
+    why_cleanora_badge: "The Cleanora Advantage",
+    why_cleanora_title: "Why Homeowners & Businesses Trust Cleanora",
+    why_cleanora_subtitle: "Professional standards, trained personnel, and upfront transparency in every project.",
     why_1_title: "100% Satisfaction Guarantee",
-    why_1_desc: "We inspect every detail with you upon completion. If anything is missed, we re-clean it immediately.",
-    why_2_title: "Professional Machinery & Safe Chemicals",
-    why_2_desc: "Equipped with industrial scrubbers, steam, high-pressure washers, and non-hazardous eco-friendly agents.",
-    why_3_title: "Prompt Local Service in Mattanur & Kannur",
-    why_3_desc: "A trustworthy local team that arrives punctually anywhere across Kannur district.",
-    why_4_title: "Transparent, Upfront Pricing",
-    why_4_desc: "Clear upfront quotes with no hidden charges or post-work surprises.",
+    why_1_desc: "We conduct an on-the-spot quality walkthrough to ensure immaculate results every time.",
+    why_2_title: "Modern Cleaning Equipment",
+    why_2_desc: "We use high-grade professional equipment ensuring thorough and spotless results.",
+    why_3_title: "Mattanur & Kannur Coverage",
+    why_3_desc: "Dedicated local teams providing rapid response and prompt scheduling across the district.",
+    why_4_title: "Clear & Transparent Pricing",
+    why_4_desc: "Direct upfront quotes via WhatsApp with zero hidden surcharges or surprise billing.",
 
-    how_it_works_badge: "Simple 3-Step Process",
-    how_it_works_title: "How to Book Cleanora Service",
-    how_it_works_subtitle: "Book your service in under a minute via WhatsApp or phone call.",
+    why_badge: "The Cleanora Advantage",
+    why_title: "Why Homeowners & Businesses in Kannur Trust Us",
+    why_subtitle:
+      "We deliver high-end cleaning and damage-free shifting backed by heavy-duty machinery and trained personnel.",
+    why_card1_title: "100% Guaranteed Satisfaction",
+    why_card1_desc: "We guarantee immaculate cleanliness and safe handling for every single project.",
+    why_card2_title: "Packers & Movers Care",
+    why_card2_desc: "Multi-layer bubble wrapping, safe transport vehicle, and professional loading & unloading staff.",
+    why_card3_title: "Modern Equipment Fleet",
+    why_card3_desc: "We use high-grade modern equipment to ensure deep, thorough, and safe cleaning for every surface.",
+    why_card4_title: "Family & Pet-Safe Chemicals",
+    why_card4_desc: "We use non-toxic, eco-friendly formulations that eliminate 99.9% germs without leaving harmful residues.",
+    why_card5_title: "Fast Response & Prompt Service",
+    why_card5_desc: "Based locally in Mattanur, our mobile team arrives promptly across Kannur district.",
+    why_card6_title: "Transparent & Upfront Pricing",
+    why_card6_desc: "Clear upfront quotes via WhatsApp. No hidden charges or surprise extras.",
+
+    how_it_works_badge: "Easy 3-Step Process",
+    how_it_works_title: "How Booking with Cleanora Works",
+    how_it_works_subtitle: "Simple, transparent, and fast booking for all cleaning and shifting services.",
     step_1_num: "01",
-    step_1_title: "Share Your Requirements",
-    step_1_desc: "Send us a quick WhatsApp message describing your house, shifting, tank, sofa, solar, or interlock needs.",
+    step_1_title: "Share Details via WhatsApp",
+    step_1_desc: "Send us photos or describe your cleaning or shifting requirement for a quick upfront quote.",
     step_2_num: "02",
-    step_2_title: "Get Free Quote & Slot Confirmation",
-    step_2_desc: "Receive an upfront, transparent estimate and confirm your preferred date and time.",
+    step_2_title: "Scheduled Service Execution",
+    step_2_desc: "Our trained team arrives on time equipped with high-grade machinery and quality materials.",
     step_3_num: "03",
-    step_3_title: "Enjoy Pristine Results",
-    step_3_desc: "Our equipped crew arrives punctually to deliver immaculate results. Pay only after your satisfaction.",
+    step_3_title: "Handover & Inspection",
+    step_3_desc: "Inspect the immaculate results together with our supervisor for a verified, flawless handover.",
+
+    equipments_badge: "Our Equipment",
+    equipments_title: "Equipped with Modern Professional Gear",
+    equipments_subtitle:
+      "We utilize high-grade professional equipment to deliver spotless, reliable, and hygienic cleaning results.",
+    equipments_feat_badge: "Professional Equipment",
+    equipments_feat_title: "Modern Machinery for Spotless Living",
+    equipments_feat_desc:
+      "Our team is fully equipped with high-grade modern cleaning equipment for all residential and commercial needs.",
+
+    equipment_1_title: "Floor Cleaning Equipment",
+    equipment_1_desc: "Modern equipment for thorough floor buffing, stain removal, and surface care.",
+    equipment_2_title: "Pressure Washing Gear",
+    equipment_2_desc: "High-grade equipment for outdoor paving, interlocks, and courtyard cleaning.",
+    equipment_3_title: "Fabric & Upholstery Cleaners",
+    equipment_3_desc: "Deep cleaning tools for sofas, fabric upholstery, and mattresses.",
+    equipment_4_title: "Solar & Glass Cleaning Tools",
+    equipment_4_desc: "Specialized soft tools for spotless and scratch-free solar panel cleaning.",
 
     about_badge: "About Cleanora",
-    about_title: "Creating Spotless, Healthy Spaces in Kannur",
+    about_title: "Mattanur's Dedicated Cleaning & Relocation Specialists",
+    about_subtitle:
+      "Founded with the motto 'Clean Spaces... Healthy Lives...', Cleanora provides premier residential and commercial services across Kannur.",
     about_p1:
-      "Based in Mattanur, Cleanora is dedicated to providing superior deep cleaning, sanitization, and reliable Packers & Movers services for homes and commercial establishments across Kannur, Kerala.",
+      "We understand that a clean living space is the cornerstone of family well-being. Cleanora was established in Mattanur to bring professional-grade cleaning and stress-free household relocation to Kannur district.",
     about_p2:
-      "Using industrial-grade machinery, certified safe cleaning agents, and trained staff, we elevate the standard of cleanliness and provide trustworthy shifting care for your home.",
-    about_btn: "Read More About Us",
+      "Combining quality equipment, trained personnel, and strict safety standards, we ensure your premises are pristine, sanitized, and revitalized.",
+    about_btn: "Learn More About Us",
 
     coverage_badge: "Service Coverage",
-    coverage_title: "Serving Mattanur & All Across Kannur District",
-    coverage_subtitle: "Prompt, trustworthy scheduling across Kannur, Thalassery, Iritty, and surrounding areas.",
+    coverage_title: "Serving Mattanur & Across Kannur District",
+    coverage_subtitle:
+      "Our mobile cleaning and shifting units cover all major towns and rural areas across Kannur, Kerala.",
 
-    faq_badge: "Common Questions",
+    faq_badge: "Got Questions?",
     faq_title: "Frequently Asked Questions",
-    faq_subtitle: "Answers to common queries about our deep cleaning and relocation services in Kannur.",
+    faq_subtitle:
+      "Answers to common questions about our cleaning methods, relocation services, booking, and pricing.",
 
-    final_cta_badge: "Priority Booking Open",
-    final_cta_title: "Ready for a Spotless Space or Hassle-Free Shifting?",
-    final_cta_subtitle: "Contact our Mattanur team today via WhatsApp or phone for instant scheduling and transparent quotes.",
-    final_cta_whatsapp: "Book Instant via WhatsApp",
-    final_cta_call: "Call Us +91 94968 40540",
+    final_cta_badge: "Quick Booking Available",
+    final_cta_title: "Ready to Experience Spotless Living or a Hassle-Free Move?",
+    final_cta_subtitle:
+      "Contact our Mattanur team via WhatsApp or direct call for instant pricing, customized packages, and fast scheduling.",
+    final_cta_whatsapp: "Book on WhatsApp",
+    final_cta_call: "Call Now +91 94968 40540",
 
     footer_bio:
       "Professional deep cleaning, sanitization, and Packers & Movers relocation services based in Mattanur, Kannur, Kerala.",
@@ -227,109 +285,138 @@ export const translations: Record<"en" | "ml", TranslationDictionary> = {
     footer_rights: "Cleanora Deep Cleaning & Relocations. All rights reserved. Mattanur, Kannur, Kerala.",
 
     mobile_call_now: "Call Now",
-    mobile_whatsapp_us: "WhatsApp Us",
+    mobile_whatsapp_us: "WhatsApp",
 
     chat_header_title: "Chat with Cleanora",
-    chat_header_sub: "Mattanur, Kannur • Fast Response",
-    chat_intro: "Hello! How can we assist with your cleaning or shifting needs today?",
-    chat_guarantee: "Direct communication with Cleanora team",
+    chat_header_sub: "Mattanur, Kannur • Instant Response",
+    chat_intro: "Hello! How can we assist you with cleaning or shifting in Kannur?",
+    chat_guarantee: "Direct contact with Cleanora team",
 
-    view_all_services: "View All Services",
-    enquire_whatsapp: "Enquire on WhatsApp",
-    get_quote: "Get Custom Quote",
+    view_all_services: "Explore All Services",
+    enquire_whatsapp: "Enquire via WhatsApp",
+    get_quote: "Get Instant Quote",
   },
   ml: {
     nav_home: "ഹോം",
     nav_services: "സർവീസുകൾ",
-    nav_transformations: "റിസൾട്ടുകൾ",
+    nav_results: "റിസൾട്ട്",
+    nav_machinery: "മെഷീനുകൾ",
+    nav_transformations: "റിസൾട്ട്",
     nav_equipments: "മെഷീനുകൾ",
-    nav_about: "ഞങ്ങളെക്കുറിച്ച്",
+    nav_about: "ഞങ്ങൾ",
     nav_work: "വർക്കുകൾ",
-    nav_contact: "ബന്ധപ്പെടുക",
+    nav_contact: "കോൺടാക്റ്റ്",
 
     top_bar_location: "മട്ടന്നൂർ • കണ്ണൂർ, കേരളം",
-    top_bar_guarantee: "100% സംതൃപ്തി ഉറപ്പ്",
-    quick_whatsapp: "വാട്സാപ്പ് ബുക്കിംഗ്",
-    call_us: "വിളിക്കാം +91 94968 40540",
+    top_bar_guarantee: "100% സംതൃപ്തി ഉറപ്പ് • മികച്ച ക്വാളിറ്റി സർവീസ്",
     book_via_whatsapp: "വാട്സാപ്പിൽ ബുക്ക് ചെയ്യാം",
     menu: "മെനു",
 
     hero_badge_location: "മട്ടന്നൂർ • കണ്ണൂർ, കേരളം",
     hero_badge_slogan: "ക്ലീൻ സ്പേസസ് • ഹെൽത്തി ലൈവ്സ്",
     hero_title_line1: "വൃത്തിയുള്ള സുരക്ഷിത ഇടങ്ങൾ.",
-    hero_title_line2: "വിശ്വസ്ത പാക്കേഴ്‌സ് & മൂവേഴ്‌സ്.",
+    hero_title_line2: "വിശ്വസ്ത പാക്കേഴ്സ് & മൂവേഴ്സ്.",
     hero_subtitle:
-      "മട്ടന്നൂരിലും കണ്ണൂർ ജില്ലയിലെവിടെയും വീട്, ഓഫീസ്, വാട്ടർ ടാങ്ക്, സോഫ, ഇന്റർലോക്ക്, സോളാർ പാനൽ ഡീപ് ക്ലീനിംഗും പാക്കേഴ്‌സ് & മൂവേഴ്‌സ് ഷിഫ്റ്റിംഗ് സർവീസും.",
+      "മട്ടന്നൂരിലും കണ്ണൂർ ജില്ലയിലെവിടെയും വീട്, ഓഫീസ്, വാട്ടർ ടാങ്ക്, സോഫ, ഇന്റർലോക്ക്, സോളാർ പാനൽ ഡീപ് ക്ലീനിംഗും പാക്കേഴ്സ് & മൂവേഴ്സ് ഷിഫ്റ്റിംഗ് സർവീസും.",
     hero_cta_whatsapp: "വാട്സാപ്പിൽ വേഗത്തിൽ ബുക്ക് ചെയ്യാം",
     hero_cta_services: "എല്ലാ സർവീസുകളും കാണാം",
     hero_guarantee_text: "100% സംതൃപ്തി ഉറപ്പ്",
-    hero_guarantee_sub: "ഞങ്ങളുടെ ജോലിയിൽ പൂർണ്ണ സംതൃപ്തി തോന്നിയ ശേഷം മാത്രം പണം നൽകിയാൽ മതിയാകും",
+    hero_guarantee_sub: "ഗുണനിലവാരം ഉറപ്പുവരുത്തിയുള്ള വിശ്വസ്ത സേവനം",
 
     services_badge: "ഞങ്ങളുടെ സർവീസുകൾ",
-    services_title: "കണ്ണൂരിൽ ലഭ്യമാകുന്ന പ്രൊഫഷണൽ സർവീസുകൾ",
+    services_title: "കണ്ണൂരിലെ മികച്ച ക്ലീനിംഗ് & ഷിഫ്റ്റിംഗ് സർവീസുകൾ",
     services_subtitle:
-      "വീട്, വാട്ടർ ടാങ്ക്, സോഫ, ഇന്റർലോക്ക്, സോളാർ പാനൽ ക്ലീനിംഗ് മുതൽ പാക്കേഴ്‌സ് & മൂവേഴ്‌സ് വരെയുള്ള സമഗ്രമായ സർവീസുകൾ.",
-    tab_all: "എല്ലാ സർവീസുകളും",
-    tab_packers: "പാക്കേഴ്‌സ് & മൂവേഴ്‌സ്",
-    tab_residential: "റസിഡൻഷ്യൽ",
-    tab_deep: "ഡീപ് സാനിറ്റൈസേഷൻ",
-    tab_commercial: "ഓഫീസ് & സോളാർ",
+      "വീടുകൾ, വില്ലകൾ, ഓഫീസുകൾ എന്നിവയ്ക്കായി അത്യാധുനിക മെഷീനുകളോടെയുള്ള വിശ്വസ്ത സേവനം.",
+    tab_all: "എല്ലാ സർവീസുകളും (9)",
+    tab_packers: "പാക്കേഴ്സ് & മൂവേഴ്സ്",
+    tab_residential: "വീടുകൾക്ക്",
+    tab_deep: "ഡീപ് ക്ലീനിംഗ്",
+    tab_commercial: "ഓഫീസുകൾക്ക്",
+    badge_featured: "പ്രത്യേക സർവീസ്",
+    btn_view_details: "വിശദാംശങ്ങൾ കാണുക",
+    btn_whatsapp_quote: "വാട്സാപ്പിൽ വില ചോദിക്കാം",
 
-    custom_requirement_title: "പ്രത്യേക ഷിഫ്റ്റിംഗ് / ക്ലീനിംഗ് ആവശ്യങ്ങളുണ്ടോ?",
-    custom_requirement_sub:
-      "വലിയ വില്ലകൾ, സ്ഥാപനങ്ങൾ, പ്രത്യേക ഷിഫ്റ്റിംഗ് ആവശ്യങ്ങൾ എന്നിവയ്ക്കായി കസ്റ്റം പാക്കേജുകൾ ലഭ്യമാണ്.",
-    discuss_custom_scope: "വിവരങ്ങൾ സംസാരിക്കാം",
+    custom_requirement_title: "പ്രത്യേക ആവശ്യങ്ങളോ ഷിഫ്റ്റിംഗ് പ്ലാനുകളോ ഉണ്ടോ?",
+    custom_requirement_sub: "വലിയ വില്ലകൾക്കും ഓഫീസുകൾക്കും അനുയോജ്യമായ പ്രത്യേക പാക്കേജുകൾ കണ്ണൂർ ജില്ലയിലെവിടെയും ലഭ്യമാണ്.",
+    discuss_custom_scope: "വാട്സാപ്പിൽ സംസാരിക്കാം",
 
-    transformations_badge: "നേരിട്ടുള്ള റിസൾട്ട്",
-    transformations_title: "ക്ലീനിംഗിന് മുൻപും ശേഷവുമുള്ള മാറ്റങ്ങൾ",
+    transformations_badge: "യഥാർത്ഥ വർക്ക് റിസൾട്ടുകൾ",
+    transformations_title: "കണ്ണൂരിലെ ഞങ്ങളുടെ വർക്കുകളുടെ മുൻപും ശേഷവുമുള്ള മാറ്റങ്ങൾ",
     transformations_subtitle:
-      "സ്ലൈഡർ നീക്കി ക്ലീനോറ ക്ലീനിംഗിലൂടെ ഉണ്ടാകുന്ന പ്രകടമായ വ്യത്യാസം കാണുക.",
-    before: "മുമ്പ്",
-    after: "ക്ലീനോറക്ക് ശേഷം",
-    drag_slider_instruction: "വ്യത്യാസം കാണാൻ സ്ലൈഡർ ഇടത്തോട്ടും വലത്തോട്ടും നീക്കുക",
+      "മട്ടന്നൂരിലും കണ്ണൂരിലും അത്യാധുനിക മെഷീനുകൾ ഉപയോഗിച്ച് ചെയ്ത വർക്കുകളുടെ ഫോട്ടോകൾ കാണുക.",
+    slider_instruction: "വ്യത്യാസം കാണാൻ സ്ലൈഡർ ഇടത്തോട്ടും വലത്തോട്ടും നീക്കുക",
+    badge_real_case_study: "യഥാർത്ഥ വർക്ക്",
+    label_location: "സ്ഥലം",
+    label_challenge: "പ്രശ്നം",
+    label_solution: "ക്ലീനോറ ചെയ്ത പരിഹാരം",
+    label_equipment: "ഉപയോഗിച്ച മെഷീനുകൾ",
+    label_turnaround: "എടുത്ത സമയം",
+    btn_similar_quote: "ഇതേപോലുള്ള സർവീസ് ബുക്ക് ചെയ്യാം",
 
-    equipments_badge: "ആധുനിക മെഷീനുകൾ",
-    equipments_title: "പ്രൊഫഷണൽ മെഷീനുകൾ ഉപയോഗിച്ചുള്ള ക്ലീനിംഗ്",
-    equipments_subtitle:
-      "ഏറ്റവും മികച്ച യന്ത്രങ്ങളും പ്രകൃതിസൗഹൃദ ലോഷനുകളും ഉപയോഗിച്ച് കൃത്യതയുള്ള ക്ലീനിംഗ് ഉറപ്പാക്കുന്നു.",
-    equipment_1_title: "സിംഗിൾ-ഡിസ്ക് റോട്ടറി ഫ്ലോർ സ്ക്രബ്ബർ",
-    equipment_1_desc: "ടൈലുകളിലും മാർബിളിലുമുള്ള കറകൾ മാറ്റി പുത്തൻ തിളക്കം നൽകുന്ന ഹെവി ഡ്യൂട്ടി മെഷീൻ.",
-    equipment_2_title: "ഇൻഡസ്ട്രിയൽ വാക്വം & ഫോം എക്‌സ്ട്രാക്റ്റർ",
-    equipment_2_desc: "സോഫ, കാർപെറ്റ്, മെത്ത എന്നിവയിലെ പൊടിയും അലർജികളും വലിച്ചെടുക്കുന്ന ഹൈ-സക്ഷൻ മെഷീൻ.",
-    equipment_3_title: "ഹൈ-പ്രഷർ ജെറ്റ് റോട്ടറി വാഷർ",
-    equipment_3_desc: "ഇന്റർലോക്കിലെ വഴുവഴുപ്പുള്ള പായലും ചെളിയും വേഗത്തിൽ കഴുകി കളയുന്ന 140+ ബാർ പ്രഷർ വാഷർ.",
-    equipment_4_title: "ടെലിസ്കോപ്പിക് വാട്ടർ-ഫെഡ് സോളാർ ബ്രഷ്",
-    equipment_4_desc: "സോളാർ പാനലുകൾക്ക് പോറലുകൾ വീഴാതെ വൃത്തിയാക്കുന്ന പ്രത്യേക സോഫ്റ്റ് ബ്രഷ് സംവിധാനം.",
-
-    why_cleanora_badge: "പ്രത്യേകതകൾ",
-    why_cleanora_title: "എന്തുകൊണ്ട് ക്ലീനോറ തിരഞ്ഞെടുക്കണം?",
-    why_cleanora_subtitle: "വിശ്വസ്തതയും ഉത്തരവാദിത്തവുമുള്ള ജീവനക്കാരും മികച്ച റിസൾട്ടും നൽകുന്ന നിങ്ങളുടെ ലോക്കൽ ടീം.",
+    why_cleanora_badge: "ക്ലീനോറയുടെ പ്രത്യേകതകൾ",
+    why_cleanora_title: "എന്തുകൊണ്ട് ആളുകൾ ക്ലീനോറ തിരഞ്ഞെടുക്കുന്നു?",
+    why_cleanora_subtitle: "പ്രൊഫഷണൽ സമീപനം, മികച്ച ജോലിക്കാർ, വ്യക്തമായ സർവീസ്.",
     why_1_title: "100% സംതൃപ്തി ഉറപ്പ്",
-    why_1_desc: "വർക്ക് പൂർത്തിയായ ശേഷം നിങ്ങളുടെ നേരിട്ടുള്ള പരിശോധന. എന്തെങ്കിലും കുറവുണ്ടെങ്കിൽ ഉടൻ ശരിയാക്കി നൽകുന്നു.",
-    why_2_title: "പ്രൊഫഷണൽ മെഷീനുകൾ & സുരക്ഷിത ലോഷനുകൾ",
-    why_2_desc: "ഉയർന്ന നിലവാരമുള്ള യന്ത്രങ്ങളും വിഷാംശമില്ലാത്ത ക്ലീനിംഗ് ലോഷനുകളും മാത്രം ഉപയോഗിക്കുന്നു.",
-    why_3_title: "മട്ടന്നൂരിലും കണ്ണൂരിലും വേഗത്തിലുള്ള സർവീസ്",
-    why_3_desc: "കണ്ണൂർ ജില്ലയിൽ എവിടെയും കൃത്യസമയത്ത് എത്തിച്ചേരുന്ന ഉത്തരവാദിത്തമുള്ള ലോക്കൽ ടീം.",
-    why_4_title: "വ്യക്തവും സത്യസന്ധവുമായ ചാർജുകൾ",
-    why_4_desc: "മറഞ്ഞിരിക്കുന്ന ചാർജുകളില്ലാതെ മുൻകൂട്ടി കൃത്യമായ എസ്റ്റിമേറ്റ് നൽകുന്നു.",
+    why_1_desc: "കൃത്യമായ പരിശോധനയിലൂടെ 100% മികച്ച ഗുണനിലവാരം ഉറപ്പാക്കുന്നു.",
+    why_2_title: "ആധുനിക ഉപകരണങ്ങൾ",
+    why_2_desc: "മികച്ച ഫലം നൽകുന്ന ആധുനിക പ്രൊഫഷണൽ ഉപകരണങ്ങൾ ഉപയോഗിക്കുന്നു.",
+    why_3_title: "കണ്ണൂർ മുഴുവൻ സർവീസ്",
+    why_3_desc: "മട്ടന്നൂർ ആസ്ഥാനമായി കണ്ണൂർ ജില്ലയിൽ ഉടനീളം കൃത്യസമയത്ത് എത്തുന്ന ടീം.",
+    why_4_title: "വ്യക്തമായ നിരക്കുകൾ",
+    why_4_desc: "ഒളിപ്പിച്ച ചാർജുകളില്ലാതെ മുൻകൂട്ടി കൃത്യമായ എസ്റ്റിമേറ്റ് നൽകുന്നു.",
 
-    how_it_works_badge: "ലളിതമായ 3 പടികൾ",
-    how_it_works_title: "ക്ലീനോറ സർവീസ് എങ്ങനെ ബുക്ക് ചെയ്യാം?",
-    how_it_works_subtitle: "വാട്സാപ്പ് വഴിയോ ഫോൺ കോളിലൂടെയോ എളുപ്പത്തിൽ ബുക്കിംഗ് നടത്താം.",
+    why_badge: "ക്ലീനോറയുടെ പ്രത്യേകതകൾ",
+    why_title: "എന്തുകൊണ്ട് ആളുകൾ ക്ലീനോറ തിരഞ്ഞെടുക്കുന്നു?",
+    why_subtitle:
+      "വിദഗ്ധ തൊഴിലാളികളും ആധുനിക മെഷീനുകളും ഉപയോഗിച്ച് കൃത്യമായ സമയത്ത് ഏറ്റവും മികച്ച സർവീസ് നൽകുന്നു.",
+    why_card1_title: "100% സംതൃപ്തി ഉറപ്പ്",
+    why_card1_desc: "വിശ്വസ്തവും കുറ്റമറ്റതുമായ സർവീസ് ഓരോ പ്രോജക്റ്റിലും ഉറപ്പുനൽകുന്നു.",
+    why_card2_title: "സുരക്ഷിത പാക്കേഴ്സ് & മൂവേഴ്സ്",
+    why_card2_desc: "ബബിൾ റാപ്പിംഗ്, വാഹന സൗകര്യം, സുരക്ഷിതമായ ലോഡിംഗ് & അൺലോഡിംഗ് സേവനങ്ങൾ.",
+    why_card3_title: "ആധുനിക ഉപകരണങ്ങൾ",
+    why_card3_desc: "എല്ലാ പ്രതലങ്ങളും വൃത്തിയാക്കാൻ മികച്ചതും സുരക്ഷിതവുമായ ഉപകരണങ്ങൾ ഉപയോഗിക്കുന്നു.",
+    why_card4_title: "ആരോഗ്യത്തിന് സുരക്ഷിതമായ ലായനികൾ",
+    why_card4_desc: "കുടുംബങ്ങൾക്കും കുട്ടികൾക്കും തികച്ചും സുരക്ഷിതമായ ഇക്കോ-ഫ്രണ്ട്ലി ഉൽപന്നങ്ങൾ മാത്രം ഉപയോഗിക്കുന്നു.",
+    why_card5_title: "പെട്ടെന്നുള്ള സർവീസ്",
+    why_card5_desc: "മട്ടന്നൂർ കേന്ദ്രീകരിച്ച് പ്രവർത്തിക്കുന്നതിനാൽ കണ്ണൂർ ജില്ലയിൽ ഉടനീളം വേഗത്തിൽ എത്തും.",
+    why_card6_title: "വ്യക്തമായ നിരക്കുകൾ",
+    why_card6_desc: "ഒളിപ്പിച്ച ചാർജുകളില്ലാതെ മുൻകൂട്ടി കൃത്യമായ എസ്റ്റിമേറ്റ് നൽകുന്നു.",
+
+    how_it_works_badge: "ലളിതമായ 3 ഘട്ടങ്ങൾ",
+    how_it_works_title: "ക്ലീനോറ സർവീസ് ബുക്കിംഗ് എങ്ങനെ?",
+    how_it_works_subtitle: "വേഗത്തിലും എളുപ്പത്തിലും സർവീസുകൾ ബുക്ക് ചെയ്യാം.",
     step_1_num: "01",
-    step_1_title: "ആവശ്യങ്ങൾ അറിയിക്കുക",
-    step_1_desc: "നിങ്ങളുടെ വീട്, ഷിഫ്റ്റിംഗ്, ഓഫീസ്, ടാങ്ക്, സോഫ, സോളാർ അല്ലെങ്കിൽ ഇന്റർലോക്ക് എന്നിവയെക്കുറിച്ചുള്ള വിവരങ്ങൾ വാട്സാപ്പിൽ അയക്കുക.",
+    step_1_title: "വിവരങ്ങൾ വാട്സാപ്പിൽ അയക്കുക",
+    step_1_desc: "ആവശ്യങ്ങളും ഫോട്ടോകളും വാട്സാപ്പിൽ അയച്ച് തത്സമയ എസ്റ്റിമേറ്റ് നേടുക.",
     step_2_num: "02",
-    step_2_title: "എസ്റ്റിമേറ്റും സമയവും ഉറപ്പാക്കുക",
-    step_2_desc: "നിങ്ങൾക്ക് അനുയോജ്യമായ തീയതിയും സമയവും കൃത്യമായ തുകയും ഉറപ്പാക്കുന്നു.",
+    step_2_title: "കൃത്യസമയത്ത് സർവീസ്",
+    step_2_desc: "ആധുനിക ഉപകരണങ്ങളോടും സുരക്ഷിത സാമഗ്രികളോടും കൂടി ഞങ്ങളുടെ ടീം എത്തുന്നു.",
     step_3_num: "03",
-    step_3_title: "നിങ്ങളുടെ സ്ഥലം തിളങ്ങുന്നു",
-    step_3_desc: "ഞങ്ങളുടെ വിദഗ്ദ്ധ സംഘം ആധുനിക മെഷീനുകളുമായി എത്തി മികച്ച രീതിയിൽ പൂർത്തിയാക്കി നൽകുന്നു.",
+    step_3_title: "കണ്ട് ബോധ്യപ്പെട്ട് പൂർത്തിയാക്കുക",
+    step_3_desc: "ജോലി പൂർണ്ണമായി കണ്ട് ബോധ്യപ്പെട്ട് സംതൃപ്തിയോടെ സർവീസ് പൂർത്തിയാക്കുക.",
+
+    equipments_badge: "ഞങ്ങളുടെ ഉപകരണങ്ങൾ",
+    equipments_title: "അത്യാധുനിക പ്രൊഫഷണൽ ഉപകരണങ്ങൾ",
+    equipments_subtitle: "മികച്ച ക്ലീനിംഗ് ഫലം ഉറപ്പാക്കാൻ ക്ലീനോറ ആധുനിക ഉപകരണങ്ങൾ ഉപയോഗിക്കുന്നു.",
+    equipments_feat_badge: "ആധുനിക ഉപകരണങ്ങൾ",
+    equipments_feat_title: "മികച്ച ഫലം നൽകുന്ന ആധുനിക സാങ്കേതികവിദ്യ",
+    equipments_feat_desc: "വീടുകൾക്കും സ്ഥാപനങ്ങൾക്കും അനുയോജ്യമായ പ്രൊഫഷണൽ ഉപകരണങ്ങൾ ഞങ്ങൾക്കുണ്ട്.",
+
+    equipment_1_title: "തറ വൃത്തിയാക്കുന്ന ഉപകരണങ്ങൾ",
+    equipment_1_desc: "ടൈലുകളും തറകളും കറകളില്ലാതെ വൃത്തിയാക്കാൻ അനുയോജ്യമായ ഉപകരണങ്ങൾ.",
+    equipment_2_title: "പ്രഷർ വാഷിംഗ് ഉപകരണങ്ങൾ",
+    equipment_2_desc: "ഇന്റർലോക്കിലെയും മുറ്റത്തെയും പായലും അഴുക്കും മാറ്റാനുള്ള ഉപകരണങ്ങൾ.",
+    equipment_3_title: "സോഫ & ഫാബ്രിക് ക്ലീനറുകൾ",
+    equipment_3_desc: "സോഫകളിലെയും മെത്തകളിലെയും അഴുക്കും പൊടിയും നീക്കം ചെയ്യാനുള്ള ഉപകരണങ്ങൾ.",
+    equipment_4_title: "സോളാർ പാനൽ ക്ലീനറുകൾ",
+    equipment_4_desc: "സോളാർ പാനലുകൾ പോറലുകളില്ലാതെ വൃത്തിയാക്കാനുള്ള പ്രത്യേക ഉപകരണങ്ങൾ.",
 
     about_badge: "ക്ലീനോറയെക്കുറിച്ച്",
-    about_title: "കണ്ണൂരിൽ വൃത്തിയുള്ളതും ആരോഗ്യകരവുമായ ഇടങ്ങൾ സൃഷ്ടിക്കുന്നു",
+    about_title: "മട്ടന്നൂരിലെ പ്രൊഫഷണൽ ക്ലീനിംഗ് & മൂവേഴ്സ് ടീം",
+    about_subtitle:
+      "'Clean Spaces... Healthy Lives...' എന്ന ലക്ഷ്യത്തോടെ കണ്ണൂരിലെ വീടുകൾക്കും സ്ഥാപനങ്ങൾക്കും ശുചിത്വം നൽകുന്നു.",
     about_p1:
-      "മട്ടന്നൂർ കേന്ദ്രമായി പ്രവർത്തിക്കുന്ന ക്ലീനോറ, കേരളത്തിലെ വീടുകൾക്കും സ്ഥാപനങ്ങൾക്കും ഏറ്റവും മികച്ച പ്രൊഫഷണൽ ക്ലീനിംഗും വിശ്വസ്തമായ പാക്കേഴ്‌സ് & മൂവേഴ്‌സ് സേവനവും ലഭ്യമാക്കുന്നു.",
+      "വൃത്തിയും ശുചിത്വവുമുള്ള ചുറ്റുപാടാണ് നല്ല ആരോഗ്യത്തിന്റെ അടിത്തറ. മട്ടന്നൂർ ആസ്ഥാനമായി കണ്ണൂർ ജില്ലയിലുടനീളം മികച്ച സർവീസ് നൽകാൻ ഞങ്ങൾ പ്രതിജ്ഞാബദ്ധരാണ്.",
     about_p2:
       "അത്യാധുനിക ഉപകരണങ്ങളും പരിശീലനം ലഭിച്ച ജോലിക്കാരും സുരക്ഷിതമായ രീതികളും ഉപയോഗിച്ച് നിങ്ങളുടെ കുടുംബത്തിന്റെ ആരോഗ്യവും സുരക്ഷയും ഞങ്ങൾ സംരക്ഷിക്കുന്നു.",
     about_btn: "കൂടുതൽ വിവരങ്ങൾ വായിക്കുക",
@@ -349,7 +436,7 @@ export const translations: Record<"en" | "ml", TranslationDictionary> = {
     final_cta_call: "ഇപ്പോൾ വിളിക്കാം +91 94968 40540",
 
     footer_bio:
-      "മട്ടന്നൂർ, കണ്ണൂർ കേന്ദ്രീകരിച്ച് പ്രവർത്തിക്കുന്ന വീട്, ഓഫീസ്, വാട്ടർ ടാങ്ക്, സോഫ, ഇന്റർലോക്ക്, സോളാർ പാനൽ ഡീപ് ക്ലീനിംഗും പാക്കേഴ്‌സ് & മൂവേഴ്‌സ് ഷിഫ്റ്റിംഗ് സർവീസും.",
+      "മട്ടന്നൂർ, കണ്ണൂർ കേന്ദ്രീകരിച്ച് പ്രവർത്തിക്കുന്ന വീട്, ഓഫീസ്, വാട്ടർ ടാങ്ക്, സോഫ, ഇന്റർലോക്ക്, സോളാർ പാനൽ ഡീപ് ക്ലീനിംഗും പാക്കേഴ്സ് & മൂവേഴ്സ് ഷിഫ്റ്റിംഗ് സർവീസും.",
     footer_nav_title: "പ്രധാന ലിങ്കുകൾ",
     footer_services_title: "സർവീസുകൾ",
     footer_contact_title: "ക്ലീനോറയുമായി ബന്ധപ്പെടുക",

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import Image from "next/image";
@@ -11,18 +11,18 @@ export const ServiceAreas: React.FC = () => {
   const { language, t } = useLanguage();
 
   const areas = [
-    { name: "Mattanur (മട്ടന്നൂർ)", highlight: true },
-    { name: "Kannur Town (കണ്ണൂർ)", highlight: true },
-    { name: "Thalassery (തലശ്ശേരി)", highlight: false },
-    { name: "Payyanur (പയ്യന്നൂർ)", highlight: false },
-    { name: "Taliparamba (തളിപ്പറമ്പ്)", highlight: false },
-    { name: "Iritty (ഇരിട്ടി)", highlight: true },
-    { name: "Kuthuparamba (കൂത്തുപറമ്പ്)", highlight: true },
-    { name: "Anjarakandy (അഞ്ചരക്കണ്ടി)", highlight: false },
-    { name: "Chakkarakkal (ചക്കരക്കൽ)", highlight: false },
-    { name: "Panoor (പാനൂർ)", highlight: false },
-    { name: "Pinarayi (പിണറായി)", highlight: false },
-    { name: "Across Kannur District (കണ്ണൂർ ജില്ല മുഴുവൻ)", highlight: true },
+    { nameEn: "Mattanur", nameMl: "മട്ടന്നൂർ", highlight: true },
+    { nameEn: "Kannur Town", nameMl: "കണ്ണൂർ ടൗൺ", highlight: true },
+    { nameEn: "Thalassery", nameMl: "തലശ്ശേരി", highlight: false },
+    { nameEn: "Payyanur", nameMl: "പയ്യന്നൂർ", highlight: false },
+    { nameEn: "Taliparamba", nameMl: "തളിപ്പറമ്പ്", highlight: false },
+    { nameEn: "Iritty", nameMl: "ഇരിട്ടി", highlight: true },
+    { nameEn: "Kuthuparamba", nameMl: "കൂത്തുപറമ്പ്", highlight: true },
+    { nameEn: "Anjarakandy", nameMl: "അഞ്ചരക്കണ്ടി", highlight: false },
+    { nameEn: "Chakkarakkal", nameMl: "ചക്കരക്കൽ", highlight: false },
+    { nameEn: "Panoor", nameMl: "പാനൂർ", highlight: false },
+    { nameEn: "Pinarayi", nameMl: "പിണറായി", highlight: false },
+    { nameEn: "Across Kannur District", nameMl: "കണ്ണൂർ ജില്ല മുഴുവൻ", highlight: true },
   ];
 
   return (
@@ -112,7 +112,7 @@ export const ServiceAreas: React.FC = () => {
             >
               {areas.map((area) => (
                 <div
-                  key={area.name}
+                  key={area.nameEn}
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
@@ -127,7 +127,7 @@ export const ServiceAreas: React.FC = () => {
                   }}
                 >
                   <MapPin size={13} color={area.highlight ? "var(--color-primary)" : "#94a3b8"} />
-                  <span>{area.name}</span>
+                  <span>{language === "ml" ? area.nameMl : area.nameEn}</span>
                 </div>
               ))}
             </div>

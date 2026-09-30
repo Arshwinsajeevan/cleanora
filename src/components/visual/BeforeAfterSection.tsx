@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
-import { Sparkles, MessageCircle, Calendar } from "lucide-react";
+import { Sparkles, MessageCircle } from "lucide-react";
 import { BeforeAfterSlider } from "./BeforeAfterSlider";
 import { galleryItems } from "@/data/gallery";
 import { createWhatsAppUrl } from "@/data/site";
@@ -28,7 +28,7 @@ export const BeforeAfterSection: React.FC = () => {
             The Cleanora Transformation Standard
           </h2>
           <p className="section-subtitle">
-            Slide across our cleaning benchmarks to see how our trained team and industrial gear tackle heavy kitchen grease, mineral limescale, and deep dirt.
+            Slide across our cleaning benchmarks to see how our trained team and modern equipment tackle heavy kitchen grease, mineral limescale, and deep dirt.
           </p>
         </div>
 
@@ -78,7 +78,7 @@ export const BeforeAfterSection: React.FC = () => {
             />
           )}
 
-          {/* Prompt to pre-book */}
+          {/* Direct CTA */}
           <div
             style={{
               marginTop: "28px",
@@ -91,11 +91,11 @@ export const BeforeAfterSection: React.FC = () => {
             }}
           >
             <span style={{ fontSize: "0.9375rem", color: "var(--text-secondary)", fontWeight: 500 }}>
-              Be among our inaugural clients in Kannur:
+              Need a similar spotless result for your space?
             </span>
             <a
               href={createWhatsAppUrl(
-                `Hi Cleanora, I would like to book a priority cleaning slot for your launch week in Kannur.`
+                `Hi Cleanora, I would like to book a cleaning service from Malabar Plaza, Mattanur.`
               )}
               target="_blank"
               rel="noopener noreferrer"
@@ -115,8 +115,8 @@ export const BeforeAfterSection: React.FC = () => {
                 boxShadow: "0 2px 8px rgba(37, 211, 102, 0.25)",
               }}
             >
-              <Calendar size={15} />
-              <span>Pre-Book Inaugural Slot</span>
+              <MessageCircle size={15} />
+              <span>Book via WhatsApp</span>
             </a>
           </div>
         </div>

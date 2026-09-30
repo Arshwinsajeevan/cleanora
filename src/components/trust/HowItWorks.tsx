@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import { MessageCircle, ClipboardCheck, MessageSquare, Sparkles } from "lucide-react";
@@ -46,13 +46,13 @@ export const HowItWorks: React.FC = () => {
           </p>
         </div>
 
-        {/* Steps Grid */}
+        {/* Steps Grid: Stacks cleanly 1-column on mobile, 3-columns on desktop */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "28px",
+            gap: "24px",
             position: "relative",
+            width: "100%",
           }}
           className="steps-grid"
         >
@@ -61,7 +61,7 @@ export const HowItWorks: React.FC = () => {
               key={step.num}
               style={{
                 backgroundColor: "#f8fafc",
-                padding: "32px 26px",
+                padding: "28px 24px",
                 borderRadius: "18px",
                 border: "1px solid #e2e8f0",
                 boxShadow: "0 2px 8px rgba(15, 23, 42, 0.03)",
@@ -69,6 +69,8 @@ export const HowItWorks: React.FC = () => {
                 flexDirection: "column",
                 justifyContent: "space-between",
                 position: "relative",
+                width: "100%",
+                boxSizing: "border-box",
               }}
             >
               <div>
@@ -77,13 +79,13 @@ export const HowItWorks: React.FC = () => {
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    marginBottom: "20px",
+                    marginBottom: "16px",
                   }}
                 >
                   <div
                     style={{
-                      width: "46px",
-                      height: "46px",
+                      width: "44px",
+                      height: "44px",
                       borderRadius: "12px",
                       backgroundColor: idx === 1 ? "#ecfdf5" : "#eef4fc",
                       display: "flex",
@@ -97,7 +99,7 @@ export const HowItWorks: React.FC = () => {
                   <span
                     style={{
                       fontFamily: "var(--font-heading)",
-                      fontSize: "2rem",
+                      fontSize: "1.75rem",
                       fontWeight: 800,
                       color: "#cbd5e1",
                     }}
@@ -109,10 +111,10 @@ export const HowItWorks: React.FC = () => {
                 <h3
                   style={{
                     fontFamily: "var(--font-heading)",
-                    fontSize: "1.2rem",
+                    fontSize: "1.15rem",
                     fontWeight: 700,
                     color: "var(--text-primary)",
-                    marginBottom: "10px",
+                    marginBottom: "8px",
                     lineHeight: 1.3,
                   }}
                 >
@@ -130,7 +132,7 @@ export const HowItWorks: React.FC = () => {
                 </p>
               </div>
 
-              <div style={{ marginTop: "20px", paddingTop: "14px", borderTop: "1px solid #e2e8f0" }}>
+              <div style={{ marginTop: "18px", paddingTop: "12px", borderTop: "1px solid #e2e8f0" }}>
                 <span
                   style={{
                     fontSize: "0.75rem",
@@ -148,9 +150,9 @@ export const HowItWorks: React.FC = () => {
         </div>
 
         {/* Action Button */}
-        <div style={{ textAlign: "center", marginTop: "40px" }}>
+        <div style={{ textAlign: "center", marginTop: "36px" }}>
           <a
-            href={createWhatsAppUrl(language === "ml" ? "നമസ്കാരം ക്ലീനോറ, ക്ലീനിംഗ് സർവീസ് ബുക്ക് ചെയ്യാൻ ആഗ്രഹിക്കുന്നു." : "Hi Cleanora, I would like to book a cleaning service.")}
+            href={createWhatsAppUrl(language === "ml" ? "നമസ്കാരം ക്ലീനോറ, ക്ലീനിംഗ് / ഷിഫ്റ്റിംഗ് സർവീസ് ബുക്ക് ചെയ്യാൻ ആഗ്രഹിക്കുന്നു." : "Hi Cleanora, I would like to book a cleaning or shifting service.")}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackEvent("whatsapp_click", { location: "how_it_works" })}
