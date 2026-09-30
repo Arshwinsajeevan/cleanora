@@ -1,10 +1,8 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { ShieldCheck, Sparkles, CheckCircle2, MessageCircle, MapPin, Wrench, HeartHandshake } from "lucide-react";
-import { siteConfig, createWhatsAppUrl } from "@/data/site";
+import { Info, ShieldCheck, Wrench, Sparkles, HeartHandshake, MapPin } from "lucide-react";
 import { FinalCTA } from "@/components/cta/FinalCTA";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -13,49 +11,66 @@ export default function AboutPage() {
 
   return (
     <>
-      {/* Banner */}
+      {/* Page Header */}
       <section
         style={{
-          backgroundColor: "#071426",
+          padding: "clamp(36px, 6vw, 60px) 16px clamp(32px, 5vw, 48px)",
+          backgroundColor: "#071e3d",
           color: "#ffffff",
-          padding: "64px 0",
           textAlign: "center",
+          position: "relative",
+          width: "100%",
         }}
       >
-        <div className="container" style={{ maxWidth: "780px" }}>
+        <div className="container" style={{ maxWidth: "800px", padding: 0 }}>
           <div
             style={{
               display: "inline-flex",
               alignItems: "center",
               gap: "6px",
-              padding: "6px 14px",
+              padding: "5px 14px",
               borderRadius: "9999px",
-              backgroundColor: "rgba(255, 255, 255, 0.12)",
+              backgroundColor: "rgba(16, 185, 129, 0.15)",
+              border: "1px solid rgba(16, 185, 129, 0.3)",
               color: "#34d399",
-              fontSize: "0.8125rem",
+              fontSize: "0.75rem",
               fontWeight: 700,
               textTransform: "uppercase",
               letterSpacing: "0.05em",
-              marginBottom: "16px",
+              marginBottom: "14px",
             }}
           >
-            <Sparkles size={14} />
+            <Info size={13} />
             <span>{t("about_badge")}</span>
           </div>
 
           <h1
             style={{
               fontFamily: "var(--font-heading)",
-              fontSize: "clamp(2.2rem, 4vw, 3rem)",
+              fontSize: "clamp(1.75rem, 3.5vw, 2.65rem)",
               fontWeight: 800,
-              marginBottom: "16px",
+              color: "#ffffff",
+              marginBottom: "12px",
+              lineHeight: 1.2,
+              wordBreak: "normal",
+              overflowWrap: "break-word",
             }}
           >
             {t("about_title")}
           </h1>
 
-          <p style={{ fontSize: "1.0625rem", color: "#cbd5e1", lineHeight: 1.65 }}>
-            {t("about_p1")}
+          <p
+            style={{
+              fontSize: "clamp(0.9rem, 2vw, 1.05rem)",
+              color: "#cbd5e1",
+              lineHeight: 1.65,
+              maxWidth: "680px",
+              margin: "0 auto",
+              wordBreak: "normal",
+              overflowWrap: "break-word",
+            }}
+          >
+            {t("about_subtitle")}
           </p>
         </div>
       </section>
@@ -67,67 +82,81 @@ export default function AboutPage() {
             style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
-              gap: "56px",
+              gap: "40px",
               alignItems: "center",
-              marginBottom: "72px",
+              marginBottom: "56px",
+              width: "100%",
             }}
             className="about-split"
           >
-            <div>
+            {/* Left Content */}
+            <div style={{ width: "100%" }}>
               <div className="section-badge">
                 <MapPin size={13} />
                 <span>{language === "ml" ? "ഞങ്ങളുടെ ദൗത്യം" : "Our Mission"}</span>
               </div>
-              <h2 className="section-title">
+              <h2
+                className="section-title"
+                style={{
+                  textAlign: "left",
+                  fontSize: "clamp(1.4rem, 2.5vw, 2rem)",
+                  lineHeight: 1.25,
+                  marginBottom: "16px",
+                }}
+              >
                 {language === "ml"
                   ? "ശുദ്ധവും ആരോഗ്യകരവുമായ വീടുകൾക്കായി ഞങ്ങൾ പ്രതിജ്ഞാബദ്ധരാണ്."
                   : "Born out of a genuine passion for spotless living spaces."}
               </h2>
-              <p style={{ fontSize: "1rem", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "16px" }}>
+
+              <p style={{ fontSize: "0.95rem", color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: "14px" }}>
                 {t("about_p1")}
               </p>
-              <p style={{ fontSize: "0.9375rem", color: "var(--text-secondary)", lineHeight: 1.65, marginBottom: "24px" }}>
+              <p style={{ fontSize: "0.92rem", color: "var(--text-secondary)", lineHeight: 1.65, marginBottom: "22px" }}>
                 {t("about_p2")}
               </p>
 
+              {/* Quality Guarantee Box */}
               <div
                 style={{
-                  padding: "18px 22px",
+                  padding: "16px 20px",
                   borderRadius: "14px",
                   backgroundColor: "#ecfdf5",
                   border: "1px solid #a7f3d0",
                   display: "flex",
                   alignItems: "center",
-                  gap: "14px",
+                  gap: "12px",
                 }}
               >
-                <ShieldCheck size={28} color="#059669" style={{ flexShrink: 0 }} />
+                <ShieldCheck size={26} color="#059669" style={{ flexShrink: 0 }} />
                 <div>
-                  <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: "#065f46" }}>
+                  <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "#065f46" }}>
                     {t("hero_guarantee_text")}
                   </div>
-                  <div style={{ fontSize: "0.8125rem", color: "#047857" }}>
+                  <div style={{ fontSize: "0.8rem", color: "#047857", lineHeight: 1.4, marginTop: "2px" }}>
                     {language === "ml"
                       ? "വർക്ക് പൂർത്തിയായ ശേഷം നിങ്ങളുടെ നേരിട്ടുള്ള പരിശോധന. എന്തെങ്കിലും കുറവുണ്ടെങ്കിൽ ഉടൻ ശരിയാക്കി നൽകുന്നു."
-                      : "We inspect every detail with you. If any spot needs extra attention, we re-clean it on the spot."}
+                      : "We inspect every detail with you. If any spot needs extra attention, we ensure complete satisfaction on the spot."}
                   </div>
                 </div>
               </div>
             </div>
 
+            {/* Right Image */}
             <div
               style={{
                 position: "relative",
-                borderRadius: "20px",
+                borderRadius: "18px",
                 overflow: "hidden",
                 aspectRatio: "4/3",
-                boxShadow: "0 20px 40px -10px rgba(15,23,42,0.15)",
+                boxShadow: "0 16px 36px -8px rgba(15,23,42,0.12)",
                 backgroundColor: "#071426",
                 border: "1px solid #e2e8f0",
+                width: "100%",
               }}
             >
               <Image
-                src="/images/about us.png"
+                src="/images/about-us.png"
                 alt="Cleanora Team Cleanliness Standard Mattanur Kannur"
                 fill
                 sizes="(max-width: 768px) 100vw, 550px"
@@ -141,31 +170,32 @@ export default function AboutPage() {
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "28px",
+              gap: "24px",
+              width: "100%",
             }}
             className="pillars-grid"
           >
             {[
               {
-                icon: <Wrench size={26} color="#0f3b74" />,
-                title: language === "ml" ? "പ്രൊഫഷണൽ മെഷീനുകൾ" : "Professional Machinery",
+                icon: <Wrench size={24} color="#0f3b74" />,
+                title: language === "ml" ? "ആധുനിക ഉപകരണങ്ങൾ" : "Modern Equipment",
                 desc: language === "ml"
-                  ? "റോട്ടറി സിംഗിൾ-ഡിസ്ക് സ്ക്രബ്ബറുകൾ, ഹൈ-പ്രഷർ വാഷറുകൾ, വാക്വം എക്സ്ട്രാക്ടറുകൾ."
-                  : "We utilize rotary single-disc floor scrubbers, wet/dry extraction vacuums, and high-pressure jet gear.",
+                  ? "വീടുകൾക്കും സ്ഥാപനങ്ങൾക്കും അനുയോജ്യമായ പ്രൊഫഷണൽ ഉപകരണങ്ങൾ ഞങ്ങൾക്കുണ്ട്."
+                  : "Equipped with high-grade commercial machinery and specialized tools for all surfaces.",
               },
               {
-                icon: <Sparkles size={26} color="#059669" />,
-                title: language === "ml" ? "സുരക്ഷിത ലോഷനുകൾ" : "Safe Cleaning Agents",
+                icon: <Sparkles size={24} color="#059669" />,
+                title: language === "ml" ? "സുരക്ഷിത ലായനികൾ" : "Safe Cleaning Agents",
                 desc: language === "ml"
-                  ? "വിഷാംശമില്ലാത്തതും പ്രതലങ്ങൾക്ക് കേടുപാടുകൾ വരുത്താത്തതുമായ ക്ലീനിംഗ് ലോഷനുകൾ."
-                  : "Eco-safe degreasers and tile descalers that remove tough stains without damaging surfaces.",
+                  ? "വിഷാംശമില്ലാത്തതും പ്രതലങ്ങൾക്ക് കേടുപാടുകൾ വരുത്താത്തതുമായ സുരക്ഷിത ക്ലീനിംഗ് ഉൽപന്നങ്ങൾ."
+                  : "Eco-safe formulations that remove tough stains without damaging surfaces or indoor air.",
               },
               {
-                icon: <HeartHandshake size={26} color="#10b981" />,
+                icon: <HeartHandshake size={24} color="#10b981" />,
                 title: language === "ml" ? "ലോക്കൽ ഉത്തരവാദിത്തം" : "Local Accountability",
                 desc: language === "ml"
-                  ? "മട്ടന്നൂർ കേന്ദ്രമായി കൃത്യസമയത്ത് എത്തിച്ചേരുന്ന വിശ്വസ്തരായ ജോലിക്കാർ."
-                  : "Based in Mattanur, Kannur, we provide punctual local staff and personalized accountability.",
+                  ? "മട്ടന്നൂർ കേന്ദ്രമായി കൃത്യസമയത്ത് എത്തിച്ചേരുന്ന വിശ്വസ്തരായ തൊഴിലാളികൾ."
+                  : "Based locally in Mattanur, Kannur, we provide prompt response and reliable service.",
               },
             ].map((p, idx) => (
               <div
@@ -173,29 +203,33 @@ export default function AboutPage() {
                 style={{
                   backgroundColor: "#f8fafc",
                   borderRadius: "16px",
-                  padding: "32px 28px",
+                  padding: "26px 22px",
                   border: "1px solid #e2e8f0",
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "100%",
+                  boxSizing: "border-box",
                 }}
               >
                 <div
                   style={{
-                    width: "50px",
-                    height: "50px",
+                    width: "46px",
+                    height: "46px",
                     borderRadius: "12px",
                     backgroundColor: "#ffffff",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    marginBottom: "18px",
+                    marginBottom: "16px",
                     boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
                   }}
                 >
                   {p.icon}
                 </div>
-                <h3 style={{ fontFamily: "var(--font-heading)", fontSize: "1.1875rem", fontWeight: 700, marginBottom: "8px" }}>
+                <h3 style={{ fontFamily: "var(--font-heading)", fontSize: "1.1rem", fontWeight: 700, marginBottom: "8px", color: "var(--text-primary)" }}>
                   {p.title}
                 </h3>
-                <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)", lineHeight: 1.55 }}>
+                <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", lineHeight: 1.55 }}>
                   {p.desc}
                 </p>
               </div>

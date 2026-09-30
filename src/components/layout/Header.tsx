@@ -137,7 +137,7 @@ export const Header: React.FC = () => {
             gap: "10px",
           }}
         >
-          {/* Logo Section: Protected flex-shrink 0 */}
+          {/* Logo Section */}
           <Link
             href="/"
             prefetch={true}
@@ -189,12 +189,12 @@ export const Header: React.FC = () => {
                   fontSize: "0.625rem",
                   fontWeight: 700,
                   color: "var(--color-accent)",
-                  letterSpacing: "0.04em",
+                  letterSpacing: "0.05em",
                   textTransform: "uppercase",
                   whiteSpace: "nowrap",
                 }}
               >
-                {language === "ml" ? "മട്ടന്നൂർ • കണ്ണൂർ" : "Cleaning • Kannur"}
+                {language === "ml" ? "ഡീപ് ക്ലീനിംഗ്" : "Deep Cleaning"}
               </div>
             </div>
           </Link>

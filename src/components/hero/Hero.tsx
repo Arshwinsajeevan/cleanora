@@ -36,8 +36,8 @@ export const Hero: React.FC = () => {
     <section
       style={{
         position: "relative",
-        paddingTop: "clamp(40px, 6vw, 68px)",
-        paddingBottom: "clamp(44px, 6vw, 64px)",
+        paddingTop: "clamp(28px, 5vw, 56px)",
+        paddingBottom: "clamp(36px, 6vw, 64px)",
         backgroundColor: "var(--bg-page)",
         overflow: "hidden",
         width: "100%",
@@ -57,6 +57,7 @@ export const Hero: React.FC = () => {
           <div style={{ display: "flex", flexDirection: "column", gap: "16px", minWidth: 0 }}>
             {/* Top Micro Badges */}
             <div
+              className="hero-badges"
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -68,26 +69,18 @@ export const Hero: React.FC = () => {
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: "5px",
-                  padding: "4px 10px",
+                  gap: "6px",
+                  padding: "5px 12px",
                   borderRadius: "9999px",
-                  backgroundColor: "var(--color-accent-subtle)",
-                  border: "1px solid var(--color-accent-border)",
-                  color: "var(--color-accent)",
-                  fontSize: "0.72rem",
+                  backgroundColor: "rgba(16, 185, 129, 0.08)",
+                  border: "1px solid rgba(16, 185, 129, 0.25)",
+                  color: "#059669",
+                  fontSize: "0.75rem",
                   fontWeight: 700,
+                  letterSpacing: "0.02em",
                 }}
               >
-                <span
-                  style={{
-                    width: "6px",
-                    height: "6px",
-                    borderRadius: "50%",
-                    backgroundColor: "#10b981",
-                    boxShadow: "0 0 6px #10b981",
-                  }}
-                />
-                <MapPin size={11} />
+                <MapPin size={13} />
                 <span>{t("hero_badge_location")}</span>
               </div>
 
@@ -95,17 +88,18 @@ export const Hero: React.FC = () => {
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: "5px",
-                  padding: "4px 10px",
+                  gap: "6px",
+                  padding: "5px 12px",
                   borderRadius: "9999px",
-                  backgroundColor: "var(--bg-subtle)",
+                  backgroundColor: "#ffffff",
                   border: "1px solid var(--border-light)",
                   color: "var(--text-secondary)",
-                  fontSize: "0.72rem",
+                  fontSize: "0.75rem",
                   fontWeight: 600,
+                  boxShadow: "0 1px 4px rgba(0,0,0,0.03)",
                 }}
               >
-                <Sparkles size={11} color="#059669" />
+                <Sparkles size={13} color="#059669" />
                 <span>{t("hero_badge_slogan")}</span>
               </div>
             </div>
@@ -114,17 +108,25 @@ export const Hero: React.FC = () => {
             <h1
               style={{
                 fontFamily: "var(--font-heading)",
-                fontSize: language === "ml" ? "clamp(1.35rem, 2.2vw, 1.95rem)" : "clamp(1.8rem, 3.2vw, 2.75rem)",
-                fontWeight: language === "ml" ? 700 : 800,
-                lineHeight: language === "ml" ? 1.35 : 1.18,
-                letterSpacing: language === "ml" ? "normal" : "-0.025em",
+                fontSize: language === "ml" ? "clamp(1.5rem, 4.5vw, 2.3rem)" : "clamp(1.95rem, 5.2vw, 3.1rem)",
+                fontWeight: 800,
+                lineHeight: language === "ml" ? 1.3 : 1.16,
+                letterSpacing: language === "ml" ? "normal" : "-0.03em",
                 color: "var(--text-primary)",
                 wordBreak: "normal",
                 overflowWrap: "break-word",
               }}
             >
               {t("hero_title_line1")}{" "}
-              <span style={{ color: "var(--color-accent)", display: "inline" }}>
+              <span
+                style={{
+                  color: "var(--color-accent)",
+                  display: "inline",
+                  backgroundImage: "linear-gradient(135deg, #059669 0%, #10b981 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
                 {t("hero_title_line2")}
               </span>
             </h1>
@@ -132,10 +134,10 @@ export const Hero: React.FC = () => {
             {/* Supporting Subheadline */}
             <p
               style={{
-                fontSize: language === "ml" ? "0.85rem" : "0.9375rem",
-                lineHeight: 1.6,
+                fontSize: language === "ml" ? "0.92rem" : "1rem",
+                lineHeight: 1.68,
                 color: "var(--text-secondary)",
-                maxWidth: "520px",
+                maxWidth: "540px",
                 wordBreak: "normal",
                 overflowWrap: "break-word",
               }}
@@ -145,12 +147,13 @@ export const Hero: React.FC = () => {
 
             {/* Call to Actions */}
             <div
+              className="hero-ctas"
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "10px",
+                gap: "12px",
                 flexWrap: "wrap",
-                paddingTop: "2px",
+                paddingTop: "4px",
               }}
             >
               <a
@@ -160,13 +163,15 @@ export const Hero: React.FC = () => {
                 onClick={handleWhatsAppClick}
                 className="btn btn-whatsapp btn-lg"
                 style={{
-                  padding: "10px 18px",
-                  borderRadius: "10px",
+                  padding: "13px 24px",
+                  borderRadius: "12px",
                   fontWeight: 700,
-                  fontSize: "0.875rem",
+                  fontSize: "0.9375rem",
+                  flex: "1 1 200px",
+                  maxWidth: "280px",
                 }}
               >
-                <MessageCircle size={16} />
+                <MessageCircle size={18} />
                 <span>{t("hero_cta_whatsapp")}</span>
               </a>
 
@@ -175,41 +180,46 @@ export const Hero: React.FC = () => {
                 prefetch={true}
                 className="btn btn-outline btn-lg"
                 style={{
-                  padding: "10px 18px",
-                  borderRadius: "10px",
+                  padding: "13px 22px",
+                  borderRadius: "12px",
                   fontWeight: 600,
-                  fontSize: "0.875rem",
+                  fontSize: "0.9375rem",
+                  flex: "1 1 180px",
+                  maxWidth: "240px",
                 }}
               >
                 <span>{t("hero_cta_services")}</span>
-                <ArrowRight size={14} />
+                <ArrowRight size={15} />
               </Link>
             </div>
 
-            {/* Trust Points */}
+            {/* Trust Points Pill Bar */}
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "12px",
+                gap: "14px",
                 flexWrap: "wrap",
-                paddingTop: "12px",
-                borderTop: "1px solid var(--border-light)",
-                marginTop: "2px",
-                fontSize: "0.76rem",
+                padding: "10px 14px",
+                borderRadius: "12px",
+                backgroundColor: "#ffffff",
+                border: "1px solid var(--border-light)",
+                marginTop: "6px",
+                fontSize: "0.8125rem",
                 color: "var(--text-secondary)",
+                boxShadow: "0 1px 4px rgba(0,0,0,0.02)",
               }}
             >
-              <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
-                <CheckCircle2 size={14} color="#059669" />
+              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                <CheckCircle2 size={15} color="#059669" />
                 <span style={{ fontWeight: 600 }}>{language === "ml" ? "100% സംതൃപ്തി ഉറപ്പ്" : "100% Guaranteed"}</span>
               </div>
-              <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
-                <Truck size={14} color="var(--color-primary)" />
+              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                <Truck size={15} color="var(--color-primary)" />
                 <span style={{ fontWeight: 600 }}>{language === "ml" ? "പാക്കേഴ്‌സ് & മൂവേഴ്‌സ്" : "Packers & Movers"}</span>
               </div>
-              <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
-                <ShieldCheck size={14} color="#059669" />
+              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                <ShieldCheck size={15} color="#059669" />
                 <span style={{ fontWeight: 600 }}>{language === "ml" ? "വ്യക്തമായ ചാർജുകൾ" : "Upfront Pricing"}</span>
               </div>
             </div>
@@ -220,9 +230,9 @@ export const Hero: React.FC = () => {
             <div
               style={{
                 position: "relative",
-                borderRadius: "16px",
+                borderRadius: "20px",
                 overflow: "hidden",
-                boxShadow: "0 10px 25px -8px rgba(15, 23, 42, 0.08)",
+                boxShadow: "0 18px 40px -10px rgba(7, 30, 61, 0.14)",
                 aspectRatio: "4/3",
                 backgroundColor: "#f1f5f9",
                 border: "1px solid var(--border-light)",
@@ -241,25 +251,26 @@ export const Hero: React.FC = () => {
               <div
                 style={{
                   position: "absolute",
-                  bottom: "10px",
-                  left: "10px",
-                  right: "10px",
-                  backgroundColor: "rgba(255, 255, 255, 0.95)",
-                  backdropFilter: "blur(12px)",
-                  padding: "10px 14px",
-                  borderRadius: "12px",
-                  border: "1px solid var(--border-light)",
+                  bottom: "12px",
+                  left: "12px",
+                  right: "12px",
+                  backgroundColor: "rgba(255, 255, 255, 0.94)",
+                  backdropFilter: "blur(14px)",
+                  WebkitBackdropFilter: "blur(14px)",
+                  padding: "12px 16px",
+                  borderRadius: "14px",
+                  border: "1px solid rgba(255, 255, 255, 0.8)",
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
-                  boxShadow: "0 4px 14px rgba(0,0,0,0.06)",
+                  boxShadow: "0 8px 24px rgba(0,0,0,0.08)",
                 }}
               >
                 <div style={{ minWidth: 0 }}>
-                  <div style={{ fontSize: "0.625rem", color: "var(--color-accent)", textTransform: "uppercase", fontWeight: 700, letterSpacing: "0.04em" }}>
+                  <div style={{ fontSize: "0.65rem", color: "var(--color-accent)", textTransform: "uppercase", fontWeight: 700, letterSpacing: "0.05em" }}>
                     {language === "ml" ? "മട്ടന്നൂർ • കണ്ണൂർ" : "Mattanur • Kannur, Kerala"}
                   </div>
-                  <div style={{ fontSize: "0.8125rem", fontWeight: 800, color: "var(--text-primary)" }}>
+                  <div style={{ fontSize: "0.875rem", fontWeight: 800, color: "var(--text-primary)" }}>
                     Cleanora Cleaning & Shifting
                   </div>
                 </div>
@@ -268,9 +279,10 @@ export const Hero: React.FC = () => {
                   style={{
                     backgroundColor: "var(--color-accent-subtle)",
                     color: "var(--color-accent)",
-                    padding: "3px 8px",
-                    borderRadius: "6px",
-                    fontSize: "0.7rem",
+                    border: "1px solid var(--color-accent-border)",
+                    padding: "4px 10px",
+                    borderRadius: "8px",
+                    fontSize: "0.75rem",
                     fontWeight: 700,
                     display: "flex",
                     alignItems: "center",
@@ -278,7 +290,7 @@ export const Hero: React.FC = () => {
                     flexShrink: 0,
                   }}
                 >
-                  <Award size={13} />
+                  <Award size={14} />
                   <span>{language === "ml" ? "100% ക്ലീൻ" : "100% Verified"}</span>
                 </div>
               </div>

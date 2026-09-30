@@ -1,13 +1,13 @@
 ﻿"use client";
 
 import React from "react";
-import { MessageCircle, Phone, Globe } from "lucide-react";
+import { MessageCircle, Phone } from "lucide-react";
 import { siteConfig, createWhatsAppUrl } from "@/data/site";
 import { useLanguage } from "@/context/LanguageContext";
 import { trackEvent } from "@/lib/analytics";
 
 export const MobileActionDock: React.FC = () => {
-  const { language, setLanguage, t } = useLanguage();
+  const { language } = useLanguage();
 
   const handleWhatsApp = () => {
     trackEvent("mobile_dock_whatsapp", { location: "dock" });
@@ -23,41 +23,8 @@ export const MobileActionDock: React.FC = () => {
     window.location.href = `tel:${siteConfig.contact.primaryPhoneRaw}`;
   };
 
-  const toggleLanguage = () => {
-    const next = language === "en" ? "ml" : "en";
-    trackEvent("mobile_dock_language_toggle", { to: next });
-    setLanguage(next);
-  };
-
   return (
     <div className="mobile-action-dock">
-      {/* 1-Tap Language Toggle */}
-      <button
-        onClick={toggleLanguage}
-        aria-label="Toggle language"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "4px 8px",
-          borderRadius: "10px",
-          backgroundColor: "#f1f5f9",
-          border: "1px solid #cbd5e1",
-          color: "var(--text-primary)",
-          fontSize: "0.6875rem",
-          fontWeight: 800,
-          width: "44px",
-          height: "44px",
-          flexShrink: 0,
-        }}
-      >
-        <Globe size={15} color="var(--color-primary)" />
-        <span style={{ marginTop: "1px", textTransform: "uppercase" }}>
-          {language === "en" ? "മല" : "EN"}
-        </span>
-      </button>
-
       {/* 1-Tap Direct Call */}
       <button
         onClick={handleCall}
@@ -67,18 +34,19 @@ export const MobileActionDock: React.FC = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          gap: "6px",
-          padding: "8px 12px",
-          borderRadius: "10px",
+          gap: "8px",
+          padding: "10px 16px",
+          borderRadius: "12px",
           backgroundColor: "#ffffff",
           color: "var(--color-primary)",
           border: "1.5px solid #cbd5e1",
           fontWeight: 700,
-          fontSize: "0.8125rem",
-          height: "44px",
+          fontSize: "0.875rem",
+          height: "46px",
+          boxShadow: "0 2px 6px rgba(0,0,0,0.03)",
         }}
       >
-        <Phone size={15} />
+        <Phone size={17} color="var(--color-primary)" />
         <span>{language === "ml" ? "വിളിക്കാം" : "Call Now"}</span>
       </button>
 
@@ -91,19 +59,19 @@ export const MobileActionDock: React.FC = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          gap: "6px",
-          padding: "8px 14px",
-          borderRadius: "10px",
+          gap: "8px",
+          padding: "10px 18px",
+          borderRadius: "12px",
           backgroundColor: "#25D366",
           color: "#ffffff",
           fontWeight: 700,
-          fontSize: "0.8125rem",
-          boxShadow: "0 3px 12px rgba(37, 211, 102, 0.35)",
-          height: "44px",
+          fontSize: "0.875rem",
+          boxShadow: "0 4px 14px rgba(37, 211, 102, 0.35)",
+          height: "46px",
         }}
       >
-        <MessageCircle size={17} />
-        <span>{language === "ml" ? "വാട്സാപ്പ്" : "WhatsApp"}</span>
+        <MessageCircle size={18} />
+        <span>{language === "ml" ? "വാട്സാപ്പ് ചെയ്യാം" : "WhatsApp"}</span>
       </button>
     </div>
   );
