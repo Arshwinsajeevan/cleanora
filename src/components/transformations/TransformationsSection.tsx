@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
 import Image from "next/image";
@@ -15,7 +15,7 @@ export const TransformationsSection: React.FC = () => {
       titleEn: "Interlock Jet Washing & Moss Removal",
       titleMl: "ഇന്റർലോക്ക് പ്രഷർ വാഷിംഗും പായൽ മാറ്റലും",
       descEn: "Removing thick slippery green algae, dark mud lines, and restoring brand-new paver colors.",
-      descMl: "ഇന്റർലോക്കിലെ വഴുക്കലുള്ള പായലും അഴുക്കുകളും മാറ്റി മുറ്റത്തിന് പുത്തൻ തിളക്കം നൽകുന്നു.",
+      descMl: "ഇന്റർലോക്കിലെ വഴുവഴുപ്പുള്ള പായലും അഴുക്കുകളും മാറ്റി മുറ്റത്തിന് പുത്തൻ തിളക്കം നൽകുന്നു.",
       image: "/images/interlock_beforeafter.png",
       tagEn: "Outdoor Driveway",
       tagMl: "മുറ്റവും ഡ്രൈവ്‌വേയും",
@@ -45,7 +45,7 @@ export const TransformationsSection: React.FC = () => {
   const current = transformations[activeTab];
 
   return (
-    <section id="transformations" className="section" style={{ backgroundColor: "#ffffff" }}>
+    <section id="transformations" className="section hide-mobile" style={{ backgroundColor: "#ffffff" }}>
       <div className="container">
         {/* Section Header */}
         <div className="section-header">

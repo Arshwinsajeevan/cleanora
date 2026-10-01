@@ -31,7 +31,7 @@ export const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section className="section" style={{ backgroundColor: "#ffffff" }}>
+    <section className="section hide-mobile" style={{ backgroundColor: "#ffffff" }}>
       <div className="container">
         {/* Section Header */}
         <div className="section-header">

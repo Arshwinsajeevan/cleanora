@@ -93,6 +93,9 @@ body {
 }
 
 @media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
   body {
     padding-bottom: 74px; /* Space for Mobile Floating Dock */
   }
@@ -143,6 +146,9 @@ img, video {
 }
 
 @media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
   .section {
     padding-top: 44px;
     padding-bottom: 44px;
@@ -342,6 +348,10 @@ img, video {
 }
 
 @media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+
   .hero-ctas {
     justify-content: center !important;
   }
@@ -443,9 +453,6 @@ html[lang="ml"] .bento-card h3 {
     gap: 24px !important;
   }
 
-  .hide-mobile {
-    display: none !important;
-  }
 
   .trust-strip-grid {
     grid-template-columns: 1fr !important;
@@ -467,6 +474,8 @@ html[lang="ml"] .bento-card h3 {
     transform: translateY(0);
   }
 }
+
+
 
 
 
