@@ -95,7 +95,7 @@ export const siteConfig: SiteConfig = {
       description: "Headquartered at Malabar Plaza, Mattanur, serving all across Kannur district.",
     },
   ],
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://cleanora.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.cleanorakannur.com",
 };
 
 export const createWhatsAppUrl = (message?: string, customPhone?: string) => {
@@ -106,3 +106,4 @@ export const createWhatsAppUrl = (message?: string, customPhone?: string) => {
   );
   return `https://wa.me/${phone}?text=${text}`;
 };
+
