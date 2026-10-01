@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
 import React from "react";
-import { Phone, Sparkles } from "lucide-react";
+import { Phone } from "lucide-react";
 import { ContactSection } from "@/components/contact/ContactSection";
 import { ServiceAreas } from "@/components/local/ServiceAreas";
 import { FAQSection } from "@/components/faq/FAQSection";
@@ -17,7 +17,7 @@ export default function ContactPage() {
         style={{
           backgroundColor: "#071426",
           color: "#ffffff",
-          padding: "64px 0",
+          padding: "clamp(48px, 6vw, 64px) 0",
           textAlign: "center",
         }}
       >
@@ -45,7 +45,7 @@ export default function ContactPage() {
           <h1
             style={{
               fontFamily: "var(--font-heading)",
-              fontSize: "clamp(2.2rem, 4vw, 3rem)",
+              fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 800,
               marginBottom: "16px",
             }}

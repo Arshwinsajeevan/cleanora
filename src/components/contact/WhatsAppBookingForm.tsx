@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
-import { MessageCircle, CheckCircle2, Sparkles } from "lucide-react";
+import { MessageCircle, CheckCircle2, Sparkles, Send } from "lucide-react";
 import { createWhatsAppUrl } from "@/data/site";
 import { servicesData } from "@/data/services";
 import { useLanguage } from "@/context/LanguageContext";
@@ -65,37 +65,50 @@ I would like to enquire about your professional cleaning service.
       style={{
         backgroundColor: "#ffffff",
         borderRadius: "20px",
-        padding: "36px",
+        padding: "clamp(20px, 4vw, 36px)",
         border: "1px solid #e2e8f0",
         boxShadow: "0 10px 30px rgba(15, 23, 42, 0.06)",
+        width: "100%",
+        boxSizing: "border-box",
       }}
       className="form-container"
     >
-      <div style={{ marginBottom: "24px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "6px", color: "var(--color-accent)", fontSize: "0.8125rem", fontWeight: 700, textTransform: "uppercase", marginBottom: "6px" }}>
+      <div style={{ marginBottom: "20px" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "6px",
+            color: "var(--color-accent)",
+            fontSize: "0.8125rem",
+            fontWeight: 700,
+            textTransform: "uppercase",
+            marginBottom: "6px",
+          }}
+        >
           <Sparkles size={14} />
           <span>{language === "ml" ? "തത്സമയ ബുക്കിംഗ്" : "Quick Booking Engine"}</span>
         </div>
         <h3
           style={{
-            fontFamily: "var(--font-heading)",
-            fontSize: "1.5rem",
+            fontSize: "clamp(1.25rem, 2.5vw, 1.6rem)",
             fontWeight: 800,
             color: "var(--text-primary)",
+            marginBottom: "8px",
           }}
         >
-          {language === "ml" ? "സർവീസ് വിവരങ്ങൾ അയക്കാം" : "Send Service Enquiry"}
+          {language === "ml" ? "സർവീസ് അന്വേഷണം അയക്കൂ" : "Send Service Enquiry"}
         </h3>
-        <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", marginTop: "4px" }}>
+        <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", lineHeight: 1.55 }}>
           {language === "ml"
-            ? "വിവരങ്ങൾ പൂരിപ്പിച്ച് ഒറ്റ ക്ലിക്കിൽ വാട്സാപ്പിൽ മെസ്സേജ് അയക്കുക."
+            ? "വിവരങ്ങൾ പൂരിപ്പിച്ചാൽ നേരിട്ട് ഞങ്ങളുടെ വാട്സാപ്പിലേക്ക് ബുക്കിംഗ് സന്ദേശം അയക്കാം."
             : "Fill in your details below to instantly generate and send your booking request directly to our WhatsApp team."}
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+      <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
         {/* Row 1: Name & Phone */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }} className="form-row">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px" }} className="form-row">
           <div>
             <label
               style={{
@@ -106,7 +119,7 @@ I would like to enquire about your professional cleaning service.
                 marginBottom: "6px",
               }}
             >
-              {language === "ml" ? "നിങ്ങളുടെ പേര് *" : "Your Name *"}
+              {language === "ml" ? "പേര് *" : "Your Name *"}
             </label>
             <input
               type="text"
@@ -114,7 +127,7 @@ I would like to enquire about your professional cleaning service.
               required
               value={formData.name}
               onChange={handleChange}
-              placeholder={language === "ml" ? "ഉദാ: രാഹുൽ കെ." : "e.g., Rahul K."}
+              placeholder={language === "ml" ? "ഉദാ: രാഹുൽ" : "e.g., Rahul K."}
               style={{
                 width: "100%",
                 padding: "12px 14px",
@@ -123,6 +136,7 @@ I would like to enquire about your professional cleaning service.
                 fontSize: "0.9375rem",
                 outline: "none",
                 fontFamily: "inherit",
+                boxSizing: "border-box",
               }}
             />
           </div>
@@ -154,13 +168,14 @@ I would like to enquire about your professional cleaning service.
                 fontSize: "0.9375rem",
                 outline: "none",
                 fontFamily: "inherit",
+                boxSizing: "border-box",
               }}
             />
           </div>
         </div>
 
         {/* Row 2: Service Selection & Preferred Date */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }} className="form-row">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px" }} className="form-row">
           <div>
             <label
               style={{
@@ -186,6 +201,7 @@ I would like to enquire about your professional cleaning service.
                 outline: "none",
                 backgroundColor: "#ffffff",
                 fontFamily: "inherit",
+                boxSizing: "border-box",
               }}
             >
               {servicesData.map((s) => (
@@ -225,6 +241,7 @@ I would like to enquire about your professional cleaning service.
                 outline: "none",
                 backgroundColor: "#ffffff",
                 fontFamily: "inherit",
+                boxSizing: "border-box",
               }}
             />
           </div>
@@ -258,6 +275,7 @@ I would like to enquire about your professional cleaning service.
               fontSize: "0.9375rem",
               outline: "none",
               fontFamily: "inherit",
+              boxSizing: "border-box",
             }}
           />
         </div>
@@ -282,7 +300,7 @@ I would like to enquire about your professional cleaning service.
             onChange={handleChange}
             placeholder={
               language === "ml"
-                ? "ഉദാ: 3 BHK വില്ല ക്ലീനിംഗ്, വാട്ടർ ടാങ്ക് ചെളി മാറ്റൽ, സോഫ ഷാംപൂ വാഷ്..."
+                ? "ഉദാ: 3 BHK വില്ല ക്ലീനിംഗ്, വാട്ടർ ടാങ്ക് ചെളി മാറ്റൽ, 5-സീറ്റർ സോഫ ഷാംപൂ വാഷ്..."
                 : "e.g., 3-BHK villa deep clean before housewarming, water tank sludge removal, 5-seater fabric sofa shampoo..."
             }
             style={{
@@ -294,6 +312,7 @@ I would like to enquire about your professional cleaning service.
               outline: "none",
               fontFamily: "inherit",
               resize: "vertical",
+              boxSizing: "border-box",
             }}
           />
         </div>
@@ -302,7 +321,18 @@ I would like to enquire about your professional cleaning service.
         <button
           type="submit"
           className="btn btn-whatsapp btn-lg"
-          style={{ width: "100%", marginTop: "6px" }}
+          style={{
+            width: "100%",
+            marginTop: "4px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
+            padding: "14px 20px",
+            borderRadius: "12px",
+            fontSize: "0.9375rem",
+            fontWeight: 700,
+          }}
         >
           <MessageCircle size={20} />
           <span>{language === "ml" ? "വാട്സാപ്പിൽ അയക്കാം" : "Send Booking Request on WhatsApp"}</span>
@@ -331,7 +361,7 @@ I would like to enquire about your professional cleaning service.
           </div>
         )}
 
-        <div style={{ textAlign: "center", fontSize: "0.75rem", color: "var(--text-muted)" }}>
+        <div style={{ textAlign: "center", fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "2px" }}>
           🔒 {language === "ml" ? "നിങ്ങളുടെ വിവരങ്ങൾ സുരക്ഷിതമായിരിക്കും." : "Your details are used strictly to coordinate your cleaning quotation."}
         </div>
       </form>

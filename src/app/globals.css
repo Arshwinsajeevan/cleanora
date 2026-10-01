@@ -230,7 +230,8 @@ img, video {
 @media (max-width: 860px) {
   .steps-grid,
   .about-split,
-  .pillars-grid {
+  .pillars-grid,
+  .contact-layout {
     grid-template-columns: 1fr !important;
     gap: 20px !important;
   }
@@ -345,6 +346,29 @@ img, video {
     justify-content: center !important;
   }
 
+  .scroll-chips {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    padding: 6px 4px 14px 4px !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scroll-chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scroll-chips button {
+    flex-shrink: 0 !important;
+    padding: 9px 18px !important;
+    font-size: 0.8125rem !important;
+  }
+
   .mobile-action-dock {
     display: flex;
     align-items: center;
@@ -413,7 +437,8 @@ html[lang="ml"] .bento-card h3 {
   .form-row,
   .service-detail-row,
   .about-split,
-  .pillars-grid {
+  .pillars-grid,
+  .contact-layout {
     grid-template-columns: 1fr !important;
     gap: 24px !important;
   }
@@ -442,5 +467,8 @@ html[lang="ml"] .bento-card h3 {
     transform: translateY(0);
   }
 }
+
+
+
 
 

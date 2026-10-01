@@ -74,8 +74,12 @@ export const ServicesSection: React.FC = () => {
         <div
           className="scroll-chips"
           style={{
+            display: "flex",
+            alignItems: "center",
             justifyContent: "center",
-            marginBottom: "40px",
+            gap: "10px",
+            flexWrap: "wrap",
+            marginBottom: "36px",
             padding: "4px 0 12px 0",
           }}
         >
@@ -84,16 +88,17 @@ export const ServicesSection: React.FC = () => {
               key={cat.id}
               onClick={() => setActiveFilter(cat.id)}
               style={{
-                padding: "8px 20px",
+                padding: "9px 20px",
                 borderRadius: "9999px",
                 fontSize: "0.875rem",
                 fontWeight: 700,
                 whiteSpace: "nowrap",
+                cursor: "pointer",
                 transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
                 backgroundColor: activeFilter === cat.id ? "var(--color-primary)" : "#ffffff",
                 color: activeFilter === cat.id ? "#ffffff" : "var(--text-secondary)",
-                border: activeFilter === cat.id ? "1px solid var(--color-primary)" : "1px solid var(--border-light)",
-                boxShadow: activeFilter === cat.id ? "0 4px 14px rgba(7, 30, 61, 0.2)" : "var(--shadow-subtle)",
+                border: activeFilter === cat.id ? "1.5px solid var(--color-primary)" : "1.5px solid var(--border-light)",
+                boxShadow: activeFilter === cat.id ? "0 4px 14px rgba(7, 30, 61, 0.2)" : "0 1px 3px rgba(0,0,0,0.04)",
               }}
             >
               {cat.label}

@@ -193,8 +193,9 @@ export const Hero: React.FC = () => {
               </Link>
             </div>
 
-            {/* Trust Points Pill Bar */}
+            {/* Trust Points Pill Bar (Desktop only, hidden on mobile) */}
             <div
+              className="hide-mobile"
               style={{
                 display: "flex",
                 alignItems: "center",
