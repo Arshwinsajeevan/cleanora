@@ -111,14 +111,10 @@ export const Header: React.FC = () => {
           left: 0,
           right: 0,
           zIndex: 1000,
-          backgroundColor: isScrolled
-            ? "rgba(255, 255, 255, 0.96)"
-            : "#ffffff",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
-          borderBottom: isScrolled
-            ? "1px solid var(--border-light)"
-            : "1px solid var(--border-subtle)",
+          backgroundColor: isScrolled ? "rgba(255, 255, 255, 0.82)" : "rgba(255, 255, 255, 0.88)",
+          backdropFilter: "blur(20px) saturate(180%)",
+          WebkitBackdropFilter: "blur(20px) saturate(180%)",
+          borderBottom: isScrolled ? "1px solid rgba(226, 232, 240, 0.8)" : "1px solid rgba(226, 232, 240, 0.5)",
           transform: isVisible || mobileMenuOpen ? "translateY(0)" : "translateY(-100%)",
           transition: "transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, box-shadow 0.2s ease",
           boxShadow: isScrolled && isVisible ? "0 4px 20px rgba(15, 23, 42, 0.07)" : "none",
