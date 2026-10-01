@@ -97,7 +97,7 @@ body {
     display: none !important;
   }
   body {
-    padding-bottom: 74px; /* Space for Mobile Floating Dock */
+    padding-bottom: 70px; /* Space for Mobile Floating Dock */
   }
 }
 
@@ -331,8 +331,9 @@ img, video {
   box-shadow: var(--shadow-card);
 }
 
-/* Mobile Action Dock */
+/* Mobile Action Dock (Strictly Hidden on Laptop/Desktop/Tablet) */
 .mobile-action-dock {
+  display: none !important;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -343,10 +344,7 @@ img, video {
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-top: 1px solid rgba(226, 232, 240, 0.85);
   box-shadow: 0 -4px 20px rgba(15, 23, 42, 0.07);
-  padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px)) 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  padding: 6px 10px calc(6px + env(safe-area-inset-bottom, 0px)) 10px;
 }
 
 @media (max-width: 768px) {
@@ -399,9 +397,9 @@ img, video {
   }
 
   .mobile-action-dock {
-    display: flex;
+    display: flex !important;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
   }
 }
 
