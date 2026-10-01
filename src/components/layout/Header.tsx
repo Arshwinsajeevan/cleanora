@@ -183,8 +183,7 @@ export const Header: React.FC = () => {
                   whiteSpace: "nowrap",
                 }}
               >
-                CLEANORA
-              </div>
+                CLEAN<span style={{ color: "var(--color-accent)" }}>ORA</span>              </div>
               <div
                 style={{
                   fontSize: "0.625rem",
@@ -421,4 +420,5 @@ export const Header: React.FC = () => {
     </>
   );
 };
+
 

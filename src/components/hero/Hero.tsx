@@ -1,27 +1,27 @@
-﻿"use client";
+"use client";
 
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ArrowRight,
-  ShieldCheck,
-  Truck,
-  CheckCircle2,
-  Sparkles,
   MapPin,
+  Sparkles,
+  ArrowRight,
+  CheckCircle2,
+  Truck,
+  ShieldCheck,
   Award,
 } from "lucide-react";
-import { WhatsAppIcon } from "@/components/ui/Icons";
 import { siteConfig, createWhatsAppUrl } from "@/data/site";
 import { useLanguage } from "@/context/LanguageContext";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 import { trackWhatsAppConversion } from "@/lib/analytics";
 
 export const Hero: React.FC = () => {
   const { language, t } = useLanguage();
 
   const handleWhatsAppClick = () => {
-    trackWhatsAppConversion("hero_cta");
+    trackWhatsAppConversion("hero_cta_primary");
   };
 
   const getWhatsAppLink = () => {
@@ -36,35 +36,25 @@ export const Hero: React.FC = () => {
     <section
       style={{
         position: "relative",
-        paddingTop: "clamp(28px, 5vw, 56px)",
-        paddingBottom: "clamp(36px, 6vw, 64px)",
-        backgroundColor: "var(--bg-page)",
+        paddingTop: "clamp(24px, 4vw, 44px)",
+        paddingBottom: "clamp(32px, 5vw, 60px)",
+        background: "linear-gradient(180deg, #f0fdf4 0%, #f8fafc 50%, #ffffff 100%)",
         overflow: "hidden",
-        width: "100%",
       }}
     >
-      <div className="container">
+      <div className="container" style={{ maxWidth: "1320px", margin: "0 auto", padding: "0 16px" }}>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1.05fr 0.95fr",
-            gap: "36px",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 480px), 1fr))",
+            gap: "clamp(28px, 4vw, 56px)",
             alignItems: "center",
           }}
-          className="hero-grid"
         >
-          {/* Left Column: Clean Typography & Quick Actions */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "16px", minWidth: 0 }}>
-            {/* Top Micro Badges */}
-            <div
-              className="hero-badges"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-                flexWrap: "wrap",
-              }}
-            >
+          {/* Left Column: Headlines, Trust Badges, CTAs */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+            {/* Top Local Badges */}
+            <div style={{ display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
               <div
                 style={{
                   display: "inline-flex",
@@ -72,15 +62,16 @@ export const Hero: React.FC = () => {
                   gap: "6px",
                   padding: "5px 12px",
                   borderRadius: "9999px",
-                  backgroundColor: "rgba(16, 185, 129, 0.08)",
-                  border: "1px solid rgba(16, 185, 129, 0.25)",
-                  color: "#059669",
+                  backgroundColor: "var(--color-accent-subtle)",
+                  border: "1px solid var(--color-accent-border)",
+                  color: "var(--color-accent)",
                   fontSize: "0.75rem",
                   fontWeight: 700,
-                  letterSpacing: "0.02em",
+                  letterSpacing: "0.04em",
+                  textTransform: "uppercase",
                 }}
               >
-                <MapPin size={13} />
+                <MapPin size={13} color="#059669" />
                 <span>{t("hero_badge_location")}</span>
               </div>
 
@@ -151,9 +142,9 @@ export const Hero: React.FC = () => {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "10px",
+                gap: "12px",
                 flexWrap: "wrap",
-                paddingTop: "4px",
+                paddingTop: "6px",
               }}
             >
               <a
@@ -163,20 +154,22 @@ export const Hero: React.FC = () => {
                 onClick={handleWhatsAppClick}
                 className="btn btn-whatsapp hero-cta-btn"
                 style={{
-                  padding: "10px 18px",
+                  padding: "11px 16px",
                   borderRadius: "12px",
                   fontWeight: 700,
-                  fontSize: "0.875rem",
-                  width: "230px",
-                  height: "44px",
+                  fontSize: language === "ml" ? "0.84rem" : "0.875rem",
+                  width: "270px",
+                  maxWidth: "100%",
+                  height: "46px",
                   display: "inline-flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  gap: "7px",
+                  gap: "8px",
                   boxSizing: "border-box",
+                  whiteSpace: "nowrap",
                 }}
               >
-                <WhatsAppIcon size={17} />
+                <WhatsAppIcon size={18} style={{ flexShrink: 0 }} />
                 <span>{t("hero_cta_whatsapp")}</span>
               </a>
 
@@ -185,21 +178,23 @@ export const Hero: React.FC = () => {
                 prefetch={true}
                 className="btn btn-outline hero-cta-btn"
                 style={{
-                  padding: "10px 18px",
+                  padding: "11px 16px",
                   borderRadius: "12px",
                   fontWeight: 600,
-                  fontSize: "0.875rem",
-                  width: "230px",
-                  height: "44px",
+                  fontSize: language === "ml" ? "0.84rem" : "0.875rem",
+                  width: "270px",
+                  maxWidth: "100%",
+                  height: "46px",
                   display: "inline-flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  gap: "7px",
+                  gap: "8px",
                   boxSizing: "border-box",
+                  whiteSpace: "nowrap",
                 }}
               >
                 <span>{t("hero_cta_services")}</span>
-                <ArrowRight size={14} />
+                <ArrowRight size={16} style={{ flexShrink: 0 }} />
               </Link>
             </div>
 

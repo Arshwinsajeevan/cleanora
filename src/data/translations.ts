@@ -318,8 +318,8 @@ export const translations: Record<"en" | "ml", TranslationDictionary> = {
     hero_title_line2: "വിശ്വസ്ത പാക്കേഴ്സ് & മൂവേഴ്സ്.",
     hero_subtitle:
       "മട്ടന്നൂരിലും കണ്ണൂർ ജില്ലയിലെവിടെയും വീട്, ഓഫീസ്, വാട്ടർ ടാങ്ക്, സോഫ, ഇന്റർലോക്ക്, സോളാർ പാനൽ ഡീപ് ക്ലീനിംഗും പാക്കേഴ്സ് & മൂവേഴ്സ് ഷിഫ്റ്റിംഗ് സർവീസും.",
-    hero_cta_whatsapp: "വാട്സാപ്പിൽ വേഗത്തിൽ ബുക്ക് ചെയ്യാം",
-    hero_cta_services: "എല്ലാ സർവീസുകളും കാണാം",
+    hero_cta_whatsapp: "വാട്സാപ്പിൽ ബുക്ക് ചെയ്യാം",
+    hero_cta_services: "എല്ലാ സർവീസുകളും",
     hero_guarantee_text: "100% സംതൃപ്തി ഉറപ്പ്",
     hero_guarantee_sub: "ഗുണനിലവാരം ഉറപ്പുവരുത്തിയുള്ള വിശ്വസ്ത സേവനം",
 
@@ -455,3 +455,4 @@ export const translations: Record<"en" | "ml", TranslationDictionary> = {
     get_quote: "എസ്റ്റിമേറ്റ് ലഭിക്കാൻ",
   },
 };
+
