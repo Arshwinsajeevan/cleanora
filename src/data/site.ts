@@ -13,6 +13,8 @@
     display: string;
     address: string;
     badgeText: string;
+    timing: string;
+    timingMl: string;
     coordinates: {
       latitude: number;
       longitude: number;
@@ -59,6 +61,8 @@ export const siteConfig: SiteConfig = {
     display: "Malabar Plaza, Mattanur, Kannur, Kerala",
     address: "Malabar Plaza, Mattanur, Kannur, Kerala 670702",
     badgeText: "MALABAR PLAZA • MATTANUR, KANNUR",
+    timing: "Monday – Friday: 8:30 AM – 6:30 PM",
+    timingMl: "തിങ്കൾ – വെള്ളി: രാവിലെ 8:30 – വൈകുന്നേരം 6:30",
     coordinates: {
       latitude: 11.9333,
       longitude: 75.5667,

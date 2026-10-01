@@ -83,6 +83,43 @@ export const ContactSection: React.FC = () => {
               </p>
 
               <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                {/* Office Location & Opening Hours Badge */}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "14px",
+                    padding: "13px 16px",
+                    borderRadius: "12px",
+                    backgroundColor: "#f0fdf4",
+                    border: "1px solid #bbf7d0",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      borderRadius: "10px",
+                      backgroundColor: "#dcfce7",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "#059669",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <Clock size={19} />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: "0.72rem", color: "#166534", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.03em" }}>
+                      {language === "ml" ? "ഓഫീസ് സമയം • മലബാർ പ്ലാസ, മട്ടന്നൂർ" : "Office Hours • Malabar Plaza, Mattanur"}
+                    </div>
+                    <div style={{ fontSize: "0.9375rem", fontWeight: 800, color: "#14532d", marginTop: "1px" }}>
+                      {language === "ml" ? siteConfig.location.timingMl : siteConfig.location.timing}
+                    </div>
+                  </div>
+                </div>
+
                 {/* Instant WhatsApp Button */}
                 <a
                   href={createWhatsAppUrl()}
@@ -364,5 +401,3 @@ export const ContactSection: React.FC = () => {
     </section>
   );
 };
-
-

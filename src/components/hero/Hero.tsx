@@ -151,7 +151,7 @@ export const Hero: React.FC = () => {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "12px",
+                gap: "10px",
                 flexWrap: "wrap",
                 paddingTop: "4px",
               }}
@@ -161,35 +161,45 @@ export const Hero: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleWhatsAppClick}
-                className="btn btn-whatsapp btn-lg"
+                className="btn btn-whatsapp hero-cta-btn"
                 style={{
-                  padding: "13px 24px",
+                  padding: "10px 18px",
                   borderRadius: "12px",
                   fontWeight: 700,
-                  fontSize: "0.9375rem",
-                  flex: "1 1 200px",
-                  maxWidth: "280px",
+                  fontSize: "0.875rem",
+                  width: "230px",
+                  height: "44px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "7px",
+                  boxSizing: "border-box",
                 }}
               >
-                <WhatsAppIcon size={18} />
+                <WhatsAppIcon size={17} />
                 <span>{t("hero_cta_whatsapp")}</span>
               </a>
 
               <Link
                 href="/services"
                 prefetch={true}
-                className="btn btn-outline btn-lg"
+                className="btn btn-outline hero-cta-btn"
                 style={{
-                  padding: "13px 22px",
+                  padding: "10px 18px",
                   borderRadius: "12px",
                   fontWeight: 600,
-                  fontSize: "0.9375rem",
-                  flex: "1 1 180px",
-                  maxWidth: "240px",
+                  fontSize: "0.875rem",
+                  width: "230px",
+                  height: "44px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "7px",
+                  boxSizing: "border-box",
                 }}
               >
                 <span>{t("hero_cta_services")}</span>
-                <ArrowRight size={15} />
+                <ArrowRight size={14} />
               </Link>
             </div>
 
@@ -302,4 +312,3 @@ export const Hero: React.FC = () => {
     </section>
   );
 };
-
