@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import { siteConfig } from "@/data/site";
 import { servicesData } from "@/data/services";
 import { faqsData } from "@/data/faqs";
@@ -43,7 +43,7 @@ export const LocalBusinessSchema: React.FC = () => {
           "Mattannur",
           "Payyanur",
         ],
-        sameAs: [siteConfig.social.instagramUrl],
+        sameAs: [siteConfig.social.instagramUrl, siteConfig.social.facebookUrl],
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: "Cleaning Services in Kannur",
@@ -79,3 +79,4 @@ export const LocalBusinessSchema: React.FC = () => {
     />
   );
 };
+

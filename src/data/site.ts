@@ -31,6 +31,8 @@
   social: {
     instagramHandle: string;
     instagramUrl: string;
+    facebookHandle: string;
+    facebookUrl: string;
   };
   trustPillars: {
     title: string;
@@ -75,6 +77,8 @@ export const siteConfig: SiteConfig = {
   social: {
     instagramHandle: "@cleanora.deepcleaning",
     instagramUrl: "https://www.instagram.com/cleanora.deepcleaning/",
+    facebookHandle: "Cleanora Deep Cleaning",
+    facebookUrl: "https://www.facebook.com/share/1CoVX3Jo4q/",
   },
   guarantee: "100% Satisfaction Guaranteed",
   trustPillars: [
@@ -106,4 +110,3 @@ export const createWhatsAppUrl = (message?: string, customPhone?: string) => {
   );
   return `https://wa.me/${phone}?text=${text}`;
 };
-

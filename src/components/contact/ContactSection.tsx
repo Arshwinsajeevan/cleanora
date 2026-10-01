@@ -3,7 +3,7 @@
 import React from "react";
 import { Phone, Mail, MessageCircle, MapPin, ShieldCheck, Clock } from "lucide-react";
 import { siteConfig, createWhatsAppUrl } from "@/data/site";
-import { InstagramIcon } from "@/components/ui/Icons";
+import { InstagramIcon, FacebookIcon } from "@/components/ui/Icons";
 import { WhatsAppBookingForm } from "./WhatsAppBookingForm";
 import { useLanguage } from "@/context/LanguageContext";
 import { trackEvent } from "@/lib/analytics";
@@ -246,6 +246,48 @@ export const ContactSection: React.FC = () => {
                   </div>
                 </a>
 
+                {/* Facebook */}
+                <a
+                  href={siteConfig.social.facebookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackEvent("facebook_click", { location: "contact_page" })}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "14px",
+                    padding: "12px 16px",
+                    borderRadius: "12px",
+                    backgroundColor: "#eff6ff",
+                    border: "1px solid #bfdbfe",
+                    textDecoration: "none",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      borderRadius: "10px",
+                      backgroundColor: "#1877F2",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "#ffffff",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <FacebookIcon size={18} color="#ffffff" />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: "0.75rem", color: "#1e40af", fontWeight: 700, textTransform: "uppercase" }}>
+                      Facebook Page
+                    </div>
+                    <div style={{ fontSize: "0.9375rem", fontWeight: 700, color: "#1e3a8a" }}>
+                      {siteConfig.social.facebookHandle}
+                    </div>
+                  </div>
+                </a>
+
                 {/* Instagram */}
                 <a
                   href={siteConfig.social.instagramUrl}
@@ -322,3 +364,4 @@ export const ContactSection: React.FC = () => {
     </section>
   );
 };
+

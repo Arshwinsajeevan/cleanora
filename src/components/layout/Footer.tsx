@@ -7,7 +7,7 @@ import { Phone, Mail, MapPin, MessageCircle, ArrowRight } from "lucide-react";
 import { siteConfig, createWhatsAppUrl } from "@/data/site";
 import { servicesData } from "@/data/services";
 import { useLanguage } from "@/context/LanguageContext";
-import { InstagramIcon } from "@/components/ui/Icons";
+import { InstagramIcon, FacebookIcon } from "@/components/ui/Icons";
 import { trackEvent } from "@/lib/analytics";
 
 export const Footer: React.FC = () => {
@@ -267,6 +267,26 @@ export const Footer: React.FC = () => {
                   }}
                 >
                   <MessageCircle size={18} />
+                </a>
+
+                <a
+                  href={siteConfig.social.facebookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Cleanora on Facebook"
+                  style={{
+                    width: "38px",
+                    height: "38px",
+                    borderRadius: "10px",
+                    backgroundColor: "rgba(24, 119, 242, 0.15)",
+                    border: "1px solid rgba(24, 119, 242, 0.3)",
+                    color: "#1877F2",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <FacebookIcon size={18} color="currentColor" />
                 </a>
 
                 <a
