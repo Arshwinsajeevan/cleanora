@@ -1,7 +1,8 @@
-"use client";
+﻿"use client";
 
 import React from "react";
-import { MessageCircle, Phone, Sparkles } from "lucide-react";
+import { Phone, Sparkles } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 import { siteConfig, createWhatsAppUrl } from "@/data/site";
 import { useLanguage } from "@/context/LanguageContext";
 import { trackEvent } from "@/lib/analytics";
@@ -96,7 +97,7 @@ export const FinalCTA: React.FC = () => {
           <a
             href={createWhatsAppUrl(
               language === "ml"
-                ? "നമസ്കാരം ക്ലീനോറ, ക്ലീനിംഗ് സർവീസ് ബുക്ക് ചെയ്യാൻ ആഗ്രഹിക്കുന്നു."
+                ? "à´¨à´®à´¸àµà´•à´¾à´°à´‚ à´•àµà´²àµ€à´¨àµ‹à´±, à´•àµà´²àµ€à´¨à´¿à´‚à´—àµ à´¸àµ¼à´µàµ€à´¸àµ à´¬àµà´•àµà´•àµ à´šàµ†à´¯àµà´¯à´¾àµ» à´†à´—àµà´°à´¹à´¿à´•àµà´•àµà´¨àµà´¨àµ."
                 : "Hi Cleanora, I am ready to book a cleaning service for my space in Kannur."
             )}
             target="_blank"
@@ -117,7 +118,7 @@ export const FinalCTA: React.FC = () => {
               boxShadow: "0 6px 20px rgba(37, 211, 102, 0.4)",
             }}
           >
-            <MessageCircle size={20} />
+            <WhatsAppIcon size={20} />
             <span>{t("final_cta_whatsapp")}</span>
           </a>
 
@@ -147,3 +148,4 @@ export const FinalCTA: React.FC = () => {
     </section>
   );
 };
+

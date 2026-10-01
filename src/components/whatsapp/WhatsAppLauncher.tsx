@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { MessageCircle, X, Sparkles, Send, PhoneCall, Calendar, HelpCircle, CheckCircle2, Truck } from "lucide-react";
+import { X, Sparkles, Send, PhoneCall, Calendar, HelpCircle, CheckCircle2, Truck } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 import { siteConfig, createWhatsAppUrl } from "@/data/site";
 import { useLanguage } from "@/context/LanguageContext";
 import { trackEvent } from "@/lib/analytics";
@@ -249,7 +250,7 @@ export const WhatsAppLauncher: React.FC = () => {
           }}
         >
           <div style={{ position: "relative" }}>
-            <MessageCircle size={22} />
+            <WhatsAppIcon size={22} />
             <span
               style={{
                 position: "absolute",

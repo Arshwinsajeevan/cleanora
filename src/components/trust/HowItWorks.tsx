@@ -1,7 +1,8 @@
 ﻿"use client";
 
 import React from "react";
-import { MessageCircle, ClipboardCheck, MessageSquare, Sparkles } from "lucide-react";
+import { ClipboardCheck, MessageSquare, Sparkles } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 import { createWhatsAppUrl } from "@/data/site";
 import { useLanguage } from "@/context/LanguageContext";
 import { trackEvent } from "@/lib/analytics";
@@ -158,7 +159,7 @@ export const HowItWorks: React.FC = () => {
             onClick={() => trackEvent("whatsapp_click", { location: "how_it_works" })}
             className="btn btn-whatsapp btn-lg"
           >
-            <MessageCircle size={18} />
+            <WhatsAppIcon size={18} />
             <span>{t("book_via_whatsapp")}</span>
           </a>
         </div>
@@ -166,3 +167,4 @@ export const HowItWorks: React.FC = () => {
     </section>
   );
 };
+

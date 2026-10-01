@@ -1,8 +1,9 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import Image from "next/image";
-import { MessageCircle, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 import { siteConfig, createWhatsAppUrl } from "@/data/site";
 import { InstagramIcon } from "@/components/ui/Icons";
 import { trackEvent } from "@/lib/analytics";
@@ -105,7 +106,7 @@ export const SocialSection: React.FC = () => {
                   {post.title}
                 </span>
                 <span style={{ fontSize: "0.75rem", color: "#93c5fd" }}>
-                  View on Instagram ↗
+                  View on Instagram â†—
                 </span>
               </div>
             </a>
@@ -141,7 +142,7 @@ export const SocialSection: React.FC = () => {
             onClick={() => trackEvent("whatsapp_click", { location: "social_cta" })}
             className="btn btn-whatsapp"
           >
-            <MessageCircle size={18} />
+            <WhatsAppIcon size={18} />
             <span>Contact on WhatsApp</span>
           </a>
         </div>
@@ -149,4 +150,5 @@ export const SocialSection: React.FC = () => {
     </section>
   );
 };
+
 

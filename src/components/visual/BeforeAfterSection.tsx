@@ -1,7 +1,8 @@
 ﻿"use client";
 
 import React, { useState } from "react";
-import { Sparkles, MessageCircle } from "lucide-react";
+import { Sparkles } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 import { BeforeAfterSlider } from "./BeforeAfterSlider";
 import { galleryItems } from "@/data/gallery";
 import { createWhatsAppUrl } from "@/data/site";
@@ -115,7 +116,7 @@ export const BeforeAfterSection: React.FC = () => {
                 boxShadow: "0 2px 8px rgba(37, 211, 102, 0.25)",
               }}
             >
-              <MessageCircle size={15} />
+              <WhatsAppIcon size={15} />
               <span>Book via WhatsApp</span>
             </a>
           </div>
@@ -124,3 +125,4 @@ export const BeforeAfterSection: React.FC = () => {
     </section>
   );
 };
+

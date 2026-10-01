@@ -1,7 +1,8 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
-import { HelpCircle, ChevronDown, MessageCircle } from "lucide-react";
+import { HelpCircle, ChevronDown } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 import { faqsData } from "@/data/faqs";
 import { createWhatsAppUrl } from "@/data/site";
 import { useLanguage } from "@/context/LanguageContext";
@@ -115,17 +116,17 @@ export const FAQSection: React.FC = () => {
         >
           <div>
             <h4 style={{ fontSize: "1rem", fontWeight: 700, color: "var(--text-primary)" }}>
-              {language === "ml" ? "മറ്റു സംശയങ്ങളുണ്ടോ?" : "Have another question not listed here?"}
+              {language === "ml" ? "à´®à´±àµà´±àµ à´¸à´‚à´¶à´¯à´™àµà´™à´³àµà´£àµà´Ÿàµ‹?" : "Have another question not listed here?"}
             </h4>
             <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", marginTop: "2px" }}>
-              {language === "ml" ? "ഞങ്ങളുടെ മട്ടന്നൂർ ടീം നിങ്ങളെ സഹായിക്കാൻ തയ്യാറാണ്." : "Our Mattanur team is happy to assist you directly."}
+              {language === "ml" ? "à´žà´™àµà´™à´³àµà´Ÿàµ† à´®à´Ÿàµà´Ÿà´¨àµà´¨àµ‚àµ¼ à´Ÿàµ€à´‚ à´¨à´¿à´™àµà´™à´³àµ† à´¸à´¹à´¾à´¯à´¿à´•àµà´•à´¾àµ» à´¤à´¯àµà´¯à´¾à´±à´¾à´£àµ." : "Our Mattanur team is happy to assist you directly."}
             </p>
           </div>
 
           <a
             href={createWhatsAppUrl(
               language === "ml"
-                ? "നമസ്കാരം ക്ലീനോറ, ക്ലീനിംഗ് സർവീസിനെക്കുറിച്ച് എനിക്ക് ഒരു ചോദ്യമുണ്ട്:"
+                ? "à´¨à´®à´¸àµà´•à´¾à´°à´‚ à´•àµà´²àµ€à´¨àµ‹à´±, à´•àµà´²àµ€à´¨à´¿à´‚à´—àµ à´¸àµ¼à´µàµ€à´¸à´¿à´¨àµ†à´•àµà´•àµà´±à´¿à´šàµà´šàµ à´Žà´¨à´¿à´•àµà´•àµ à´’à´°àµ à´šàµ‹à´¦àµà´¯à´®àµà´£àµà´Ÿàµ:"
                 : "Hi Cleanora, I have a question regarding your cleaning services:"
             )}
             target="_blank"
@@ -133,11 +134,12 @@ export const FAQSection: React.FC = () => {
             onClick={() => trackEvent("whatsapp_click", { location: "faq_bottom" })}
             className="btn btn-whatsapp btn-sm"
           >
-            <MessageCircle size={15} />
-            <span>{language === "ml" ? "വാട്സാപ്പിൽ ചോദിക്കാം" : "Ask on WhatsApp"}</span>
+            <WhatsAppIcon size={15} />
+            <span>{language === "ml" ? "à´µà´¾à´Ÿàµà´¸à´¾à´ªàµà´ªà´¿àµ½ à´šàµ‹à´¦à´¿à´•àµà´•à´¾à´‚" : "Ask on WhatsApp"}</span>
           </a>
         </div>
       </div>
     </section>
   );
 };
+

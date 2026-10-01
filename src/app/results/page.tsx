@@ -3,8 +3,9 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Sparkles, MessageCircle, ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
+import { Sparkles, ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 import { createWhatsAppUrl } from "@/data/site";
 import { FinalCTA } from "@/components/cta/FinalCTA";
 
@@ -264,7 +265,7 @@ export default function ResultsPage() {
                         rel="noopener noreferrer"
                         className="btn btn-whatsapp btn-sm"
                       >
-                        <MessageCircle size={16} />
+                        <WhatsAppIcon size={16} />
                         <span>{language === "ml" ? "ഈ സർവീസ് ബുക്ക് ചെയ്യാം" : "Get Quote for this Service"}</span>
                       </a>
 

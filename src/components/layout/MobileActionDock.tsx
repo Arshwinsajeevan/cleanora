@@ -1,7 +1,8 @@
 ﻿"use client";
 
 import React from "react";
-import { MessageCircle, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 import { siteConfig, createWhatsAppUrl } from "@/data/site";
 import { useLanguage } from "@/context/LanguageContext";
 import { trackEvent } from "@/lib/analytics";
@@ -70,9 +71,10 @@ export const MobileActionDock: React.FC = () => {
           height: "46px",
         }}
       >
-        <MessageCircle size={18} />
+        <WhatsAppIcon size={18} />
         <span>{language === "ml" ? "വാട്സാപ്പ് ചെയ്യാം" : "WhatsApp"}</span>
       </button>
     </div>
   );
 };
+

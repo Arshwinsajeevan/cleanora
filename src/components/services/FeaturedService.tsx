@@ -1,8 +1,9 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import Image from "next/image";
-import { MessageCircle, CheckCircle2, ShieldCheck, Sparkles } from "lucide-react";
+import { CheckCircle2, ShieldCheck, Sparkles } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 import { createWhatsAppUrl } from "@/data/site";
 import { trackEvent } from "@/lib/analytics";
 
@@ -150,7 +151,7 @@ export const FeaturedService: React.FC = () => {
               </div>
 
               <p style={{ color: "#94a3b8", fontSize: "0.9375rem", lineHeight: 1.65 }}>
-                Our premier deep cleaning service delivers a transformative renewal for residences across Kannur and Kerala. Every inch is systematically addressed—from deep tile restoration to intricate fan and window detailing.
+                Our premier deep cleaning service delivers a transformative renewal for residences across Kannur and Kerala. Every inch is systematically addressedâ€”from deep tile restoration to intricate fan and window detailing.
               </p>
 
               {/* Checklist */}
@@ -199,7 +200,7 @@ export const FeaturedService: React.FC = () => {
                   onClick={handleWhatsAppClick}
                   className="btn btn-whatsapp btn-lg"
                 >
-                  <MessageCircle size={18} />
+                  <WhatsAppIcon size={18} />
                   <span>Enquire on WhatsApp</span>
                 </a>
 
@@ -223,4 +224,5 @@ export const FeaturedService: React.FC = () => {
     </section>
   );
 };
+
 

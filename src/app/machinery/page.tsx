@@ -6,10 +6,11 @@ import {
   Wrench,
   CheckCircle2,
   Cpu,
-  MessageCircle,
+  
   Sparkles,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 import { createWhatsAppUrl } from "@/data/site";
 import { FinalCTA } from "@/components/cta/FinalCTA";
 
@@ -152,7 +153,7 @@ export default function MachineryPage() {
                   className="btn btn-whatsapp btn-lg"
                   style={{ borderRadius: "12px" }}
                 >
-                  <MessageCircle size={18} />
+                  <WhatsAppIcon size={18} />
                   <span>{t("book_via_whatsapp")}</span>
                 </a>
               </div>
@@ -165,3 +166,4 @@ export default function MachineryPage() {
     </>
   );
 }
+

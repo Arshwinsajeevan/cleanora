@@ -1,8 +1,9 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import Image from "next/image";
-import { MessageCircle, Check } from "lucide-react";
+import { Check } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 import { ServiceItem } from "@/data/services";
 import { createWhatsAppUrl } from "@/data/site";
 import { useLanguage } from "@/context/LanguageContext";
@@ -155,7 +156,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
               boxShadow: "0 3px 10px rgba(37, 211, 102, 0.25)",
             }}
           >
-            <MessageCircle size={16} />
+            <WhatsAppIcon size={16} />
             <span>{t("enquire_whatsapp")}</span>
           </a>
         </div>
@@ -163,3 +164,4 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
     </div>
   );
 };
+

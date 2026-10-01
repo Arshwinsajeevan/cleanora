@@ -1,9 +1,9 @@
 ﻿"use client";
 
 import React from "react";
-import { Phone, Mail, MessageCircle, MapPin, ShieldCheck, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, ShieldCheck, Clock } from "lucide-react";
 import { siteConfig, createWhatsAppUrl } from "@/data/site";
-import { InstagramIcon, FacebookIcon } from "@/components/ui/Icons";
+import { InstagramIcon, FacebookIcon, WhatsAppIcon } from "@/components/ui/Icons";
 import { WhatsAppBookingForm } from "./WhatsAppBookingForm";
 import { useLanguage } from "@/context/LanguageContext";
 import { trackEvent } from "@/lib/analytics";
@@ -114,7 +114,7 @@ export const ContactSection: React.FC = () => {
                       flexShrink: 0,
                     }}
                   >
-                    <MessageCircle size={22} />
+                    <WhatsAppIcon size={22} />
                   </div>
                   <div style={{ minWidth: 0 }}>
                     <div style={{ fontSize: "0.75rem", color: "#047857", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.02em" }}>
@@ -364,4 +364,5 @@ export const ContactSection: React.FC = () => {
     </section>
   );
 };
+
 

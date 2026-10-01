@@ -2,7 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
-import { MapPin, Phone, MessageCircle, CheckCircle2 } from "lucide-react";
+import { MapPin, Phone, CheckCircle2 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 import { siteConfig, createWhatsAppUrl } from "@/data/site";
 import { useLanguage } from "@/context/LanguageContext";
 import { trackEvent } from "@/lib/analytics";
@@ -168,7 +169,7 @@ export const ServiceAreas: React.FC = () => {
                   className="btn btn-whatsapp btn-sm"
                   style={{ flex: 1, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "6px" }}
                 >
-                  <MessageCircle size={15} />
+                  <WhatsAppIcon size={15} />
                   <span>{t("book_via_whatsapp")}</span>
                 </a>
               </div>
@@ -179,3 +180,4 @@ export const ServiceAreas: React.FC = () => {
     </section>
   );
 };
+

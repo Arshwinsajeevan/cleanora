@@ -1,13 +1,14 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MessageCircle, CheckCircle2, Sparkles, ArrowRight } from "lucide-react";
+import { CheckCircle2, Sparkles, ArrowRight } from "lucide-react";
 import { servicesData } from "@/data/services";
 import { createWhatsAppUrl } from "@/data/site";
 import { FinalCTA } from "@/components/cta/FinalCTA";
 import { useLanguage } from "@/context/LanguageContext";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 
 export default function ServicesPage() {
   const { language, t } = useLanguage();
@@ -42,7 +43,7 @@ export default function ServicesPage() {
             }}
           >
             <Sparkles size={14} />
-            <span>{language === "ml" ? "ക്ലീനോറ സർവീസ് കാറ്റലോഗ്" : "Official Service Catalog"}</span>
+            <span>{language === "ml" ? "à´•àµà´²àµ€à´¨àµ‹à´± à´¸àµ¼à´µàµ€à´¸àµ à´•à´¾à´±àµà´±à´²àµ‹à´—àµ" : "Official Service Catalog"}</span>
           </div>
 
           <h1
@@ -53,12 +54,12 @@ export default function ServicesPage() {
               marginBottom: "16px",
             }}
           >
-            {language === "ml" ? "കണ്ണൂരിലെ പ്രൊഫഷണൽ ക്ലീനിംഗ് സർവീസുകൾ" : "Professional Cleaning Services in Kannur"}
+            {language === "ml" ? "à´•à´£àµà´£àµ‚à´°à´¿à´²àµ† à´ªàµà´°àµŠà´«à´·à´£àµ½ à´•àµà´²àµ€à´¨à´¿à´‚à´—àµ à´¸àµ¼à´µàµ€à´¸àµà´•àµ¾" : "Professional Cleaning Services in Kannur"}
           </h1>
 
           <p style={{ fontSize: "1.0625rem", color: "#cbd5e1", lineHeight: 1.65 }}>
             {language === "ml"
-              ? "വീടുകൾ, വാട്ടർ ടാങ്കുകൾ, സോളാർ പാനലുകൾ, സോഫകൾ, ഇന്റർലോക്ക് എന്നിവയ്ക്കുള്ള സമ്പൂർണ്ണ ഡീപ് ക്ലീനിംഗ്. 100% സംതൃപ്തി ഉറപ്പ്."
+              ? "à´µàµ€à´Ÿàµà´•àµ¾, à´µà´¾à´Ÿàµà´Ÿàµ¼ à´Ÿà´¾à´™àµà´•àµà´•àµ¾, à´¸àµ‹à´³à´¾àµ¼ à´ªà´¾à´¨à´²àµà´•àµ¾, à´¸àµ‹à´«à´•àµ¾, à´‡à´¨àµà´±àµ¼à´²àµ‹à´•àµà´•àµ à´Žà´¨àµà´¨à´¿à´µà´¯àµà´•àµà´•àµà´³àµà´³ à´¸à´®àµà´ªàµ‚àµ¼à´£àµà´£ à´¡àµ€à´ªàµ à´•àµà´²àµ€à´¨à´¿à´‚à´—àµ. 100% à´¸à´‚à´¤àµƒà´ªàµà´¤à´¿ à´‰à´±à´ªàµà´ªàµ."
               : "From single-room targeted deep cleaning to full residential and commercial facility restoration. Every service is backed by our 100% Satisfaction Guarantee."}
           </p>
         </div>
@@ -145,7 +146,7 @@ export default function ServicesPage() {
                         letterSpacing: "0.06em",
                       }}
                     >
-                      {language === "ml" ? "മട്ടന്നൂർ • കണ്ണൂർ സർവീസ്" : "Mattanur • Kannur Cleaning"}
+                      {language === "ml" ? "à´®à´Ÿàµà´Ÿà´¨àµà´¨àµ‚àµ¼ â€¢ à´•à´£àµà´£àµ‚àµ¼ à´¸àµ¼à´µàµ€à´¸àµ" : "Mattanur â€¢ Kannur Cleaning"}
                     </span>
                     <h2
                       style={{
@@ -167,7 +168,7 @@ export default function ServicesPage() {
                   {/* Checklist */}
                   <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                     <div style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--text-primary)", textTransform: "uppercase" }}>
-                      {language === "ml" ? "പ്രത്യേകതകളും സേവനങ്ങളും:" : "What We Clean & Deliver:"}
+                      {language === "ml" ? "à´ªàµà´°à´¤àµà´¯àµ‡à´•à´¤à´•à´³àµà´‚ à´¸àµ‡à´µà´¨à´™àµà´™à´³àµà´‚:" : "What We Clean & Deliver:"}
                     </div>
                     {checklist.map((item, i) => (
                       <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "8px" }}>
@@ -187,7 +188,7 @@ export default function ServicesPage() {
                       rel="noopener noreferrer"
                       className="btn btn-whatsapp btn-sm"
                     >
-                      <MessageCircle size={16} />
+                      <WhatsAppIcon size={16} />
                       <span>{t("enquire_whatsapp")}</span>
                     </a>
 
@@ -208,3 +209,4 @@ export default function ServicesPage() {
     </>
   );
 }
+

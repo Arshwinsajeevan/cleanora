@@ -1,8 +1,9 @@
-"use client";
+﻿"use client";
 
 import React, { useEffect } from "react";
 import Image from "next/image";
-import { X, ChevronLeft, ChevronRight, MessageCircle, MapPin } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, MapPin } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 import { GalleryItem } from "@/data/gallery";
 import { createWhatsAppUrl } from "@/data/site";
 import { trackEvent } from "@/lib/analytics";
@@ -202,7 +203,7 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
             className="btn btn-whatsapp btn-sm"
             style={{ display: "inline-flex", alignItems: "center" }}
           >
-            <MessageCircle size={16} />
+            <WhatsAppIcon size={16} />
             <span>Enquire on WhatsApp</span>
           </a>
         </div>
@@ -210,3 +211,4 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
     </div>
   );
 };
+

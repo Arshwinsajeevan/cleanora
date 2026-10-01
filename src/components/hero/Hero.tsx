@@ -4,7 +4,6 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  MessageCircle,
   ArrowRight,
   ShieldCheck,
   Truck,
@@ -13,6 +12,7 @@ import {
   MapPin,
   Award,
 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 import { siteConfig, createWhatsAppUrl } from "@/data/site";
 import { useLanguage } from "@/context/LanguageContext";
 import { trackWhatsAppConversion } from "@/lib/analytics";
@@ -171,7 +171,7 @@ export const Hero: React.FC = () => {
                   maxWidth: "280px",
                 }}
               >
-                <MessageCircle size={18} />
+                <WhatsAppIcon size={18} />
                 <span>{t("hero_cta_whatsapp")}</span>
               </a>
 
@@ -302,3 +302,4 @@ export const Hero: React.FC = () => {
     </section>
   );
 };
+

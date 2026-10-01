@@ -2,10 +2,11 @@
 
 import React from "react";
 import Image from "next/image";
-import { Sparkles, MapPin, CheckCircle2, MessageCircle } from "lucide-react";
+import { Sparkles, MapPin, CheckCircle2,  } from "lucide-react";
 import { createWhatsAppUrl } from "@/data/site";
 import { FinalCTA } from "@/components/cta/FinalCTA";
 import { useLanguage } from "@/context/LanguageContext";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 
 export default function GalleryPage() {
   const { language, t } = useLanguage();
@@ -181,7 +182,7 @@ export default function GalleryPage() {
                     boxShadow: "0 6px 20px rgba(37, 211, 102, 0.4)",
                   }}
                 >
-                  <MessageCircle size={18} />
+                  <WhatsAppIcon size={18} />
                   <span>
                     {language === "ml"
                       ? "വാട്സാപ്പിൽ സർവീസ് ബുക്ക് ചെയ്യാം"
@@ -199,3 +200,5 @@ export default function GalleryPage() {
     </>
   );
 }
+
+

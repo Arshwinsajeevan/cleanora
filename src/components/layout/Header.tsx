@@ -8,7 +8,7 @@ import {
   Menu,
   X,
   Phone,
-  MessageCircle,
+  
   Sparkles,
   ChevronRight,
   Home,
@@ -20,6 +20,7 @@ import {
 import { siteConfig, createWhatsAppUrl } from "@/data/site";
 import { useLanguage } from "@/context/LanguageContext";
 import { LanguageToggle } from "@/components/ui/LanguageToggle";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 import { trackWhatsAppConversion } from "@/lib/analytics";
 
 export const Header: React.FC = () => {
@@ -271,7 +272,7 @@ export const Header: React.FC = () => {
                 whiteSpace: "nowrap",
               }}
             >
-              <MessageCircle size={14} />
+              <WhatsAppIcon size={14} />
               <span>{language === "ml" ? "വാട്സാപ്പ്" : "WhatsApp"}</span>
             </a>
           </div>
@@ -402,7 +403,7 @@ export const Header: React.FC = () => {
               className="btn btn-whatsapp btn-lg"
               style={{ width: "100%", justifyContent: "center", borderRadius: "12px", padding: "14px" }}
             >
-              <MessageCircle size={19} />
+              <WhatsAppIcon size={19} />
               <span>{t("book_via_whatsapp")}</span>
             </a>
 
@@ -420,3 +421,4 @@ export const Header: React.FC = () => {
     </>
   );
 };
+

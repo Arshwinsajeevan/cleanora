@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Sparkles, MapPin, Eye, MessageCircle, Building2 } from "lucide-react";
+import { Sparkles, MapPin, Eye, Building2 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 import { galleryItems, inaugurationInfo } from "@/data/gallery";
 import { LightboxModal } from "./LightboxModal";
 import { useLanguage } from "@/context/LanguageContext";
@@ -99,7 +100,7 @@ export const GallerySection: React.FC = () => {
                   boxShadow: "0 8px 24px -4px rgba(37, 211, 102, 0.4)",
                 }}
               >
-                <MessageCircle size={18} />
+                <WhatsAppIcon size={18} />
                 <span>{t("book_via_whatsapp")}</span>
               </a>
             </div>
@@ -248,3 +249,4 @@ export const GallerySection: React.FC = () => {
     </>
   );
 };
+

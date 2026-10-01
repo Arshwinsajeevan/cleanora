@@ -1,6 +1,7 @@
-import React from "react";
+﻿import React from "react";
 import Link from "next/link";
-import { MessageCircle, Home, ArrowLeft } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/Icons";
+import { Home, ArrowLeft } from "lucide-react";
 import { createWhatsAppUrl } from "@/data/site";
 
 export default function NotFound() {
@@ -72,7 +73,7 @@ export default function NotFound() {
             rel="noopener noreferrer"
             className="btn btn-whatsapp"
           >
-            <MessageCircle size={18} />
+            <WhatsAppIcon size={18} />
             <span>WhatsApp Cleanora</span>
           </a>
         </div>
@@ -80,3 +81,4 @@ export default function NotFound() {
     </div>
   );
 }
+

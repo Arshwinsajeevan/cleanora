@@ -1,7 +1,8 @@
 ﻿"use client";
 
 import React, { useState } from "react";
-import { MessageCircle, CheckCircle2, Sparkles, Send } from "lucide-react";
+import { CheckCircle2, Sparkles, Send } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/Icons";
 import { createWhatsAppUrl } from "@/data/site";
 import { servicesData } from "@/data/services";
 import { useLanguage } from "@/context/LanguageContext";
@@ -334,7 +335,7 @@ I would like to enquire about your professional cleaning service.
             fontWeight: 700,
           }}
         >
-          <MessageCircle size={20} />
+          <WhatsAppIcon size={20} />
           <span>{language === "ml" ? "വാട്സാപ്പിൽ അയക്കാം" : "Send Booking Request on WhatsApp"}</span>
         </button>
 
@@ -368,3 +369,4 @@ I would like to enquire about your professional cleaning service.
     </div>
   );
 };
+

@@ -3,11 +3,11 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin, MessageCircle, ArrowRight } from "lucide-react";
+import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import { siteConfig, createWhatsAppUrl } from "@/data/site";
 import { servicesData } from "@/data/services";
 import { useLanguage } from "@/context/LanguageContext";
-import { InstagramIcon, FacebookIcon } from "@/components/ui/Icons";
+import { InstagramIcon, FacebookIcon, WhatsAppIcon } from "@/components/ui/Icons";
 import { trackEvent } from "@/lib/analytics";
 
 export const Footer: React.FC = () => {
@@ -266,7 +266,7 @@ export const Footer: React.FC = () => {
                     justifyContent: "center",
                   }}
                 >
-                  <MessageCircle size={18} />
+                  <WhatsAppIcon size={18} />
                 </a>
 
                 <a
@@ -339,3 +339,4 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
+
