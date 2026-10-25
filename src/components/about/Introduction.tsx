@@ -35,7 +35,7 @@ export const Introduction: React.FC = () => {
               }}
             >
               <Image
-                src="/images/about us.png"
+                src="/images/about-us.png"
                 alt="Meet Cleanora Professional Cleaning Team Mattanur Kannur"
                 fill
                 sizes="(max-width: 768px) 100vw, 550px"

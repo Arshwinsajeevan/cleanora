@@ -36,7 +36,7 @@ export const TransformationsSection: React.FC = () => {
       titleMl: "ബാത്ത്റൂം ടൈൽ ഉപ്പുവെള്ളക്കറ നീക്കൽ",
       descEn: "Eliminating yellow limescale, mineral stains, and restoring sparkling chrome and tile gloss.",
       descMl: "ടൈലുകളിലെയും ടാപ്പുകളിലെയും ഉപ്പുവെള്ളക്കറകളും മഞ്ഞപ്പാടുകളും മാറ്റി തിളക്കം നൽകുന്നു.",
-      image: "/images/batroom_beforeafter.png",
+      image: "/images/bathroom_beforeafter.png",
       tagEn: "Limescale Descaling",
       tagMl: "ഉപ്പുവെള്ളക്കറ നീക്കൽ",
     },

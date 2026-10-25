@@ -3,7 +3,7 @@ import { siteConfig } from "@/data/site";
 import { GalleryClient } from "@/components/gallery/GalleryClient";
 
 export const metadata: Metadata = {
-  title: "Real Work Gallery | Cleanora Deep Cleaning & Shifting Kannur",
+  title: "Real Work & Site Video Gallery",
   description: "Explore Cleanora's real work gallery featuring on-site video proof of house deep cleaning and interlock pressure washing in Mattanur and Kannur, Kerala.",
   keywords: [
     "Cleanora gallery", "Cleanora work proof",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "real cleaning video Mattannur",
   ],
   alternates: {
-    canonical: `${siteConfig.url}/gallery`,
+    canonical: "/gallery",
   },
   openGraph: {
     title: "Cleanora Real On-Site Work Video | Interlock & House Cleaning Kannur",

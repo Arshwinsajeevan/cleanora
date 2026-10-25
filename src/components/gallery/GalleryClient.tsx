@@ -229,6 +229,7 @@ export const GalleryClient: React.FC = () => {
                 ref={videoRef}
                 playsInline
                 preload="metadata"
+                poster="/images/interlock.png"
                 controls
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
@@ -240,7 +241,6 @@ export const GalleryClient: React.FC = () => {
                 }}
               >
                 <source src="/videos/cleanora-interlock-house-cleaning-kannur.mp4" type="video/mp4" />
-                <source src="/videos/WhatsApp Video 2026-10-05 at 9.16.52 PM.mp4" type="video/mp4" />
                 Your browser does not support HTML5 video playback.
               </video>
 

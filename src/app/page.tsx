@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 ﻿import React from "react";
 import { Hero } from "@/components/hero/Hero";
 import { TrustStrip } from "@/components/trust/TrustStrip";
@@ -10,6 +11,22 @@ import { ServiceAreas } from "@/components/local/ServiceAreas";
 import { FAQSection } from "@/components/faq/FAQSection";
 import { ContactSection } from "@/components/contact/ContactSection";
 import { FinalCTA } from "@/components/cta/FinalCTA";
+
+
+export const metadata: Metadata = {
+  title: "Cleanora | Professional Deep Cleaning & Packers and Movers in Kannur",
+  description:
+    "Premier residential and commercial deep cleaning and Packers & Movers relocation services based in Mattanur, Kannur, Kerala. House deep cleaning, water tank cleaning, solar panel wash, sofa shampooing, interlock jet washing, and zero-damage shifting across Kannur district. 100% Satisfaction Guaranteed.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Cleanora | Professional Deep Cleaning & Packers and Movers in Kannur",
+    description:
+      "Expert deep cleaning and Packers & Movers shifting for homes, offices, water tanks, sofas, interlocks, and solar panels in Mattanur and across Kannur, Kerala. 100% Satisfaction Guaranteed.",
+    url: "/",
+  },
+};
 
 export default function HomePage() {
   return (

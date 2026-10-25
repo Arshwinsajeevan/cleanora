@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: "Cleanora | Professional Deep Cleaning & Packers and Movers in Kannur",
-    template: "%s | Cleanora Cleaning & Shifting Kannur",
+    template: "%s | Cleanora Kannur",
   },
   description:
     "Cleanora provides premier residential and commercial deep cleaning and Packers & Movers relocation services based in Mattanur, Kannur, Kerala. House deep cleaning, water tank cleaning, solar panel wash, sofa shampooing, interlock jet washing, and zero-damage shifting across Kannur district. 100% Satisfaction Guaranteed.",
@@ -114,9 +114,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  alternates: {
-    canonical: siteConfig.url,
   },
 };
 
