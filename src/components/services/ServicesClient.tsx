@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React from "react";
 import Image from "next/image";
@@ -43,7 +43,7 @@ export const ServicesClient: React.FC = () => {
             }}
           >
             <Sparkles size={14} />
-            <span>{language === "ml" ? "à´•àµà´²àµ€à´¨àµ‹à´± à´¸àµ¼à´µàµ€à´¸àµ à´•à´¾à´±àµà´±à´²àµ‹à´—àµ" : "Official Service Catalog"}</span>
+            <span>{language === "ml" ? "ക്ലീനോറ സർവീസ് കാറ്റലോഗ്" : "Official Service Catalog"}</span>
           </div>
 
           <h1
@@ -54,13 +54,13 @@ export const ServicesClient: React.FC = () => {
               marginBottom: "16px",
             }}
           >
-            {language === "ml" ? "à´•à´£àµà´£àµ‚à´°à´¿à´²àµ† à´ªàµà´°àµŠà´«à´·à´£àµ½ à´•àµà´²àµ€à´¨à´¿à´‚à´—àµ à´¸àµ¼à´µàµ€à´¸àµà´•àµ¾" : "Professional Cleaning Services in Kannur"}
+            {language === "ml" ? "കണ്ണൂരിലെ പ്രൊഫഷണൽ ക്ലീനിംഗ് സർവീസുകൾ" : "Professional Cleaning Services in Kannur"}
           </h1>
 
           <p style={{ fontSize: "1.0625rem", color: "#cbd5e1", lineHeight: 1.65 }}>
             {language === "ml"
-              ? "à´µàµ€à´Ÿàµà´•àµ¾, à´µà´¾à´Ÿàµà´Ÿàµ¼ à´Ÿà´¾à´™àµà´•àµà´•àµ¾, à´¸àµ‹à´³à´¾àµ¼ à´ªà´¾à´¨à´²àµà´•àµ¾, à´¸àµ‹à´«à´•àµ¾, à´‡à´¨àµà´±àµ¼à´²àµ‹à´•àµà´•àµ à´Žà´¨àµà´¨à´¿à´µà´¯àµà´•àµà´•àµà´³àµà´³ à´¸à´®àµà´ªàµ‚àµ¼à´£àµà´£ à´¡àµ€à´ªàµ à´•àµà´²àµ€à´¨à´¿à´‚à´—àµ. 100% à´¸à´‚à´¤àµƒà´ªàµà´¤à´¿ à´‰à´±à´ªàµà´ªàµ."
-              : "From single-room targeted deep cleaning to full residential and commercial facility restoration. Every service is backed by our 100% Satisfaction Guarantee."}
+              ? "വീടുകൾ, വാട്ടർ ടാങ്കുകൾ, സോളാർ പാനലുകൾ, സോഫകൾ, ഇന്റർലോക്ക്, വാഹനങ്ങൾ എന്നിവയ്ക്കുള്ള സമ്പൂർണ്ണ ഡീപ് ക്ലീനിംഗ്. 100% സംതൃപ്തി ഉറപ്പ്."
+              : "From single-room targeted deep cleaning to full residential, vehicle washing, and commercial facility restoration. Every service is backed by our 100% Satisfaction Guarantee."}
           </p>
         </div>
       </section>
@@ -146,7 +146,7 @@ export const ServicesClient: React.FC = () => {
                         letterSpacing: "0.06em",
                       }}
                     >
-                      {language === "ml" ? "à´®à´Ÿàµà´Ÿà´¨àµà´¨àµ‚àµ¼ â€¢ à´•à´£àµà´£àµ‚àµ¼ à´¸àµ¼à´µàµ€à´¸àµ" : "Mattanur â€¢ Kannur Cleaning"}
+                      {language === "ml" ? "മട്ടന്നൂർ • കണ്ണൂർ സർവീസ്" : "Mattanur • Kannur Cleaning"}
                     </span>
                     <h2
                       style={{
@@ -168,7 +168,7 @@ export const ServicesClient: React.FC = () => {
                   {/* Checklist */}
                   <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                     <div style={{ fontSize: "0.8125rem", fontWeight: 700, color: "var(--text-primary)", textTransform: "uppercase" }}>
-                      {language === "ml" ? "à´ªàµà´°à´¤àµà´¯àµ‡à´•à´¤à´•à´³àµà´‚ à´¸àµ‡à´µà´¨à´™àµà´™à´³àµà´‚:" : "What We Clean & Deliver:"}
+                      {language === "ml" ? "പ്രത്യേകതകളും സേവനങ്ങളും:" : "What We Clean & Deliver:"}
                     </div>
                     {checklist.map((item, i) => (
                       <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "8px" }}>
@@ -208,5 +208,4 @@ export const ServicesClient: React.FC = () => {
       <FinalCTA />
     </>
   );
-}
-
+};

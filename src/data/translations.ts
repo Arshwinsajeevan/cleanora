@@ -29,6 +29,7 @@ export type TranslationKey =
   | "tab_residential"
   | "tab_deep"
   | "tab_commercial"
+  | "tab_vehicle"
   | "badge_featured"
   | "btn_view_details"
   | "btn_whatsapp_quote"
@@ -122,7 +123,17 @@ export type TranslationKey =
   | "gallery_book_service"
   | "gallery_upcoming_notice"
   | "gallery_video_play"
-  | "gallery_video_pause";
+    | "gallery_video_pause"
+  | "gallery_tab_all"
+  | "gallery_tab_videos"
+  | "gallery_tab_showcase"
+  | "gallery_video2_title"
+  | "gallery_video2_desc"
+  | "gallery_showcase_title"
+  | "gallery_showcase_desc"
+  | "gallery_view_full"
+  | "gallery_close"
+  | "gallery_call_now";
 
 export const translations: Record<"en" | "ml", Record<TranslationKey, string>> = {
   en: {
@@ -162,6 +173,7 @@ export const translations: Record<"en" | "ml", Record<TranslationKey, string>> =
     tab_residential: "Home Cleaning",
     tab_deep: "Deep Specialized",
     tab_commercial: "Commercial",
+    tab_vehicle: "Vehicle Wash",
 
     badge_featured: "Most Requested",
     btn_view_details: "View Scope",
@@ -283,6 +295,16 @@ export const translations: Record<"en" | "ml", Record<TranslationKey, string>> =
     gallery_upcoming_notice: "More live project videos from our ongoing sites in Kannur will be added here regularly.",
     gallery_video_play: "Play Video",
     gallery_video_pause: "Pause Video",
+    gallery_tab_all: "All Work (3)",
+    gallery_tab_videos: "On-Site Videos (2)",
+    gallery_tab_showcase: "Official Catalogue (1)",
+    gallery_video2_title: "House Deep Cleaning & Floor Scrubbing",
+    gallery_video2_desc: "Live site footage capturing floor scrubbing, deep dust extraction, and intensive room sanitization by Cleanora's verified team.",
+    gallery_showcase_title: "Official Cleanora Service Catalogue & Contacts",
+    gallery_showcase_desc: "Verified official service list including full house cleaning, interlock, water tank, solar panels, and new vehicle & two-wheeler washing.",
+    gallery_view_full: "Click to Zoom Flyer",
+    gallery_close: "Close Preview",
+    gallery_call_now: "Call Cleanora Direct",
   },
   ml: {
     nav_home: "ഹോം",
@@ -321,6 +343,7 @@ export const translations: Record<"en" | "ml", Record<TranslationKey, string>> =
     tab_residential: "ഹോം ക്ലീനിംഗ്",
     tab_deep: "ഡീപ് ക്ലീനിംഗ്",
     tab_commercial: "കൊമേഴ്സ്യൽ",
+    tab_vehicle: "വാഹനങ്ങൾ",
 
     badge_featured: "കൂടുതൽ ആളുകൾ ആവശ്യപ്പെടുന്നത്",
     btn_view_details: "വിവരങ്ങൾ കാണുക",
@@ -441,5 +464,15 @@ export const translations: Record<"en" | "ml", Record<TranslationKey, string>> =
     gallery_upcoming_notice: "കണ്ണൂരിലെ മറ്റ് സൈറ്റുകളിൽ നിന്നുള്ള യഥാർത്ഥ വീഡിയോകൾ ഉടൻ ഇവിടെ അപ്‌ലോഡ് ചെയ്യുന്നതാണ്.",
     gallery_video_play: "വീഡിയോ പ്ലേ ചെയ്യുക",
     gallery_video_pause: "പോസ് ചെയ്യുക",
+    gallery_tab_all: "എല്ലാം (3)",
+    gallery_tab_videos: "സൈറ്റ് വീഡിയോകൾ (2)",
+    gallery_tab_showcase: "സർവീസ് കാറ്റലോഗ് (1)",
+    gallery_video2_title: "വീട് ഡീപ് ക്ലീനിംഗ് & ഫ്ലോർ സ്ക്രബ്ബിംഗ്",
+    gallery_video2_desc: "വീടിന്റെ തറയും മുറികളും മെഷീൻ സ്ക്രബ്ബിംഗ് വഴി ആഴത്തിൽ വൃത്തിയാക്കുന്നതും അഴുക്കുകൾ പൂർണ്ണമായും നീക്കം ചെയ്യുന്നതുമായ തത്സമയ വീഡിയോ.",
+    gallery_showcase_title: "ക്ലീനോറ ഒഫീഷ്യൽ സർവീസ് കാറ്റലോഗ് & നമ്പറുകൾ",
+    gallery_showcase_desc: "വീട്, ഓഫീസ്, ഇന്റർലോക്ക്, വാട്ടർ ടാങ്ക്, സോളാർ പാനൽ കൂടാതെ പുതിയ വാഹനം & ബൈക്ക് വാഷിംഗ് സർവീസുകളുടെ വിവരങ്ങൾ.",
+    gallery_view_full: "വലുതാക്കി കാണാൻ ക്ലിക്ക് ചെയ്യുക",
+    gallery_close: "ക്ലോസ് ചെയ്യുക",
+    gallery_call_now: "നേരിട്ട് വിളിക്കുക",
   },
 };

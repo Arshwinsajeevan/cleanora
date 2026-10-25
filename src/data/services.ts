@@ -434,4 +434,101 @@ export const servicesData: ServiceItem[] = [
     whatsappMessageMl:
       "നമസ്കാരം ക്ലീനോറ, ബാത്ത്റൂം ഡീപ് ക്ലീനിംഗ് സർവീസിനെക്കുറിച്ച് അറിയാൻ ആഗ്രഹിക്കുന്നു.",
   },
+  {
+    id: "vehicle-wash",
+    slug: "vehicle-wash",
+    nameEn: "Vehicle Deep Wash & Detailing",
+    nameMl: "വാഹന ഡീപ് വാഷ് & ക്ലീനിംഗ്",
+    shortDescriptionEn:
+      "Doorstep exterior foam wash, high-pressure underbody rinse, and interior vacuum detailing for cars and SUVs in Kannur.",
+    shortDescriptionMl:
+      "കാറുകൾക്കും വലിയ വാഹനങ്ങൾക്കും വീട്ടുപടിക്കൽ വെച്ച് സ്നോ ഫോം വാഷ്, അണ്ടർബോഡി പ്രഷർ വാഷ്, ഇന്റീരിയർ ക്ലീനിംഗ്.",
+    detailedDescriptionEn:
+      "Restore showroom shine to your car with Cleanora's doorstep vehicle wash. We deploy high-pressure jet washers, pH-neutral snow foam shampoo, underbody mud removal, glass streak-free cleaning, and interior dashboard sanitization.",
+    detailedDescriptionMl:
+      "നിങ്ങളുടെ വീട്ടുപടിക്കൽ വെച്ച് തന്നെ കാറുകൾക്കും ജീപ്പുകൾക്കും അത്യാധുനിക പ്രഷർ ജെറ്റ് വാഷ്, സ്നോ ഫോം ഷാംപൂ, അണ്ടർബോഡി ചെളി നീക്കം ചെയ്യൽ, ഗ്ലാസ് & മിറർ ക്ലീനിംഗ്, ഇന്റീരിയർ വാക്വം ക്ലീനിംഗ് എന്നിവ ക്ലീനോറ നൽകുന്നു.",
+    highlightsEn: [
+      "Doorstep high-pressure exterior foam wash",
+      "Underbody & wheel arch high-pressure mud blast",
+      "Interior cabin vacuuming & dashboard polish",
+      "Scratch-free microfiber drying & glass detailing",
+    ],
+    highlightsMl: [
+      "വീട്ടുപടിക്കൽ വെച്ച് ഹൈ-പ്രഷർ ഫോം വാഷ്",
+      "അണ്ടർബോഡി & വീൽ ആർച്ച് ചെളി നീക്കം ചെയ്യൽ",
+      "ഇന്റീരിയർ വാക്വം ക്ലീനിംഗ് & ഡാഷ്‌ബോർഡ് പോളിഷ്",
+      "പോറലുകൾ ഏൽക്കാത്ത മൈക്രോഫൈബർ ഫിനിഷിംഗ്",
+    ],
+    checklistEn: [
+      "Full exterior high-pressure pre-rinse",
+      "Snow foam shampoo application & hand mitt wash",
+      "Underbody chassis and tyre mud blast",
+      "Interior cabin floor vacuuming & dust wipe-down",
+      "Windshield, window, and mirror streak-free detailing",
+      "Tyre dressing and protective trim gloss",
+    ],
+    checklistMl: [
+      "പൂർണ്ണമായ എക്സ്റ്റീരിയർ പ്രഷർ വാഷ്",
+      "സ്നോ ഫോം ഷാംപൂ വാഷ്",
+      "അണ്ടർബോഡി & ടയർ ചെളി പൂർണ്ണമായും നീക്കം ചെയ്യൽ",
+      "ഇന്റീരിയർ ഫ്ലോർ വാക്വം ക്ലീനിംഗ് & ഡസ്റ്റിംഗ്",
+      "ഗ്ലാസുകളും കണ്ണാടികളും തിളക്കത്തോടെ വൃത്തിയാക്കൽ",
+      "ടയർ ഡ്രസ്സിംഗ് & പ്രൊട്ടക്റ്റീവ് പോളിഷ്",
+    ],
+    image: "/images/vehicle_wash.png",
+    badgeEn: "Doorstep Wash",
+    badgeMl: "ഡോർസ്റ്റെപ്പ് വാഷ്",
+    featured: true,
+    whatsappMessageEn:
+      "Hello Cleanora, I would like to book a doorstep Car Deep Wash service in Kannur.",
+    whatsappMessageMl:
+      "നമസ്കാരം ക്ലീനോറ, എന്റെ കാർ ഡീപ് വാഷ് ചെയ്യുന്നതിനായി ഒരു സ്ലോട്ട് ബുക്ക് ചെയ്യാൻ ആഗ്രഹിക്കുന്നു.",
+  },
+  {
+    id: "two-wheeler-wash",
+    slug: "two-wheeler-wash",
+    nameEn: "Two-Wheeler Jet Wash & Degreasing",
+    nameMl: "ടൂ-വീലർ പ്രഷർ വാഷ് & ഡീഗ്രീസിംഗ്",
+    shortDescriptionEn:
+      "High-pressure foam wash, chain degreasing, and mud extraction for motorcycles, superbikes, and scooters.",
+    shortDescriptionMl:
+      "ബൈക്കുകൾക്കും സ്കൂട്ടറുകൾക്കും ഹൈ-പ്രഷർ വാഷ്, ചെയിൻ ഡീഗ്രീസിംഗ്, എഞ്ചിൻ ക്ലീനിംഗ്.",
+    detailedDescriptionEn:
+      "Specialized doorstep pressure wash for motorcycles, scooters, and commuter bikes. Effectively dissolves road grime, mud caked under mudguards, chain residue, and engine grease while preserving electrical and sensitive components.",
+    detailedDescriptionMl:
+      "ബൈക്കുകളിലും സ്കൂട്ടറുകളിലും പറ്റിപ്പിടിച്ച ചെളിയും ഗ്രീസും പൂർണ്ണമായി നീക്കം ചെയ്യുന്ന പ്രത്യേക പ്രഷർ വാഷ്. ഇലക്ട്രിക്കൽ ഭാഗങ്ങൾക്ക് കേടുപാടുകൾ വരാത്ത രീതിയിലുള്ള സുരക്ഷിത സർവീസ്.",
+    highlightsEn: [
+      "High-pressure snow foam wash & degreasing",
+      "Engine bay, swingarm & chain cleaning",
+      "Wheel spokes, alloy & tyre detailing",
+      "Protective body shine & mirror polishing",
+    ],
+    highlightsMl: [
+      "ഹൈ-പ്രഷർ സ്നോ ഫോം വാഷ്",
+      "എഞ്ചിൻ & ചെയിൻ ഗ്രീസ് നീക്കം ചെയ്യൽ",
+      "വീൽ അലോയ് & ടയർ ക്ലീനിംഗ്",
+      "ബോഡി ഷൈൻ & മിറർ പോളിഷിംഗ്",
+    ],
+    checklistEn: [
+      "Complete high-pressure mud blast",
+      "Foam shampoo wash with soft brush detailing",
+      "Chain, sprocket, and stand degreasing",
+      "Air dry & soft microfiber finish",
+      "Tyre conditioning & shine coating",
+    ],
+    checklistMl: [
+      "കട്ടപിടിച്ച ചെളി പ്രഷർ വാഷർ വഴി നീക്കം ചെയ്യൽ",
+      "സ്നോ ഫോം ഷാംപൂ വാഷ്",
+      "ചെയിൻ & സ്പ്രോക്കറ്റ് ഡീഗ്രീസിംഗ്",
+      "മൈക്രോഫൈബർ ക്ലോത്ത് ഉപയോഗിച്ചുള്ള ഫിനിഷിംഗ്",
+      "ടയർ കണ്ടീഷനിംഗ് & ഷൈൻ കോട്ടിംഗ്",
+    ],
+    image: "/images/two_wheeler_wash.png",
+    badgeEn: "Quick Detailing",
+    badgeMl: "വേഗത്തിലുള്ള സർവീസ്",
+    whatsappMessageEn:
+      "Hello Cleanora, I would like to book a Two-Wheeler Jet Wash service in Kannur.",
+    whatsappMessageMl:
+      "നമസ്കാരം ക്ലീനോറ, എന്റെ ബൈക്ക് / സ്കൂട്ടർ പ്രഷർ വാഷ് സർവീസ് ബുക്ക് ചെയ്യാൻ ആഗ്രഹിക്കുന്നു.",
+  },
 ];

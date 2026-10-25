@@ -15,6 +15,7 @@ export const ServicesSection: React.FC = () => {
     { id: "all", label: t("tab_all") },
     { id: "packers", label: t("tab_packers") },
     { id: "residential", label: t("tab_residential") },
+    { id: "vehicle", label: t("tab_vehicle") },
     { id: "deep", label: t("tab_deep") },
     { id: "commercial", label: t("tab_commercial") },
   ];
@@ -22,6 +23,9 @@ export const ServicesSection: React.FC = () => {
   const filteredServices = servicesData.filter((service) => {
     if (activeFilter === "packers") {
       return ["packers-and-movers"].includes(service.id);
+    }
+    if (activeFilter === "vehicle") {
+      return ["vehicle-wash", "two-wheeler-wash"].includes(service.id);
     }
     if (activeFilter === "residential") {
       return [
